@@ -1,0 +1,82 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace Backend.Repository
+{
+    public class BedRepository
+    {
+        private readonly Utility.BedDataHandler _bedDataHandler = new Utility.BedDataHandler();
+        private readonly Utility.IcuDataHandler _icuDataHandler = new Utility.IcuDataHandler();
+        private readonly Utility.Helpers _helpers = new Utility.Helpers();
+        public readonly string _csvFilePath;
+        public BedRepository()
+        {
+            this._csvFilePath = "";
+        }
+        public bool AddBed(string icuId, string locationOfBed = "not specified")
+        {
+            string message = "";
+            bool isAdded = false;
+            try
+            {
+                // validation.
+                if (_helpers.IsEmptySlotAvailableToAddBed(icuId, out message))
+                {
+                    //var icu = new Occupancy.OccupancyServices().GetIcu(icuId));
+                    var bedId = _helpers.GenerateBedId(icuId);
+                    var bed = new Models.BedModel()
+                    {
+                        BedId = bedId,
+                        IcuId = icuId,
+                        BedOccupancyStatus = "Free",
+                        Location = locationOfBed
+                    };
+                    isAdded = _bedDataHandler.WriteBed(bed, _csvFilePath);
+                    _helpers.IncrementNoOfBedsOfIcu(icuId);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(message);
+                Console.WriteLine(e.StackTrace);
+                isAdded = false;
+            }
+            return isAdded;
+        }
+
+
+        public bool RemoveBed(string icuId, string bedId)
+        {
+            bool isDeleted = false;
+            string message = "";
+            try
+            {
+                // validation
+                if (_helpers.IsBedAvailable(icuId, bedId, out message))
+                {
+                    isDeleted = _bedDataHandler.DeleteBed(bedId, _csvFilePath);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(message);
+                Console.WriteLine(e.StackTrace);
+                isDeleted = false;
+            }
+            return isDeleted;
+        }
+
+        public IEnumerable<Models.BedModel> AvailableBeds()
+        {
+            List<Models.BedModel> freeBeds = new List<Models.BedModel>();
+            foreach (var bed in _bedDataHandler.Readbeds(_csvFilePath))
+            {
+                if (bed.BedOccupancyStatus == "Free")
+                    freeBeds.Add(bed);
+            }
+            return freeBeds;
+        }
+    }
+}

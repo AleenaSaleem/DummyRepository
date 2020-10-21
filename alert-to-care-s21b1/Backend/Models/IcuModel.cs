@@ -4,14 +4,13 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AlertToCareAPI.Models
+namespace Backend.Models
 {
     public class IcuModel
     {
-        [Key]
         public string IcuId { get; set; }
         public string Layout { get; set; }
-        public List<BedModel> Beds { get; set; }
+        //public List<BedModel> Beds { get; set; }
         public int NoOfBeds { get; set; }
         public int MaxBeds { get; set; }
     }

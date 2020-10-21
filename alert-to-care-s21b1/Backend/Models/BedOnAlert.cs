@@ -4,11 +4,10 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AlertToCareAPI.Models
+namespace Backend.Models
 {
     public class BedOnAlert
     {
-        [Key]
         public string BedId { get; set; }
         public float Value { get; set; }
 

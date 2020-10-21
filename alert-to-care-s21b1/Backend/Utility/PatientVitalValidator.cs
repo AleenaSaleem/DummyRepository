@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AlertToCare_API.Utility;
-using AlertToCareAPI.Models;
+using Backend.Models;
 
-namespace AlertToCareAPI.Utility
+namespace Backend.Utility
 {
     public class PatientVitalValidator
     {

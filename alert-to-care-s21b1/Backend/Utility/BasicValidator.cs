@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace AlertToCareAPI.Utility
+namespace Backend.Utility
 {
     public class BasicValidator
     {
