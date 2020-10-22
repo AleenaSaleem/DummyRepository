@@ -14,70 +14,75 @@ namespace BackendApiTests
         {
             _mockServer = new MockServer();
         }
-        Backend.Models.IcuModel _icu = new Backend.Models.IcuModel()
+        Backend.Models.PatientModel _patient = new Backend.Models.PatientModel()
         {
-            IcuId = "IC3",
-            Layout = "U",
-            NoOfBeds = 0,
-            MaxBeds = 10
+            IcuId = "IC2",
+            BedId="IC2L1",
+            Name="Tom",
+            Age=21,
+            PatientId="p12",
+            Address="TomsAddress"
+
         };
 
         [Fact]
-        public async Task TestExpectingNewIcuToBeAddedIfItIsValid()
+        public async Task TestExpectingNewPatientToBeAddedIfItIsValid()
         {
-            var response = await _mockServer.Client.PostAsync(_url, new StringContent(JsonConvert.SerializeObject(_icu), Encoding.UTF8, "application/json"));
+            var response = await _mockServer.Client.PostAsync(_url, new StringContent(JsonConvert.SerializeObject(_patient), Encoding.UTF8, "application/json"));
             var jsonString = await response.Content.ReadAsStringAsync();
             Assert.Equal("true", JsonConvert.DeserializeObject<string>(jsonString));
-            await _mockServer.Client.DeleteAsync(_url + "/" + _icu.IcuId);
+            await _mockServer.Client.DeleteAsync(_url + "/" + _patient.PatientId);
         }
         [Fact]
-        public async Task TestExpectingFalseForIcuToBeAddedIfItIsInValid()
+        public async Task TestExpectingFalseForPatientToBeAddedIfItIsInValid()
         {
-            await _mockServer.Client.PostAsync(_url, new StringContent(JsonConvert.SerializeObject(_icu), Encoding.UTF8, "application/json"));
-            var response = await _mockServer.Client.PostAsync(_url, new StringContent(JsonConvert.SerializeObject(_icu), Encoding.UTF8, "application/json"));
+            await _mockServer.Client.PostAsync(_url, new StringContent(JsonConvert.SerializeObject(_patient), Encoding.UTF8, "application/json"));
+            var response = await _mockServer.Client.PostAsync(_url, new StringContent(JsonConvert.SerializeObject(_patient), Encoding.UTF8, "application/json"));
             var jsonString = await response.Content.ReadAsStringAsync();
             Assert.Equal("false", JsonConvert.DeserializeObject<string>(jsonString));
-            await _mockServer.Client.DeleteAsync(_url + "/" + _icu.IcuId);
+            await _mockServer.Client.DeleteAsync(_url + "/" + _patient.PatientId);
         }
         [Fact]
-        public async Task TestExpectingListOfAllIcusWhenCalled()
+        public async Task TestExpectingListOfAllPatientsWhenCalled()
         {
+            await _mockServer.Client.PostAsync(_url, new StringContent(JsonConvert.SerializeObject(_patient), Encoding.UTF8, "application/json"));
             var response = await _mockServer.Client.GetAsync(_url);
             var jsonString = await response.Content.ReadAsStringAsync();
-            var icus = JsonConvert.DeserializeObject<List<Backend.Models.IcuModel>>(jsonString);
-            Assert.True(icus.Count == 2);
-            Assert.Equal("IC1", icus[0].IcuId);
-            Assert.Equal("IC2", icus[1].IcuId);
+            var beds = JsonConvert.DeserializeObject<List<Backend.Models.PatientModel>>(jsonString);
+            Assert.Contains("p12", jsonString);
+            Assert.Equal("IC2L1", beds[0].BedId);
+            await _mockServer.Client.DeleteAsync(_url + "/" + _patient.PatientId);
         }
         [Fact]
-        public async Task TestExpectingAnIcuWhenCalledWithAnIcuId()
+        public async Task TestExpectingAPatientWhenCalledWithAnPatientId()
         {
-            var response = await _mockServer.Client.GetAsync(_url + "/IC1");
+            await _mockServer.Client.PostAsync(_url, new StringContent(JsonConvert.SerializeObject(_patient), Encoding.UTF8, "application/json"));
+            var response = await _mockServer.Client.GetAsync(_url + "/p12");
             var jsonString = await response.Content.ReadAsStringAsync();
-            var icu = JsonConvert.DeserializeObject<Backend.Models.IcuModel>(jsonString);
-            Assert.Equal("IC1", icu.IcuId);
-            Assert.Equal("L", icu.Layout);
+            var patient = JsonConvert.DeserializeObject<Backend.Models.PatientModel>(jsonString);
+            Assert.Equal("IC2", patient.IcuId);
+            await _mockServer.Client.DeleteAsync(_url + "/" + _patient.PatientId);
         }
         [Fact]
-        public async Task TestExpectingFalseWhenIcuDoesNotExistWhenCalledWithAnInvalidIcuId()
+        public async Task TestExpectingFalseWhenPatientDoesNotExistWhenCalledWithAnInvalidPatientId()
         {
             var response = await _mockServer.Client.GetAsync(_url + "/random_id");
             var jsonString = await response.Content.ReadAsStringAsync();
-            var icu = JsonConvert.DeserializeObject<Backend.Models.IcuModel>(jsonString);
-            Assert.Null(icu);
+            var patient = JsonConvert.DeserializeObject<Backend.Models.PatientModel>(jsonString);
+            Assert.Null(patient);
         }
         [Fact]
-        public async Task TestExpectingIcuToBeRemovedWhenCalledWithValidId()
+        public async Task TestExpectingPatientToBeRemovedWhenCalledWithValidId()
         {
-            await _mockServer.Client.PostAsync(_url, new StringContent(JsonConvert.SerializeObject(_icu), Encoding.UTF8, "application/json"));
-            var response = await _mockServer.Client.DeleteAsync(_url + "/" + _icu.IcuId);
+            await _mockServer.Client.PostAsync(_url, new StringContent(JsonConvert.SerializeObject(_patient), Encoding.UTF8, "application/json"));
+            var response = await _mockServer.Client.DeleteAsync(_url + "/" + _patient.PatientId);
             var jsonString = await response.Content.ReadAsStringAsync();
             Assert.Equal("true", JsonConvert.DeserializeObject<string>(jsonString));
         }
         [Fact]
-        public async Task TestExpectingFalseForIcuToBeRemovedWhenCalledWithInValidId()
+        public async Task TestExpectingFalseForPatientToBeRemovedWhenCalledWithInValidId()
         {
-            var response = await _mockServer.Client.DeleteAsync(_url + "/" + _icu.IcuId);
+            var response = await _mockServer.Client.DeleteAsync(_url + "/" + _patient.PatientId);
             var jsonString = await response.Content.ReadAsStringAsync();
             Assert.Equal("false", JsonConvert.DeserializeObject<string>(jsonString));
         }

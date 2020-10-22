@@ -9,7 +9,6 @@ namespace Backend.Models
         public int Age { get; set; }
         public string IcuId { get; set; }
         public string BedId { get; set; }
-        public List<VitalsModel> Vitals { get; set; }
         public string Address { get; set; }
     }
 }

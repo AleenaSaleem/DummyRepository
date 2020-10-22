@@ -42,7 +42,7 @@ namespace Backend.Repository
 
         public bool DischargePatient(string patientId)
         {
-            bool isDischarged = false;
+            bool isDischarged;
             try
             {
                 //validation

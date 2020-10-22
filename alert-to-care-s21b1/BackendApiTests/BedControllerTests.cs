@@ -41,9 +41,7 @@ namespace BackendApiTests
             await _mockServer.Client.PostAsync(_url + "/IC1/FirstFromTop", new StringContent(JsonConvert.SerializeObject(null), Encoding.UTF8, "application/json"));
             var response = await _mockServer.Client.GetAsync(_url);
             var jsonString = await response.Content.ReadAsStringAsync();
-            var beds = JsonConvert.DeserializeObject<List<Backend.Models.BedModel>>(jsonString);
-            Assert.True(beds.Count == 1);
-            Assert.Equal("IC1", beds[0].IcuId);
+            Assert.Contains("IC1", jsonString);
             await _mockServer.Client.DeleteAsync(_url + "/IC1/IC1L1");
         }
         [Fact]
