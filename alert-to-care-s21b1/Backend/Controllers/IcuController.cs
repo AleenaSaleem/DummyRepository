@@ -15,7 +15,6 @@ namespace Backend.Controllers
 
         public IcuController(IIcuRepository icuRepository)
         {
-            Console.WriteLine("Icu constructor called");
             this._icuRepository = icuRepository;
         }
         // GET: api/<IcuController>
@@ -67,63 +66,6 @@ namespace Backend.Controllers
             }
 
         }
-
-        /*[HttpGet("beds/availableBeds")]
-        public IEnumerable<Models.BedModel> GetAllAvailableBeds()
-        {
-            return _icuRepository.AvailableBeds();
-        }
-
-        [HttpGet("beds/availableBeds/{id}")]
-        public IEnumerable<BedModel> GetAvailableBedsInIcu(string icuId)
-        {
-            return _icuRepository.AvailableBeds(icuId);
-        }
-
-        [HttpPost("beds/addBed/{icuId}")]
-        public IActionResult AddBed(string icuId)
-        {
-            try
-            {
-                string msg = _icuRepository.AddBed(icuId);
-                return Ok(msg);
-            }
-            catch (Exception)
-            {
-                return StatusCode(500, "unable to add Bed");
-            }
-
-        }
-
-        [HttpPost("beds/addBed/{icuId}/{location}")]
-        public IActionResult AddBedWithLocation(string icuId, string location)
-        {
-            try
-            {
-                string msg = _icuRepository.AddBed(icuId,location);
-                return Ok(msg);
-            }
-            catch (Exception)
-            {
-                return StatusCode(500, "unable to add Bed");
-            }
-
-        }
-
-        [HttpDelete("beds/remove/{icuId}/{bedId}")]
-        public IActionResult RemoveBed(string icuId, string bedId)
-        {
-            try
-            {
-                string msg = _icuRepository.RemoveBed(icuId, bedId);
-                return Ok(msg);
-            }
-            catch (Exception)
-            {
-                return StatusCode(500, "unable to remove Bed");
-            }
-
-        }*/
 
     }
 }

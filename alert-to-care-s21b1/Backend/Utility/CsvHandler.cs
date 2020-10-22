@@ -23,7 +23,6 @@ namespace Backend.Utility
         private List<string> WriteObjectsToList(List<string> details, string filepath)
         {
             using var reader = new StreamReader(filepath);
-            reader.ReadLine();
             while (!reader.EndOfStream)
             {
                 var line = reader.ReadLine();
@@ -49,10 +48,11 @@ namespace Backend.Utility
         private bool AppendTextToFile(string  csvData, string filepath)
         {
             bool isWritten = false;
-            csvData += "\n";
             if (!string.IsNullOrEmpty(csvData))
             {
                 File.AppendAllText(filepath, csvData);
+                File.AppendAllText(filepath, Environment.NewLine);
+
                 isWritten = true;
             }
             return isWritten;

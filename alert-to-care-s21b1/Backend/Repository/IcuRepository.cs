@@ -56,7 +56,7 @@ namespace Backend.Repository
             return isDeleted;
         }
 
-        public IEnumerable<Models.IcuModel> GetAllIcu()
+        public List<Models.IcuModel> GetAllIcu()
         {
             return _icuDataHandler.ReadIcus(_csvFilePath);
         }

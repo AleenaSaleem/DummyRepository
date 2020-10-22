@@ -6,7 +6,7 @@ namespace Backend.Repository
     public interface IIcuRepository
     {
         bool AddIcu(IcuModel newIcu);
-        IEnumerable<IcuModel> GetAllIcu();
+        List<IcuModel> GetAllIcu();
         IcuModel GetIcu(string id);
         bool RemoveIcu(string icuId);
     }

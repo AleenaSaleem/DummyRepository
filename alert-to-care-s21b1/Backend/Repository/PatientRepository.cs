@@ -46,11 +46,9 @@ namespace Backend.Repository
             try
             {
                 //validation
-                if (_patientDataHandler.ReadPatients(_csvFilePath).Find(patient => patient.PatientId == patientId) != null)
-                {
+              
                     _helpers.ChangeBedStatusFree(GetPatient(patientId).IcuId, GetPatient(patientId).BedId);
                     isDischarged = _patientDataHandler.DeletePatient(patientId, _csvFilePath);
-                }
             }
             catch (Exception e)
             {
