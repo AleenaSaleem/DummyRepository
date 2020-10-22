@@ -60,6 +60,13 @@ namespace Backend.Utility
             return false;
 
         }
+        internal void DecrementNoOfBedsOfIcu(string icuId)
+        {
+            var icu = _icuDataHandler.ReadIcus(_icuDataCsvPath).Find(icu => icu.IcuId == icuId);
+            icu.NoOfBeds -= 1;
+            _icuDataHandler.DeleteIcu(icuId, _icuDataCsvPath);
+            _icuDataHandler.WriteIcu(icu, _icuDataCsvPath);
+        }
 
         internal void IncrementNoOfBedsOfIcu(string icuId)
         {

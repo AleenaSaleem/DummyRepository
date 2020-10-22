@@ -28,10 +28,8 @@ namespace Backend.Utility
                 var line = reader.ReadLine();
                 if (!string.IsNullOrEmpty(line))
                 {
-                    Console.WriteLine("reading empty line");
                     details.Add(line);
                 }
-                Console.WriteLine("Did not read empty line");
             }
             return details;
         }
@@ -50,9 +48,8 @@ namespace Backend.Utility
             bool isWritten = false;
             if (!string.IsNullOrEmpty(csvData))
             {
-                File.AppendAllText(filepath, csvData);
-                File.AppendAllText(filepath, Environment.NewLine);
-
+                File.AppendAllText(filepath, csvData+Environment.NewLine);
+                //File.AppendAllText(filepath, Environment.NewLine);
                 isWritten = true;
             }
             return isWritten;

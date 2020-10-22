@@ -57,6 +57,7 @@ namespace Backend.Repository
                 if (_helpers.IsBedAvailable(icuId, bedId, out message))
                 {
                     isDeleted = _bedDataHandler.DeleteBed(bedId, _csvFilePath);
+                    _helpers.DecrementNoOfBedsOfIcu(icuId);
                 }
             }
             catch (Exception e)

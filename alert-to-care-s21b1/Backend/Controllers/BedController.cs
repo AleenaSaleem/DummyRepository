@@ -21,10 +21,16 @@ namespace Backend.Controllers
         }
 
         [HttpGet("{id}")]
-        public IEnumerable<Models.BedModel> GetAvailableBedsInIcu(string icuId)
+        public List<Models.BedModel> GetAvailableBedsInIcu(string id)
         {
             List<Models.BedModel> allBeds= (List<Models.BedModel>)_bedRepository.AvailableBeds();
-            return (IEnumerable<Models.BedModel>)allBeds.Find(bed => bed.IcuId == icuId);
+            return allBeds.FindAll(bed => bed.IcuId == id);
+        }
+        [HttpGet("{id}/{bedId}")]
+        public List<Models.BedModel> GetBed(string id ,string bedId)
+        {
+            List<Models.BedModel> allBeds = (List<Models.BedModel>)_bedRepository.AvailableBeds();
+            return allBeds.FindAll(bed => bed.IcuId == id);
         }
 
         [HttpPost("{icuId}")]
