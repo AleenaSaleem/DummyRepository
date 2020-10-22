@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AlertToCareAPI.Models;
+using Backend.Models;
 
-namespace AlertToCareAPI.Utility
+namespace Backend.Utility
 {
     public class IcuValidator
     {

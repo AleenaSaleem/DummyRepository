@@ -27,11 +27,12 @@ namespace Backend.Utility
             while (!reader.EndOfStream)
             {
                 var line = reader.ReadLine();
-                if (line != null)
+                if (!string.IsNullOrEmpty(line))
                 {
+                    Console.WriteLine("reading empty line");
                     details.Add(line);
                 }
-
+                Console.WriteLine("Did not read empty line");
             }
             return details;
         }

@@ -7,7 +7,7 @@ namespace Backend.Repository
 {
     public class VitalsRepository
     {
-        private readonly string _csvFilePath;
+        /*private readonly string _csvFilePath;
         private readonly Utility.VitalsDataHandler _vitalsDataHandler = new Utility.VitalsDataHandler();
         private readonly Utility.Helpers _helpers = new Utility.Helpers();
         public VitalsRepository()
@@ -22,8 +22,6 @@ namespace Backend.Repository
             }
             return null;
         }
-
-
         public List<Models.BedOnAlert> TurnOnAlert()
         {
 
@@ -109,8 +107,6 @@ namespace Backend.Repository
             return _context.Patients.ToList();
         }
 
-       
-
         public void TurnOffAlert(string bedId)
         {
             _context.Beds.RemoveRange(_context.Beds.Where(bed => bed.BedId == bedId));
@@ -135,6 +131,6 @@ namespace Backend.Repository
             {
                 return "ALl OKAY";
             }
-        }
+        }*/
     }
 }

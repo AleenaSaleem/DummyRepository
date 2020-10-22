@@ -3,18 +3,18 @@ using System.Collections.Generic;
 
 namespace Backend.Repository
 {
-    public class PatientRepository
+    public class PatientRepository : IPatientRepository
     {
         public readonly string _csvFilePath;
         private readonly Utility.PatientDataHandler _patientDataHandler = new Utility.PatientDataHandler();
         private readonly Utility.Helpers _helpers = new Utility.Helpers();
         public PatientRepository()
         {
-            this._csvFilePath = "";
+            this._csvFilePath = @"D:\a\alert-to-care-s21b1\alert-to-care-s21b1\Backend\Patients.csv";
         }
         public IEnumerable<Models.PatientModel> GetAllPatients()
         {
-           return  _patientDataHandler.ReadPatients(_csvFilePath);
+            return _patientDataHandler.ReadPatients(_csvFilePath);
         }
 
         public bool AddPatient(Models.PatientModel newPatient)
@@ -25,8 +25,8 @@ namespace Backend.Repository
             {
                 if (_helpers.CanPatientBeAdded(newPatient, out message))
                 {
-                     isAdded = _patientDataHandler.WritePatient(newPatient, _csvFilePath);
-                     _helpers.ChangeBedIdToOccupied(newPatient.IcuId, newPatient.BedId);
+                    isAdded = _patientDataHandler.WritePatient(newPatient, _csvFilePath);
+                    _helpers.ChangeBedStatusToOccupied(newPatient.BedId);
                 }
 
             }
@@ -46,10 +46,10 @@ namespace Backend.Repository
             try
             {
                 //validation
-                if (_helpers.DoesPatientExists(patientId))
+                if (_patientDataHandler.ReadPatients(_csvFilePath).Find(patient => patient.PatientId == patientId) != null)
                 {
-                    _helpers.ChangeBedIdFree(GetPatient(patientId).IcuId, GetPatient(patientId).BedId);
-                    isDischarged =_patientDataHandler.DeletePatient(patientId,_csvFilePath);
+                    _helpers.ChangeBedStatusFree(GetPatient(patientId).IcuId, GetPatient(patientId).BedId);
+                    isDischarged = _patientDataHandler.DeletePatient(patientId, _csvFilePath);
                 }
             }
             catch (Exception e)

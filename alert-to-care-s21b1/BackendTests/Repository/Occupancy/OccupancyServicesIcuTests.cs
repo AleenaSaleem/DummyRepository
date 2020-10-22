@@ -1,5 +1,4 @@
-﻿using AlertToCareAPI.Models;
-using AlertToCareAPI.Repository.Occupancy;
+﻿using AlertToCareAPI.Repository.Occupancy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +17,6 @@ namespace AlertToCareAPI.Repository.Occupancy.Tests
             {
                 IcuId = "ICU05",
                 Layout = "L00",
-                Beds = new List<BedModel>(),
                 MaxBeds = 15,
                 NoOfBeds = 0
             });
@@ -33,7 +31,6 @@ namespace AlertToCareAPI.Repository.Occupancy.Tests
             {
                 IcuId = "ICU01",
                 Layout = "L00",
-                Beds = new List<BedModel>(),
                 MaxBeds = 15,
                 NoOfBeds = 0
             });
@@ -48,7 +45,6 @@ namespace AlertToCareAPI.Repository.Occupancy.Tests
             {
                 IcuId = "ICU05",
                 Layout = "L00",
-                Beds = new List<BedModel>(),
                 MaxBeds = 0,
                 NoOfBeds = 0
             });

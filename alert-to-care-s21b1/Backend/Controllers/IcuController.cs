@@ -1,44 +1,43 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AlertToCareAPI.Models;
-using AlertToCareAPI.Repository.Occupancy;
+using Backend.Repository;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace AlertToCareAPI.Controllers
+namespace Backend.Controllers
 {
-    [Route("api/occupancy/[controller]")]
+    [Route("api/icus")]
     [ApiController]
     public class IcuController : ControllerBase
     {
-        private readonly IOccupancyServices occupancyServices;
+        private readonly IIcuRepository _icuRepository;
 
-        public IcuController(IOccupancyServices _occupancyServices)
+        public IcuController(IIcuRepository icuRepository)
         {
-            this.occupancyServices = _occupancyServices;
+            Console.WriteLine("Icu constructor called");
+            this._icuRepository = icuRepository;
         }
         // GET: api/<IcuController>
         [HttpGet]
-        public IEnumerable<IcuModel> Get()
+        public IEnumerable<Models.IcuModel> Get()
         {
-            return occupancyServices.GetAllIcu();
+            return _icuRepository.GetAllIcu();
         }
 
         // GET api/<IcuController>/5
         [HttpGet("{id}")]
-        public IcuModel Get(string id) => occupancyServices.GetIcu(id);
+        public Models.IcuModel Get(string id) => _icuRepository.GetIcu(id);
 
         // POST api/<IcuController>
         [HttpPost]
-        public IActionResult Post([FromBody] IcuModel icu)
+        public IActionResult Post([FromBody] Models.IcuModel icu)
         {
             try
             {
-                string msg = occupancyServices.AddIcu(icu);
-                return Ok(msg);
+                Console.WriteLine("trying to add icu");
+                bool isAdded = _icuRepository.AddIcu(icu);
+                return Ok(isAdded);
             }
             catch (Exception)
             {
@@ -49,7 +48,7 @@ namespace AlertToCareAPI.Controllers
 
         // PUT api/<IcuController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(int id)
         {
         }
 
@@ -59,8 +58,8 @@ namespace AlertToCareAPI.Controllers
         {
             try
             {
-                string msg = occupancyServices.RemoveIcu(id);
-                return Ok(msg);
+                bool isDeleted = _icuRepository.RemoveIcu(id);
+                return Ok(isDeleted);
             }
             catch (Exception)
             {
@@ -69,16 +68,16 @@ namespace AlertToCareAPI.Controllers
 
         }
 
-        [HttpGet("beds/availableBeds")]
-        public IEnumerable<BedModel> GetAllAvailableBeds()
+        /*[HttpGet("beds/availableBeds")]
+        public IEnumerable<Models.BedModel> GetAllAvailableBeds()
         {
-            return occupancyServices.AvailableBeds();
+            return _icuRepository.AvailableBeds();
         }
 
         [HttpGet("beds/availableBeds/{id}")]
         public IEnumerable<BedModel> GetAvailableBedsInIcu(string icuId)
         {
-            return occupancyServices.AvailableBeds(icuId);
+            return _icuRepository.AvailableBeds(icuId);
         }
 
         [HttpPost("beds/addBed/{icuId}")]
@@ -86,7 +85,7 @@ namespace AlertToCareAPI.Controllers
         {
             try
             {
-                string msg = occupancyServices.AddBed(icuId);
+                string msg = _icuRepository.AddBed(icuId);
                 return Ok(msg);
             }
             catch (Exception)
@@ -101,7 +100,7 @@ namespace AlertToCareAPI.Controllers
         {
             try
             {
-                string msg = occupancyServices.AddBed(icuId,location);
+                string msg = _icuRepository.AddBed(icuId,location);
                 return Ok(msg);
             }
             catch (Exception)
@@ -116,7 +115,7 @@ namespace AlertToCareAPI.Controllers
         {
             try
             {
-                string msg = occupancyServices.RemoveBed(icuId, bedId);
+                string msg = _icuRepository.RemoveBed(icuId, bedId);
                 return Ok(msg);
             }
             catch (Exception)
@@ -124,7 +123,7 @@ namespace AlertToCareAPI.Controllers
                 return StatusCode(500, "unable to remove Bed");
             }
 
-        }
+        }*/
 
     }
 }

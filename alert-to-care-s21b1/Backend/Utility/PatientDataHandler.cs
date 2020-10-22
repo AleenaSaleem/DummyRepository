@@ -34,8 +34,7 @@ namespace Backend.Utility
                 Age = Int32.Parse(patientDetails[2]),
                 IcuId = patientDetails[3],
                 BedId = patientDetails[4],
-                Vitals = new List<Models.VitalsModel>(),
-                Address = patientDetails[6]
+                Address = patientDetails[5]
             };
             return patient;
         }
@@ -55,7 +54,6 @@ namespace Backend.Utility
                     patient.Age.ToString(),
                     patient.IcuId.ToString(),
                     patient.BedId.ToString(),
-                    patient.Vitals.ToString(),
                     patient.Address
                     });
                 }            

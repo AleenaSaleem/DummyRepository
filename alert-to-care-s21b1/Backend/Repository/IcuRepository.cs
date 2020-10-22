@@ -3,14 +3,14 @@ using System.Collections.Generic;
 
 namespace Backend.Repository
 {
-    public class IcuRepository
+    public class IcuRepository : IIcuRepository
     {
         public readonly string _csvFilePath;
         private readonly Utility.IcuDataHandler _icuDataHandler = new Utility.IcuDataHandler();
         private readonly Utility.Helpers _helpers = new Utility.Helpers();
         public IcuRepository()
         {
-            _csvFilePath = "";
+            _csvFilePath = @"D:\a\alert-to-care-s21b1\alert-to-care-s21b1\Backend\Icus.csv";
         }
 
         // Add update vitals in maintanance. 

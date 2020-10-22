@@ -1,46 +1,44 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AlertToCareAPI.Models;
-using AlertToCareAPI.Repository.Occupancy;
+using Backend.Repository;
 using Microsoft.AspNetCore.Mvc;
+
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace AlertToCareAPI.Controllers
+namespace Backend.Controllers
 {
-    [Route("api/occupancy/[controller]")]
+    [Route("api/patients")]
     [ApiController]
     public class PatientsController : ControllerBase
     {
-        private readonly IOccupancyServices occupancyServices;
+        private readonly IPatientRepository _patientRepository;
 
-        public PatientsController(IOccupancyServices _occupancyServices)
+        public PatientsController(IPatientRepository patientRepository)
         {
-            occupancyServices = _occupancyServices;
+            _patientRepository = patientRepository;
         }
         // GET: api/<PatientsController>
         [HttpGet]
-        public IEnumerable<PatientModel> Get()
+        public IEnumerable<Models.PatientModel> Get()
         {
-            return occupancyServices.GetAllPatients();
+            return _patientRepository.GetAllPatients();
         }
 
         // GET api/<PatientsController>/5
         [HttpGet("{id}")]
-        public PatientModel Get(string id)
+        public Models.PatientModel Get(string id)
         {
-            return occupancyServices.GetPatient(id);
+            return _patientRepository.GetPatient(id);
         }
 
         // POST api/<PatientsController>
         [HttpPost]
-        public IActionResult Post([FromBody] PatientModel newPatient)
+        public IActionResult Post([FromBody] Models.PatientModel newPatient)
         {
             try
             {
-                var msg = occupancyServices.AddPatient(newPatient);
+                var msg = _patientRepository.AddPatient(newPatient);
                 return Ok(msg);
             }
             catch (Exception)
@@ -61,7 +59,7 @@ namespace AlertToCareAPI.Controllers
         {
             try
             {
-                var msg = occupancyServices.DischargePatient(id);
+                var msg = _patientRepository.DischargePatient(id);
                 return Ok(msg);
             }
             catch (Exception)

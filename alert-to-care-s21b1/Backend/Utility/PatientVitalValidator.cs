@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AlertToCare_API.Utility;
 using Backend.Models;
 
 namespace Backend.Utility
