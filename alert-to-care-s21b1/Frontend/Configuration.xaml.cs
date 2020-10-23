@@ -26,7 +26,7 @@ namespace Frontend
             InitializeComponent();
             this.DataContext = layoutModel;
         }
-
+        
         private void NextButton_Click(object sender, RoutedEventArgs e)
         {
             Window parentWindow = Application.Current.MainWindow;
