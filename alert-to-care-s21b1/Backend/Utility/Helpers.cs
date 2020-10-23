@@ -40,9 +40,6 @@ namespace Backend.Utility
             return false;
         }
 
-       
-
-
         public bool IsBedAvailable(string icuId, string bedId, out string msg)
         {
             var bed = _bedDataHandler.Readbeds(_bedDataCsvPath).Find(bed => bed.BedId == bedId);
@@ -60,13 +57,6 @@ namespace Backend.Utility
             return false;
 
         }
-        internal void DecrementNoOfBedsOfIcu(string icuId)
-        {
-            var icu = _icuDataHandler.ReadIcus(_icuDataCsvPath).Find(icu => icu.IcuId == icuId);
-            icu.NoOfBeds -= 1;
-            _icuDataHandler.DeleteIcu(icuId, _icuDataCsvPath);
-            _icuDataHandler.WriteIcu(icu, _icuDataCsvPath);
-        }
 
         internal void IncrementNoOfBedsOfIcu(string icuId)
         {
@@ -75,8 +65,14 @@ namespace Backend.Utility
             _icuDataHandler.DeleteIcu(icuId,_icuDataCsvPath);
             _icuDataHandler.WriteIcu(icu,_icuDataCsvPath);
         }
+        internal void DecrementNoOfBedsOfIcu(string icuId)
+        {
+            var icu = _icuDataHandler.ReadIcus(_icuDataCsvPath).Find(icu => icu.IcuId == icuId);
+            icu.NoOfBeds -= 1;
+            _icuDataHandler.DeleteIcu(icuId, _icuDataCsvPath);
+            _icuDataHandler.WriteIcu(icu, _icuDataCsvPath);
+        }
 
-        
         public bool IsIcuEligibleToBeAdded(Models.IcuModel icu, out string message)
         {
 

@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="Frontend.Configuration"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Frontend"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" >
+        <TextBlock Text="Configure ICU" Margin="20" HorizontalAlignment="Center" ></TextBlock>
+        <TextBlock Text="Max Beds in ICU" Margin="10" ></TextBlock>
+        <TextBox Margin="10" Width="100" ></TextBox>
+        <TextBlock Text="Layout" Margin="10" ></TextBlock>
+        <ComboBox x:Name="LayoutList" Width="200" ItemsSource="{Binding Path=LayoutList}"></ComboBox>
+        <Button Content="Next" Margin="30" Width="100" Click="NextButton_Click"></Button>
+    </StackPanel>
+</UserControl>
