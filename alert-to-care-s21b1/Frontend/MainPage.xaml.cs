@@ -69,7 +69,6 @@ namespace Frontend
             }
         }
 
-
         private void Menu_Click(object sender, RoutedEventArgs e)
         {
             if(MenuOptions.Visibility == Visibility.Collapsed)
