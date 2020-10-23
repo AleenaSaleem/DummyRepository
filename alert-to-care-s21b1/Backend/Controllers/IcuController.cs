@@ -34,7 +34,6 @@ namespace Backend.Controllers
         {
             try
             {
-                Console.WriteLine("trying to add icu");
                 bool isAdded = _icuRepository.AddIcu(icu);
                 return Ok(isAdded);
             }
