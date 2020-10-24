@@ -26,7 +26,10 @@ namespace Backend.Controllers
 
         // GET api/<IcuController>/5
         [HttpGet("{id}")]
-        public Models.IcuModel Get(string id) => _icuRepository.GetIcu(id);
+        public Models.IcuModel Get(string id)
+        {
+           return  _icuRepository.GetIcu(id);
+        }
 
         // POST api/<IcuController>
         [HttpPost]

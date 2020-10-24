@@ -37,6 +37,11 @@ namespace Frontend
                 (parentWindow as MainWindow).MainPage.Visibility = Visibility.Visible;
             }
            this.AddIcu();
+            var apiObj = new IcuApiCalls();
+            var result = apiObj.GetIcu("IC1");
+            MessageBox.Show(result.IcuId);
+            MessageBox.Show(result.Layout);
+            new MainPage()._icuDetails.UpdateIcuDetails();
         }
         private void AddIcu()
         {
@@ -49,6 +54,7 @@ namespace Frontend
                Layout = this.LayoutList.SelectedItem.ToString().Substring(0,1),
                MaxBeds = Int32.Parse(this.maxBeds.Text)
             };
+           
             bool msg =icuApiObj.AddIcu(icu);
         }
     }

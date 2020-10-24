@@ -56,7 +56,7 @@ namespace Frontend.ApiCalls
             }
             return _beds;
         }*/
-        public BedModel GetAllBedsFromAnIcu(string icuId)
+        public List<BedModel> GetAllBedsFromAnIcu(string icuId)
         {
 
             HttpWebRequest _httpReq = WebRequest.CreateHttp(_url+"/"+icuId);
@@ -64,9 +64,9 @@ namespace Frontend.ApiCalls
             HttpWebResponse response = _httpReq.GetResponse() as HttpWebResponse;
             if (response.StatusCode == HttpStatusCode.OK)
             {
-                _jsonSerializer = new DataContractJsonSerializer(typeof(BedModel));
-                var Bed = _jsonSerializer.ReadObject(response.GetResponseStream()) as BedModel;
-                return Bed;
+                _jsonSerializer = new DataContractJsonSerializer(typeof(List<BedModel>));
+                var beds = _jsonSerializer.ReadObject(response.GetResponseStream()) as List<BedModel>;
+                return beds;
             }
             return null;
         }

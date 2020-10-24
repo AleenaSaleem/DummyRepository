@@ -1,4 +1,5 @@
 ﻿using Backend.Models;
+using Frontend.ApiCalls;
 using Frontend.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -21,14 +22,16 @@ namespace Frontend
     public partial class MainPage : UserControl
     {
         readonly Dictionary<string, Func<List<BedModel>, List<int>>> BedLayoutFunctionCall;
-        
+        public Icudetails _icuDetails = new Icudetails();
         
         public MainPage()
         {
             InitializeComponent();
 
             List<BedModel> bedList = new List<BedModel>();
+            this.DataContext = _icuDetails;
             
+           
             BedLayoutFunctionCall = new Dictionary<string, Func<List<BedModel>, List<int>>>
             {
                 { "L" , LBedLayout},
@@ -39,8 +42,11 @@ namespace Frontend
             CreateAndPlaceBeds(bedList);
 
         }
-
-
+        /*public void RetrieveIcu()
+        {
+            var icu = new IcuApiCalls().GetIcu("IC1");
+            _icuDetails.UpdateIcuDetails(icu);
+        }*/
         private void CreateAndPlaceBeds(List<BedModel> BedList)
         {
             BedLayoutFunctionCall["U"].Invoke(BedList);

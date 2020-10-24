@@ -63,13 +63,11 @@ namespace Frontend.ApiCalls
             HttpWebRequest _httpReq = WebRequest.CreateHttp(_url+"/"+icuId);
             _httpReq.Method = "GET";
             HttpWebResponse response = _httpReq.GetResponse() as HttpWebResponse;
-            if (response.StatusCode == HttpStatusCode.OK)
-            {
+            
                 _jsonSerializer = new DataContractJsonSerializer(typeof(IcuModel));
                 var icu = _jsonSerializer.ReadObject(response.GetResponseStream()) as IcuModel;
                 return icu;
-            }
-            return null;
+            
         }
     }
 }
