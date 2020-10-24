@@ -28,9 +28,7 @@ namespace Frontend
         {
             InitializeComponent();
 
-            List<BedModel> bedList = new List<BedModel>();
             this.DataContext = _icuDetails;
-            
            
             BedLayoutFunctionCall = new Dictionary<string, Func<List<BedModel>, List<int>>>
             {
@@ -38,15 +36,22 @@ namespace Frontend
                 { "U", UBedLayout },
                 { "H", HBedLayout }
             };
-
-            CreateAndPlaceBeds(bedList);
-
         }
-        /*public void RetrieveIcu()
+
+        public void SetUp()
+        {
+            var beds = new BedApiCalls().GetAllBedsFromAnIcu("IC1");
+
+            CreateAndPlaceBeds(beds);
+            RetrieveIcu();
+        }
+
+        public void RetrieveIcu()
         {
             var icu = new IcuApiCalls().GetIcu("IC1");
             _icuDetails.UpdateIcuDetails(icu);
-        }*/
+            MessageBox.Show(icu.IcuId);
+        }
         private void CreateAndPlaceBeds(List<BedModel> BedList)
         {
             BedLayoutFunctionCall["U"].Invoke(BedList);
@@ -119,7 +124,7 @@ namespace Frontend
         {
             var index = new List<int>();
             int noOfBeds = BedList.Count;
-            noOfBeds = 16;
+            //noOfBeds = 16;
             index.Add(noOfBeds / 3);
             index.Add(noOfBeds / 3 + noOfBeds % 3);
             index.Add(noOfBeds/3);

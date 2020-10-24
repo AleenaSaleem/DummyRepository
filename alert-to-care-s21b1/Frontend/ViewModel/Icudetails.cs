@@ -1,4 +1,5 @@
-﻿using Frontend.ApiCalls;
+﻿using Backend.Models;
+using Frontend.ApiCalls;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,7 @@ namespace Frontend.ViewModel
                 if (this.icuId != value)
                 {
                     this.icuId = value;
-                    OnPropertyChanged(nameof(IcuId));
+                    OnPropertyChanged(IcuId);
                 }
             }
 
@@ -38,7 +39,7 @@ namespace Frontend.ViewModel
                 if (this.layout != value)
                 {
                     this.layout = value;
-                    OnPropertyChanged(nameof(Layout));
+                    OnPropertyChanged(Layout);
                 }
             }
 
@@ -90,9 +91,8 @@ namespace Frontend.ViewModel
             }
         }
 
-        public void UpdateIcuDetails()
+        public void UpdateIcuDetails(IcuModel icu)
         {
-            var icu = new IcuApiCalls().GetIcu("IC1");
             if (icu != null)
             {
                 this.IcuId = icu.IcuId;

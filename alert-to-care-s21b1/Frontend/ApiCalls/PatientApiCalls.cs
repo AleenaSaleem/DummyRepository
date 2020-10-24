@@ -5,6 +5,8 @@ using System.Runtime.Serialization.Json;
 using System.Net;
 using System.Collections.ObjectModel;
 using Backend.Models;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace Frontend.ApiCalls
 {
@@ -52,8 +54,11 @@ namespace Frontend.ApiCalls
             HttpWebResponse response = _httpReq.GetResponse() as HttpWebResponse;
             if (response.StatusCode == HttpStatusCode.OK)
             {
-                _jsonSerializer = new DataContractJsonSerializer(typeof(ObservableCollection<Backend.Models.PatientModel>));
-                _patients = _jsonSerializer.ReadObject(response.GetResponseStream()) as ObservableCollection<Backend.Models.PatientModel>;
+                var stream = response.GetResponseStream();
+                StreamReader reader = new StreamReader(stream);
+                var result = reader.ReadToEnd();
+                var patients = JsonConvert.DeserializeObject<ObservableCollection<PatientModel>>(result);
+                return patients;
             }
             return _patients;
         }
@@ -65,9 +70,12 @@ namespace Frontend.ApiCalls
             HttpWebResponse response = _httpReq.GetResponse() as HttpWebResponse;
             if (response.StatusCode == HttpStatusCode.OK)
             {
-                _jsonSerializer = new DataContractJsonSerializer(typeof(PatientModel));
-                var Patient = _jsonSerializer.ReadObject(response.GetResponseStream()) as PatientModel;
-                return Patient;
+                var stream = response.GetResponseStream();
+                StreamReader reader = new StreamReader(stream);
+                var result = reader.ReadToEnd();
+                var patient = JsonConvert.DeserializeObject<PatientModel>(result);
+                
+                return patient;
             }
             return null;
         }

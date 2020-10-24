@@ -5,6 +5,9 @@ using System.Text;
 using Backend.Models;
 using System.Runtime.Serialization.Json;
 using System.Net;
+using System.IO;
+using Newtonsoft.Json;
+
 namespace Frontend.ApiCalls
 {
     public class BedApiCalls
@@ -64,8 +67,10 @@ namespace Frontend.ApiCalls
             HttpWebResponse response = _httpReq.GetResponse() as HttpWebResponse;
             if (response.StatusCode == HttpStatusCode.OK)
             {
-                _jsonSerializer = new DataContractJsonSerializer(typeof(List<BedModel>));
-                var beds = _jsonSerializer.ReadObject(response.GetResponseStream()) as List<BedModel>;
+                var stream = response.GetResponseStream();
+                StreamReader reader = new StreamReader(stream);
+                var result = reader.ReadToEnd();
+                var beds = JsonConvert.DeserializeObject<List<BedModel>>(result);
                 return beds;
             }
             return null;

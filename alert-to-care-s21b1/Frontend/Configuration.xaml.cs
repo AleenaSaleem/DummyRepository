@@ -36,13 +36,10 @@ namespace Frontend
                 (parentWindow as MainWindow).Configuration.Visibility = Visibility.Collapsed;
                 (parentWindow as MainWindow).MainPage.Visibility = Visibility.Visible;
             }
-           this.AddIcu();
-            var apiObj = new IcuApiCalls();
-            var result = apiObj.GetIcu("IC1");
-            MessageBox.Show(result.IcuId);
-            MessageBox.Show(result.Layout);
-            new MainPage()._icuDetails.UpdateIcuDetails();
+            this.AddIcu();
+            new MainPage().SetUp();
         }
+
         private void AddIcu()
         {
             var icuApiObj = new IcuApiCalls();

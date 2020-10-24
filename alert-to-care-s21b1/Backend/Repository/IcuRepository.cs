@@ -63,7 +63,10 @@ namespace Backend.Repository
 
         public Models.IcuModel GetIcu(string id)
         {
-            return _icuDataHandler.ReadIcus(_csvFilePath).Find(icu => icu.IcuId == id);
+            var icu = _icuDataHandler.ReadIcus(_csvFilePath).Find(icu => icu.IcuId == id);
+            Console.WriteLine("ICUID" + icu.IcuId);
+            Console.WriteLine("Layout" + icu.Layout);
+            return icu;
         }
 
     }

@@ -5,6 +5,9 @@ using Backend.Models;
 using System;
 using System.Linq;
 using System.Windows.Documents;
+using System.IO;
+using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace Frontend.ApiCalls
 {
@@ -52,22 +55,28 @@ namespace Frontend.ApiCalls
             HttpWebResponse response = _httpReq.GetResponse() as HttpWebResponse;
             if (response.StatusCode == HttpStatusCode.OK)
             {
-                _jsonSerializer = new DataContractJsonSerializer(typeof(ObservableCollection<Backend.Models.IcuModel>));
-                _icus = _jsonSerializer.ReadObject(response.GetResponseStream()) as ObservableCollection<Backend.Models.IcuModel>;
+                var stream = response.GetResponseStream();
+                StreamReader reader = new StreamReader(stream);
+                var result = reader.ReadToEnd();
+                _icus = JsonConvert.DeserializeObject<ObservableCollection<IcuModel>>(result);
+                
             }
             return _icus;
         }
         public IcuModel GetIcu(string icuId)
         {
-            
-            HttpWebRequest _httpReq = WebRequest.CreateHttp(_url+"/"+icuId);
+            HttpWebRequest _httpReq = WebRequest.CreateHttp(_url + "/" + icuId);
             _httpReq.Method = "GET";
             HttpWebResponse response = _httpReq.GetResponse() as HttpWebResponse;
-            
-                _jsonSerializer = new DataContractJsonSerializer(typeof(IcuModel));
-                var icu = _jsonSerializer.ReadObject(response.GetResponseStream()) as IcuModel;
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                var stream = response.GetResponseStream();
+                StreamReader reader = new StreamReader(stream);
+                var result = reader.ReadToEnd();
+                var icu = JsonConvert.DeserializeObject<IcuModel>(result);
                 return icu;
-            
+            }
+            return null;
         }
     }
 }
