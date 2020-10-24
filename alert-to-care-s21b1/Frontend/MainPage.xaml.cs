@@ -20,18 +20,30 @@ namespace Frontend
     /// </summary>
     public partial class MainPage : UserControl
     {
+        readonly Dictionary<string, Func<List<BedModel>, List<int>>> BedLayoutFunctionCall;
+        
         
         public MainPage()
         {
             InitializeComponent();
 
             List<Backend.Models.BedModel> bedList = new List<BedModel>();
+            
+            BedLayoutFunctionCall = new Dictionary<string, Func<List<BedModel>, List<int>>>
+            {
+                { "L" , LBedLayout},
+                { "U", UBedLayout },
+                { "H", HBedLayout }
+            };
+
             CreateAndPlaceBeds(bedList);
 
         }
 
+
         private void CreateAndPlaceBeds(List<BedModel> BedList)
         {
+            BedLayoutFunctionCall["U"].Invoke(BedList);
 
             var index = UBedLayout(BedList);
             for(int i=0; i < index[0]; i++)
