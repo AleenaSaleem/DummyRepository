@@ -1,10 +1,18 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "fyBa43jwTIrF9sn19TBcOZ7FEnQ+iKJj9UgVIeXrGdSxHopiQ3f40w90EWx28PVQO54iH61/RDf5JJdcX7RAbw==",
   "success": true,
   "projectFilePath": "C:\\Users\\ALIRAZA\\Documents\\GitHub\\DummyRepository\\alert-to-care-s21b1\\Frontend\\Frontend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ALIRAZA\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+=======
+  "dgSpecHash": "1dFMpqbbZq5fgRiCWYCzTX5y5wyh3F4HarpUXk+zsJYtiYERYP6wDxKAzGduNlVBL+/1YJWtjAD8FFxBkRR9dA==",
+  "success": true,
+  "projectFilePath": "E:\\BootCamp\\Dummy\\alert-to-care-s21b1\\Frontend\\Frontend.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\TOSHIBA\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+>>>>>>> e734811ee251076c9ca825b3801ddaae30c6e6c7
   ],
   "logs": []
 }

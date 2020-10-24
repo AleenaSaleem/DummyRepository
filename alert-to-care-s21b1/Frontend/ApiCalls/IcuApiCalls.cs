@@ -5,8 +5,13 @@ using Backend.Models;
 using System;
 using System.Linq;
 using System.Windows.Documents;
+<<<<<<< HEAD
 using System.IO;
 using System.Text.Json.Serialization;
+=======
+using System.Net.Http;
+using System.Threading.Tasks;
+>>>>>>> e734811ee251076c9ca825b3801ddaae30c6e6c7
 using Newtonsoft.Json;
 
 namespace Frontend.ApiCalls
@@ -65,7 +70,12 @@ namespace Frontend.ApiCalls
         }
         public IcuModel GetIcu(string icuId)
         {
+<<<<<<< HEAD
             HttpWebRequest _httpReq = WebRequest.CreateHttp(_url + "/" + icuId);
+=======
+           
+            HttpWebRequest _httpReq = WebRequest.CreateHttp(_url+"/"+icuId);
+>>>>>>> e734811ee251076c9ca825b3801ddaae30c6e6c7
             _httpReq.Method = "GET";
             HttpWebResponse response = _httpReq.GetResponse() as HttpWebResponse;
             if (response.StatusCode == HttpStatusCode.OK)

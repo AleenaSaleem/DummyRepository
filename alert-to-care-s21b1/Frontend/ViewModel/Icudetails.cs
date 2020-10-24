@@ -5,7 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Frontend.ViewModel
 {
@@ -93,6 +95,11 @@ namespace Frontend.ViewModel
 
         public void UpdateIcuDetails(IcuModel icu)
         {
+<<<<<<< HEAD
+=======
+            var icu = new IcuModel();
+           new IcuApiCalls().GetIcu("IC1");
+>>>>>>> e734811ee251076c9ca825b3801ddaae30c6e6c7
             if (icu != null)
             {
                 this.IcuId = icu.IcuId;

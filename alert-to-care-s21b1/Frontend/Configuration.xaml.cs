@@ -1,8 +1,10 @@
-﻿using Frontend.ApiCalls;
+﻿using Backend.Models;
+using Frontend.ApiCalls;
 using Frontend.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -28,16 +30,23 @@ namespace Frontend
             this.DataContext = layoutModel;
         }
         
-        private void NextButton_Click(object sender, RoutedEventArgs e)
+        private  void NextButton_Click(object sender, RoutedEventArgs e)
         {
             Window parentWindow = Application.Current.MainWindow;
             if (parentWindow.GetType() == typeof(MainWindow))
             {
+                new MainPage()._icuDetails.UpdateIcuDetails();
                 (parentWindow as MainWindow).Configuration.Visibility = Visibility.Collapsed;
                 (parentWindow as MainWindow).MainPage.Visibility = Visibility.Visible;
             }
+<<<<<<< HEAD
             this.AddIcu();
             new MainPage().SetUp();
+=======
+           this.AddIcu();
+           
+            //
+>>>>>>> e734811ee251076c9ca825b3801ddaae30c6e6c7
         }
 
         private void AddIcu()

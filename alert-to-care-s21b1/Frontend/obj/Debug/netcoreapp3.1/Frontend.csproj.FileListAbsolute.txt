@@ -68,4 +68,8 @@ E:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\obj\Debug\netcoreapp3.1\Frontend.
 E:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\obj\Debug\netcoreapp3.1\Frontend.pdb
 E:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\obj\Debug\netcoreapp3.1\Frontend.genruntimeconfig.cache
 E:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\bin\Debug\netcoreapp3.1\Backend.pdb
+<<<<<<< HEAD
 C:\Users\ALIRAZA\Documents\GitHub\DummyRepository\alert-to-care-s21b1\Frontend\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+=======
+E:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+>>>>>>> e734811ee251076c9ca825b3801ddaae30c6e6c7
