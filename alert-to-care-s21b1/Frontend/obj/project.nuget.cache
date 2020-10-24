@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "ivqEey0MuTVdmno59PmweryNwkbL4A0MWaKg+COXcrSP7A1NxOaLAOAhvx/p6ZvFt8o5wUTlBUypw80caAqGXQ==",
+  "dgSpecHash": "1dFMpqbbZq5fgRiCWYCzTX5y5wyh3F4HarpUXk+zsJYtiYERYP6wDxKAzGduNlVBL+/1YJWtjAD8FFxBkRR9dA==",
   "success": true,
   "projectFilePath": "E:\\BootCamp\\Dummy\\alert-to-care-s21b1\\Frontend\\Frontend.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\TOSHIBA\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -1,8 +1,10 @@
-﻿using Frontend.ApiCalls;
+﻿using Backend.Models;
+using Frontend.ApiCalls;
 using Frontend.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -28,20 +30,18 @@ namespace Frontend
             this.DataContext = layoutModel;
         }
         
-        private void NextButton_Click(object sender, RoutedEventArgs e)
+        private  void NextButton_Click(object sender, RoutedEventArgs e)
         {
             Window parentWindow = Application.Current.MainWindow;
             if (parentWindow.GetType() == typeof(MainWindow))
             {
+                new MainPage()._icuDetails.UpdateIcuDetails();
                 (parentWindow as MainWindow).Configuration.Visibility = Visibility.Collapsed;
                 (parentWindow as MainWindow).MainPage.Visibility = Visibility.Visible;
             }
            this.AddIcu();
-            var apiObj = new IcuApiCalls();
-            var result = apiObj.GetIcu("IC1");
-            MessageBox.Show(result.IcuId);
-            MessageBox.Show(result.Layout);
-            new MainPage()._icuDetails.UpdateIcuDetails();
+           
+            //
         }
         private void AddIcu()
         {

@@ -1,10 +1,13 @@
-﻿using Frontend.ApiCalls;
+﻿using Backend.Models;
+using Frontend.ApiCalls;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Frontend.ViewModel
 {
@@ -92,7 +95,8 @@ namespace Frontend.ViewModel
 
         public void UpdateIcuDetails()
         {
-            var icu = new IcuApiCalls().GetIcu("IC1");
+            var icu = new IcuModel();
+           new IcuApiCalls().GetIcu("IC1");
             if (icu != null)
             {
                 this.IcuId = icu.IcuId;

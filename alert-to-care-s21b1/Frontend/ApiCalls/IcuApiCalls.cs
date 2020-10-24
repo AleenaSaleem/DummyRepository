@@ -5,6 +5,9 @@ using Backend.Models;
 using System;
 using System.Linq;
 using System.Windows.Documents;
+using System.Net.Http;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Frontend.ApiCalls
 {
@@ -59,7 +62,7 @@ namespace Frontend.ApiCalls
         }
         public IcuModel GetIcu(string icuId)
         {
-            
+           
             HttpWebRequest _httpReq = WebRequest.CreateHttp(_url+"/"+icuId);
             _httpReq.Method = "GET";
             HttpWebResponse response = _httpReq.GetResponse() as HttpWebResponse;
