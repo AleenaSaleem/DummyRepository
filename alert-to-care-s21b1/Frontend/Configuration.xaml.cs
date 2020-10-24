@@ -41,7 +41,7 @@ namespace Frontend
         private void AddIcu()
         {
             var icuApiObj = new IcuApiCalls();
-            var numIcus = icuApiObj._icus.Count;
+            var numIcus = icuApiObj.GetAllIcus().Count;
             var icu = new Backend.Models.IcuModel()
             {
                IcuId = "IC"+(numIcus+1).ToString(),

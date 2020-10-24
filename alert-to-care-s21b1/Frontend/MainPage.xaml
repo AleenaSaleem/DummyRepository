@@ -18,7 +18,20 @@
             <Button Content="View All" Margin="20" VerticalAlignment="Top" FontSize="20" Click="ViewAll_Click"></Button>
             <local:ViewAllControl Visibility="Collapsed" x:Name="ViewAllOptions" Margin="10"></local:ViewAllControl>
         </StackPanel>
-        
+        <StackPanel DockPanel.Dock="Top" Height="100"  Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="IcuId" Margin="5" FontSize="16"></TextBlock>
+                <TextBlock Text="MaxBeds" Margin="10 5 5 5" FontSize="16"></TextBlock>
+                <TextBlock Text="PresentBeds" Margin="5" FontSize="16"></TextBlock>
+                <TextBlock Text="Freebeds" Margin="5" FontSize="16"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="icuId" Text="IC1" Margin="10 10 20 10" IsReadOnly="True" FontSize="16"></TextBox>
+                <TextBox x:Name="maxBeds" Text="10" Margin="15 10 20 10" IsReadOnly="True" FontSize="16"></TextBox>
+                <TextBox x:Name="noOfBeds" Text="6" Margin="25 10 30 10" IsReadOnly="True" FontSize="16"></TextBox>
+                <TextBox x:Name="freeBeds" Text="2" Margin="35 10 20 10" IsReadOnly="True" FontSize="16"></TextBox>
+            </StackPanel>
+        </StackPanel>
         <!--
         <ItemsControl ItemsSource="{Binding BedList}">
             <ItemsControl.ItemTemplate>
@@ -29,7 +42,7 @@
         </ItemsControl>
         -->
 
-        <DockPanel x:Name="BedDock" VerticalAlignment="Center" LastChildFill="False">
+        <DockPanel x:Name="BedDock" VerticalAlignment="Center" HorizontalAlignment="Center" LastChildFill="False">
             <StackPanel x:Name="V1StackPanel" Orientation="Vertical" Margin="5 0 0 0"></StackPanel>
             <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center" x:Name="HStackPanel" Orientation="Horizontal" Margin="0"></StackPanel>
             <StackPanel  x:Name="V2StackPanel" Orientation="Vertical" Margin="0"></StackPanel>

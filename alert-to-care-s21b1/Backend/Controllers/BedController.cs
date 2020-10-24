@@ -14,25 +14,21 @@ namespace Backend.Controllers
         {
             this._bedRepository = bedRepository;
         }
-        [HttpGet]
-        public IEnumerable<Models.BedModel> Get()
-        {
-            return _bedRepository.AvailableBeds();
-        }
-
+        
         [HttpGet("{id}")]
-        public List<Models.BedModel> GetAvailableBedsInIcu(string id)
+        public List<Models.BedModel> GetAllBedsInIcu(string id)
         {
-            List<Models.BedModel> allBeds= (List<Models.BedModel>)_bedRepository.AvailableBeds();
-            return allBeds.FindAll(bed => bed.IcuId == id);
+            return (List<Models.BedModel>)_bedRepository.GetAllBedsFromAnIcu(id);
         }
-        [HttpGet("{id}/{bedId}")]
-        public List<Models.BedModel> GetBed(string id ,string bedId)
+        //[HttpGet]
+        //public List<Models.BedModel> GetAllBeds()
+        /*[HttpGet("{id}")]
+        public List<Models.BedModel> GetBeds(string id)
         {
             List<Models.BedModel> allBeds = (List<Models.BedModel>)_bedRepository.AvailableBeds();
             return allBeds.FindAll(bed => bed.IcuId == id);
         }
-
+        */
         [HttpPost("{icuId}")]
         public IActionResult AddBed(string icuId)
         {

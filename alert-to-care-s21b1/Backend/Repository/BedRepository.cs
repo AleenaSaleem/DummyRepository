@@ -69,15 +69,11 @@ namespace Backend.Repository
             return isDeleted;
         }
 
-        public IEnumerable<Models.BedModel> AvailableBeds()
+        public IEnumerable<Models.BedModel> GetAllBedsFromAnIcu(string icuId)
         {
-            List<Models.BedModel> freeBeds = new List<Models.BedModel>();
-            foreach (var bed in _bedDataHandler.Readbeds(_csvFilePath))
-            {
-                if (bed.BedOccupancyStatus == "Free")
-                    freeBeds.Add(bed);
-            }
-            return freeBeds;
+            List<Models.BedModel> beds = _bedDataHandler.Readbeds(_csvFilePath);
+            return beds.FindAll(bed =>bed.IcuId == icuId);
         }
+        
     }
 }

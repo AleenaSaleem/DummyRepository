@@ -27,7 +27,7 @@ namespace Frontend
         {
             InitializeComponent();
 
-            List<Backend.Models.BedModel> bedList = new List<BedModel>();
+            List<BedModel> bedList = new List<BedModel>();
             
             BedLayoutFunctionCall = new Dictionary<string, Func<List<BedModel>, List<int>>>
             {
