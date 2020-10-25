@@ -102,3 +102,7 @@ E:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\obj\Debug\netcoreapp3.1\AllBeds.g
 E:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\obj\Debug\netcoreapp3.1\BedsInIcu.g.cs
 E:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\obj\Debug\netcoreapp3.1\AllBeds.baml
 E:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\obj\Debug\netcoreapp3.1\BedsInIcu.baml
+C:\Users\ALIRAZA\Documents\GitHub\DummyRepository\alert-to-care-s21b1\Frontend\obj\Debug\netcoreapp3.1\AllBeds.g.cs
+C:\Users\ALIRAZA\Documents\GitHub\DummyRepository\alert-to-care-s21b1\Frontend\obj\Debug\netcoreapp3.1\BedsInIcu.g.cs
+C:\Users\ALIRAZA\Documents\GitHub\DummyRepository\alert-to-care-s21b1\Frontend\obj\Debug\netcoreapp3.1\AllBeds.baml
+C:\Users\ALIRAZA\Documents\GitHub\DummyRepository\alert-to-care-s21b1\Frontend\obj\Debug\netcoreapp3.1\BedsInIcu.baml

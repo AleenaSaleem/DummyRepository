@@ -14,8 +14,7 @@ namespace Frontend.ApiCalls
     {
         private readonly string _url = "http://localhost:5000/api/patients";
         public ObservableCollection<PatientModel> _patients = new ObservableCollection<PatientModel>();
-        DataContractJsonSerializer _jsonSerializer;
-
+        
         public PatientApiCalls()
         {
             //GetAllPatients();

@@ -25,6 +25,7 @@ namespace Frontend
         readonly Dictionary<string, Func<int, List<int>>> BedLayoutFunctionCall;
         public Icudetails _icuDetails;
         
+        
         public MainPage()
         {
             InitializeComponent();
@@ -37,27 +38,47 @@ namespace Frontend
                 { "U", UBedLayout },
                 { "H", HBedLayout }
             };
-            SetUp("IC1");
+
+            RetrieveAllIcusIds();
+            this.icuComboBox.SelectedIndex = 0;
+            SetUp(_icuDetails.IcuIdList[0]);
         }
 
         public void SetUp(string icuId)
         {
+            var icu = RetrieveIcu(icuId);
             var beds = new BedApiCalls().GetAllBedsFromAnIcu(icuId);
-            CreateAndPlaceBeds(beds);
-            RetrieveIcu(icuId);
+            CreateAndPlaceBeds(beds,icu);
         }
 
-        public void RetrieveIcu(string icuId)
+        public IcuModel RetrieveIcu(string icuId)
         {
             var icu = new IcuApiCalls().GetIcu(icuId);
             _icuDetails.UpdateIcuDetails(icu);
+            return icu;
         }
-        private void CreateAndPlaceBeds(ObservableCollection<BedModel> BedList)
+
+        public void RetrieveAllIcusIds()
         {
-            var index = BedLayoutFunctionCall["U"].Invoke(BedList.Count);
+            this._icuDetails.IcuIdList.Clear();
+            var allIcus = new IcuApiCalls().GetAllIcus();
+            foreach(var icu in allIcus)
+            {
+                this._icuDetails.IcuIdList.Add(icu.IcuId);
+            }          
+        }
+
+
+        private void CreateAndPlaceBeds(ObservableCollection<BedModel> BedList,IcuModel icu)
+        {
+            var index = BedLayoutFunctionCall[icu.Layout].Invoke(icu.MaxBeds);
+            var noOfBeds = icu.NoOfBeds;
+            V1StackPanel.Children.Clear();
+            HStackPanel.Children.Clear();
+            V2StackPanel.Children.Clear();
 
             //var index = UBedLayout(BedList);
-            for(int i=0; i < index[0]; i++)
+            for(int i=0; i < index[0] && i < noOfBeds ; i++)
             {
                 Button newBed = new Button
                 {
@@ -70,7 +91,7 @@ namespace Frontend
             }
 
             index[1] = index[1] + index[0];
-            for (int i = index[0]; i < index[1]; i++)
+            for (int i = index[0]; i < index[1] && i < noOfBeds; i++)
             {
                 Button newBed = new Button
                 {
@@ -82,7 +103,7 @@ namespace Frontend
             }
 
             index[2] = index[2] + index[1];
-            for (int i = index[1] ; i < index[2]; i++)
+            for (int i = index[1] ; i < index[2] && i < noOfBeds; i++)
             {
                 Button newBed = new Button
                 {
@@ -111,31 +132,37 @@ namespace Frontend
                 ViewAllOptions.Visibility = Visibility.Collapsed;
         }
 
-        private List<int> LBedLayout(int noOfBeds)
+        private List<int> LBedLayout(int maxBeds)
         {
             var index = new List<int>();
-            index.Add(noOfBeds/2);
-            index.Add(noOfBeds / 2 + noOfBeds % 2);
+            index.Add(maxBeds/2);
+            index.Add(maxBeds / 2 + maxBeds % 2);
             index.Add(0);
             return index;
         }
-        private List<int> UBedLayout(int noOfBeds)
+        private List<int> UBedLayout(int maxBeds)
         {
             var index = new List<int>();
             //noOfBeds = 16;
-            index.Add(noOfBeds / 3);
-            index.Add(noOfBeds / 3 + noOfBeds % 3);
-            index.Add(noOfBeds/3);
+            int temp = maxBeds / 3;
+            index.Add(temp);
+            index.Add(temp + maxBeds % 3);
+            index.Add(temp);
             return index;
         }
-        private List<int> HBedLayout(int noOfBeds)
+        private List<int> HBedLayout(int maxBeds)
         {
 
             var index = new List<int>();
-            index.Add(noOfBeds / 2 + noOfBeds % 2);
+            index.Add(maxBeds / 2 + maxBeds % 2);
             index.Add(0);
-            index.Add(noOfBeds / 2);
+            index.Add(maxBeds / 2);
             return index;
+        }
+
+        private void Icu_Changed(object sender, SelectionChangedEventArgs e)
+        {
+            SetUp(this.icuComboBox.SelectedItem.ToString());
         }
 
         /*public void update_Click(object sender, RoutedEventArgs e)

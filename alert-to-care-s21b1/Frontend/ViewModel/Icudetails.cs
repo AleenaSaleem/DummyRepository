@@ -20,7 +20,15 @@ namespace Frontend.ViewModel
         int noOfBeds;
         int maxBeds;
         int freeBeds;
-       public string IcuId
+
+        public ObservableCollection<string> _icuIdList = new ObservableCollection<string>();
+        public ObservableCollection<string> IcuIdList
+        {
+            get { return _icuIdList; }
+            set { this._icuIdList = value; }
+        }
+
+        public string IcuId
         {
             get { return this.icuId; }
             set

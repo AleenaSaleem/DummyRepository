@@ -9,7 +9,7 @@
     <DockPanel>
         <Button DockPanel.Dock="Top" Content="Back" FontSize="20" HorizontalAlignment="Left" Margin="10" Click="BackButton_Click"></Button>
         
-        <StackPanel DockPanel.Dock="Left" Margin="70" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel DockPanel.Dock="Left" Margin="70 50 30 70" HorizontalAlignment="Center">
             <TextBlock Text="Select Icu" Margin="10" FontSize="20"></TextBlock>
             <ComboBox x:Name="icuList" Width="250" ItemsSource="{Binding Path=IcuList}" SelectionChanged="icuList_SelectionChanged"></ComboBox>
             <TextBlock Text="Select Bed" Margin="10" FontSize="20"></TextBlock>

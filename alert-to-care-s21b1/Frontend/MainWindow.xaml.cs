@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Frontend.ApiCalls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,13 @@ namespace Frontend
         public MainWindow()
         {
             InitializeComponent();
+            var count = new IcuApiCalls().GetAllIcus().Count();
+            if (count == 0)
+                this.Content = new Configuration();
+            else
+                this.Content = new MainPage();
+
+
         }
     }
 }

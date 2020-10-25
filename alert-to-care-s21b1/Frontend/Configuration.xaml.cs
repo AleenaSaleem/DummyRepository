@@ -38,11 +38,10 @@ namespace Frontend
                  (parentWindow as MainWindow).Configuration.Visibility = Visibility.Collapsed;
                  (parentWindow as MainWindow).MainPage.Visibility = Visibility.Visible;
              }*/
-            Application.Current.MainWindow.Content = new MainPage();
             this.AddIcu();
-          
-            //new MainPage().update_Click(sender,e);
+            Application.Current.MainWindow.Content = new MainPage();
 
+            //new MainPage().update_Click(sender,e);
         }
 
         private void AddIcu()

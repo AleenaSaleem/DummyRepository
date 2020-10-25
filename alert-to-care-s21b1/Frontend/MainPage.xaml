@@ -13,11 +13,17 @@
             <Button Content="Menu" Margin="20" VerticalAlignment="Top" FontSize="20" Click="Menu_Click"></Button>
         <local:MenuControl Visibility="Collapsed" x:Name="MenuOptions" Margin="10"></local:MenuControl>
         </StackPanel>
-        
+
+        <StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="20">
+            <TextBlock Text="Change ICU" FontSize="14"></TextBlock>
+            <ComboBox x:Name="icuComboBox" ItemsSource="{Binding Path=IcuIdList}" SelectionChanged="Icu_Changed"></ComboBox>
+        </StackPanel>
+
         <StackPanel DockPanel.Dock="Right">
             <Button Content="View All" Margin="20" VerticalAlignment="Top" FontSize="20" Click="ViewAll_Click"></Button>
             <local:ViewAllControl Visibility="Collapsed" x:Name="ViewAllOptions" Margin="10"></local:ViewAllControl>
         </StackPanel>
+        
         <StackPanel DockPanel.Dock="Top" Height="100"  Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="IcuId" Margin="5" FontSize="16"></TextBlock>
@@ -32,21 +38,14 @@
                 <TextBox x:Name="freeBeds" Text="{Binding Path=FreeBeds, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Margin="35 10 20 10" FontSize="16"></TextBox>
             </StackPanel>
         </StackPanel>
-        <!--
-        <ItemsControl ItemsSource="{Binding BedList}">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Button Content="{Binding BedId}" Width="50" Height="50" Margin="10"></Button>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-        -->
 
+        
         <DockPanel x:Name="BedDock" VerticalAlignment="Center" HorizontalAlignment="Center" LastChildFill="False">
             <StackPanel x:Name="V1StackPanel" Orientation="Vertical" Margin="5 0 0 0"></StackPanel>
             <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center" x:Name="HStackPanel" Orientation="Horizontal" Margin="0"></StackPanel>
             <StackPanel  x:Name="V2StackPanel" Orientation="Vertical" Margin="0"></StackPanel>
         </DockPanel>
+
         
     </DockPanel>
 </UserControl>

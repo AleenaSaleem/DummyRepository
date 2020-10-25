@@ -53,6 +53,9 @@ namespace Frontend
 
         }
 
-        
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.Content = new MainPage();
+        }
     }
 }

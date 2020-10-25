@@ -4,6 +4,8 @@ using System.Net;
 using Backend.Models;
 using System.IO;
 using Newtonsoft.Json;
+using System.Windows.Documents;
+using System.Linq;
 
 namespace Frontend.ApiCalls
 {
@@ -11,8 +13,7 @@ namespace Frontend.ApiCalls
     {
         private readonly string _url ="http://localhost:5000/api/icus";
         public ObservableCollection<IcuModel> _icus = new ObservableCollection<IcuModel>();
-        DataContractJsonSerializer _jsonSerializer;
-
+        
         public IcuApiCalls()
         {
             //GetAllIcus();
@@ -55,7 +56,7 @@ namespace Frontend.ApiCalls
                 StreamReader reader = new StreamReader(stream);
                 var result = reader.ReadToEnd();
                 _icus = JsonConvert.DeserializeObject<ObservableCollection<IcuModel>>(result);
-                
+                _icus = new ObservableCollection<IcuModel>(_icus.OrderBy(i => i.IcuId));   
             }
             return _icus;
         }

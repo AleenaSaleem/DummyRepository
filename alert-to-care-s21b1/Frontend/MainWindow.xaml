@@ -10,7 +10,5 @@
     
     <DockPanel>
         
-        <local:Configuration DockPanel.Dock="Top" x:Name="Configuration"></local:Configuration>
-        
     </DockPanel>
 </Window>

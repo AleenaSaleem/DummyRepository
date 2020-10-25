@@ -14,8 +14,7 @@ namespace Frontend.ApiCalls
     {
         private readonly string _url = "http://localhost:5000/api/beds";
         public ObservableCollection<BedModel> _beds = new ObservableCollection<BedModel>();
-        DataContractJsonSerializer _jsonSerializer;
-
+        
         public BedApiCalls()
         {
             //GetAllBeds();
