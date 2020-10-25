@@ -13,12 +13,12 @@ namespace Frontend.ApiCalls
     {
         private readonly string _url ="http://localhost:5000/api/icus";
         public ObservableCollection<IcuModel> _icus = new ObservableCollection<IcuModel>();
-        
+        DataContractJsonSerializer _jsonSerializer;
         public IcuApiCalls()
         {
             //GetAllIcus();
         }
-        public bool AddIcu(IcuModel icuModel)
+        public string AddIcu(IcuModel icuModel)
         {
             HttpWebRequest _httpPostReq =WebRequest.CreateHttp(_url);
             _httpPostReq.Method = "POST";
@@ -27,23 +27,17 @@ namespace Frontend.ApiCalls
                 new DataContractJsonSerializer(typeof(IcuModel));
             userDataJsonSerializer.WriteObject(_httpPostReq.GetRequestStream(), icuModel);
             HttpWebResponse response = _httpPostReq.GetResponse() as HttpWebResponse;
-            var result = response.ToString();
-            if(result == "true")
-            {
-                return true;
-            }
-           
-            return false;
+            _jsonSerializer = new DataContractJsonSerializer(typeof(string));
+            return _jsonSerializer.ReadObject(response.GetResponseStream()) as string;
         }
-        public bool RemoveIcu(string icuId)
+        public string RemoveIcu(string icuId)
         {
             HttpWebRequest _httpPostReq = WebRequest.CreateHttp(_url+"/"+icuId);
             _httpPostReq.Method = "DELETE";
             _httpPostReq.ContentType = "application/json";
             HttpWebResponse response = _httpPostReq.GetResponse() as HttpWebResponse;
-            if (response.StatusCode == HttpStatusCode.OK)
-                return true;
-            return false;
+            _jsonSerializer = new DataContractJsonSerializer(typeof(string));
+            return _jsonSerializer.ReadObject(response.GetResponseStream()) as string;
         }
         public ObservableCollection<IcuModel> GetAllIcus()
         {

@@ -46,7 +46,12 @@ namespace Frontend
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
             var icuId = this.icuList.SelectedItem.ToString();
-            new IcuApiCalls().RemoveIcu(icuId);
+            var result = new IcuApiCalls().RemoveIcu(icuId);
+            MessageBox.Show(result);
+            Application.Current.MainWindow.Content = new MainPage();
+        }
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
             Application.Current.MainWindow.Content = new MainPage();
         }
     }

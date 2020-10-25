@@ -5,13 +5,17 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Frontend"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="{x:Static SystemParameters.PrimaryScreenHeight}" d:DesignWidth="{x:Static SystemParameters.PrimaryScreenWidth}">
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" >
         <TextBlock Text="Add ICU" Margin="20" HorizontalAlignment="Center" ></TextBlock>
         <TextBlock  Text="Max Beds in ICU" Margin="10" ></TextBlock>
         <TextBox Margin="10" Width="100" x:Name="maxBeds"></TextBox>
         <TextBlock Text="Layout" Margin="10" ></TextBlock>
         <ComboBox x:Name="LayoutList" Width="200" ItemsSource="{Binding Path=LayoutList}"></ComboBox>
-        <Button Content="Add" Margin="30" Width="100" Click="NextButton_Click"></Button>
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Add" Margin="30" Width="60" Click="NextButton_Click"></Button>
+            <Button x:Name="cancelButton" Content="Cancel" Margin="30" Width="70" Click="CancelButton_Click"></Button>
+        </StackPanel>
+
     </StackPanel>
 </UserControl>

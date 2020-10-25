@@ -7,7 +7,7 @@ namespace Backend.Controllers
 {
     [Route("api/beds")]
     [ApiController]
-    public class BedController : ControllerBase
+    public class BedController : Controller
     {
         private readonly IBedRepository _bedRepository;
         public BedController(IBedRepository bedRepository)
@@ -40,7 +40,10 @@ namespace Backend.Controllers
             try
             {
                bool isAdded = _bedRepository.AddBed(icuId);
-                return Ok(isAdded);
+                if (isAdded)
+                    return Json("Bed added to ICU");
+                else
+                    return Json("Could not add bed: ICU has reached max capacity");
             }
             catch (Exception)
             {
@@ -70,7 +73,10 @@ namespace Backend.Controllers
             try
             {
                 bool isDeleted = _bedRepository.RemoveBed(icuId, bedId);
-                return Ok(isDeleted);
+                if (isDeleted)
+                    return Json("Bed Removed from ICU");
+                else
+                    return Json("Bed could not be deleted: Bed is not free");
             }
             catch (Exception)
             {

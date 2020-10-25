@@ -14,35 +14,29 @@ namespace Frontend.ApiCalls
     {
         private readonly string _url = "http://localhost:5000/api/beds";
         public ObservableCollection<BedModel> _beds = new ObservableCollection<BedModel>();
-        
+        DataContractJsonSerializer _jsonSerializer;
         public BedApiCalls()
         {
             //GetAllBeds();
         }
-        public bool AddBed(string icuId)
+        public string AddBed(string icuId)
         {
             HttpWebRequest _httpPostReq = WebRequest.CreateHttp(_url+"/"+icuId);
             _httpPostReq.Method = "POST";
             _httpPostReq.ContentType = "application/json";
             
             HttpWebResponse response = _httpPostReq.GetResponse() as HttpWebResponse;
-            var result = response.ToString();
-            if (result == "true")
-            {
-                return true;
-            }
-
-            return false;
+            _jsonSerializer = new DataContractJsonSerializer(typeof(string));
+            return _jsonSerializer.ReadObject(response.GetResponseStream()) as string;
         }
-        public bool RemoveBed(string icuId,string bedId)
+        public string RemoveBed(string icuId,string bedId)
         {
             HttpWebRequest _httpPostReq = WebRequest.CreateHttp(_url + "/" +icuId+"/"+ bedId);
             _httpPostReq.Method = "DELETE";
             _httpPostReq.ContentType = "application/json";
             HttpWebResponse response = _httpPostReq.GetResponse() as HttpWebResponse;
-            if (response.StatusCode == HttpStatusCode.OK)
-                return true;
-            return false;
+            _jsonSerializer = new DataContractJsonSerializer(typeof(string));
+            return _jsonSerializer.ReadObject(response.GetResponseStream()) as string;
         }
         /*public ObservableCollection<BedModel> GetAllBeds()
         {

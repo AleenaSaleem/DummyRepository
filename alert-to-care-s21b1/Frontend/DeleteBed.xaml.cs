@@ -22,7 +22,7 @@ namespace Frontend
     {
         ObservableCollection<string> _icuList = new ObservableCollection<string>();
         ObservableCollection<string> _bedList = new ObservableCollection<string>();
-
+    
         public DeleteBed()
         {
             InitializeComponent();
@@ -69,7 +69,8 @@ namespace Frontend
         {
             var icuId = this.icuList.SelectedItem.ToString();
             var bedId = this.bedList.SelectedItem.ToString();
-            new BedApiCalls().RemoveBed(icuId,bedId);
+            var result = new BedApiCalls().RemoveBed(icuId,bedId);
+            MessageBox.Show(result);
             Application.Current.MainWindow.Content = new MainPage();
         }
 
@@ -77,6 +78,10 @@ namespace Frontend
         private void icuList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             RetrieveBeds();
+        }
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.Content = new MainPage();
         }
     }
 }

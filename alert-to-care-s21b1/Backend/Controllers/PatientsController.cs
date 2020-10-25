@@ -10,7 +10,7 @@ namespace Backend.Controllers
 {
     [Route("api/patients")]
     [ApiController]
-    public class PatientsController : ControllerBase
+    public class PatientsController : Controller
     {
         private readonly IPatientRepository _patientRepository;
 
@@ -39,7 +39,10 @@ namespace Backend.Controllers
             try
             {
                 var msg = _patientRepository.AddPatient(newPatient);
-                return Ok(msg);
+                if (msg)
+                    return Json("Patient added to the bed");
+                else
+                    return Json("Patient couldnot be added");
             }
             catch (Exception)
             {
@@ -60,7 +63,10 @@ namespace Backend.Controllers
             try
             {
                 var msg = _patientRepository.DischargePatient(id);
-                return Ok(msg);
+                if (msg)
+                    return Json("Patient Discharged!");
+                else
+                    return Json("Patient could not be discharged");
             }
             catch (Exception)
             {

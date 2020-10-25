@@ -86,7 +86,7 @@ namespace Frontend
                     Width = 50,
                     Height = 50
                 };
-
+                newBed.Click += new RoutedEventHandler(BedButton_Click);
                 V1StackPanel.Children.Add(newBed);
             }
 
@@ -115,6 +115,13 @@ namespace Frontend
             }
         }
 
+       private void BedButton_Click(object sender, RoutedEventArgs e)
+       {
+            var btn = sender as Button;
+            var bedId = btn.Content.ToString();
+            MessageBox.Show(bedId);
+       }
+       
         private void Menu_Click(object sender, RoutedEventArgs e)
         {
             if(MenuOptions.Visibility == Visibility.Collapsed)

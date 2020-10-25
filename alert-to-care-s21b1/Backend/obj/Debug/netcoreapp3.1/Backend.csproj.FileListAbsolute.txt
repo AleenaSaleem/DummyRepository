@@ -1,8 +1,6 @@
 E:\BootCamp\Dummy\alert-to-care-s21b1\Backend\obj\Debug\netcoreapp3.1\Backend.csprojAssemblyReference.cache
 E:\BootCamp\Dummy\alert-to-care-s21b1\Backend\obj\Debug\netcoreapp3.1\Backend.AssemblyInfoInputs.cache
 E:\BootCamp\Dummy\alert-to-care-s21b1\Backend\obj\Debug\netcoreapp3.1\Backend.AssemblyInfo.cs
-E:\BootCamp\Dummy\alert-to-care-s21b1\Backend\obj\Debug\netcoreapp3.1\Backend.csproj.CoreCompileInputs.cache
-E:\BootCamp\Dummy\alert-to-care-s21b1\Backend\obj\Debug\netcoreapp3.1\Backend.MvcApplicationPartsAssemblyInfo.cache
 E:\BootCamp\Dummy\alert-to-care-s21b1\Backend\bin\Debug\netcoreapp3.1\appsettings.Development.json
 E:\BootCamp\Dummy\alert-to-care-s21b1\Backend\bin\Debug\netcoreapp3.1\appsettings.json
 E:\BootCamp\Dummy\alert-to-care-s21b1\Backend\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
@@ -58,3 +56,7 @@ C:\Users\ALIRAZA\Documents\GitHub\DummyRepositoryNew\alert-to-care-s21b1\Backend
 C:\Users\ALIRAZA\Documents\GitHub\DummyRepositoryNew\alert-to-care-s21b1\Backend\obj\Debug\netcoreapp3.1\Backend.dll
 C:\Users\ALIRAZA\Documents\GitHub\DummyRepositoryNew\alert-to-care-s21b1\Backend\obj\Debug\netcoreapp3.1\Backend.pdb
 C:\Users\ALIRAZA\Documents\GitHub\DummyRepositoryNew\alert-to-care-s21b1\Backend\obj\Debug\netcoreapp3.1\Backend.genruntimeconfig.cache
+E:\BootCamp\Dummy\alert-to-care-s21b1\Backend\obj\Debug\netcoreapp3.1\Backend.csproj.CoreCompileInputs.cache
+E:\BootCamp\Dummy\alert-to-care-s21b1\Backend\obj\Debug\netcoreapp3.1\Backend.MvcApplicationPartsAssemblyInfo.cache
+E:\BootCamp\Dummy\alert-to-care-s21b1\Backend\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+E:\BootCamp\Dummy\alert-to-care-s21b1\Backend\obj\Debug\netcoreapp3.1\Backend.csproj.CopyComplete

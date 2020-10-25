@@ -5,12 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Frontend"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <ListView>
-        <ListViewItem Content="All ICUs" Selected="AllICUs_Selected"></ListViewItem>
-        <ListViewItem Content="All Beds" Selected="AllBeds_Selected"></ListViewItem>
-        <ListViewItem Content="All Patients" Selected="AllPatients_Selected"></ListViewItem>
-        <ListViewItem Content="Bed in ICU" Selected="BedInICU_Selected"></ListViewItem>
+             d:DesignHeight="{x:Static SystemParameters.PrimaryScreenHeight}" d:DesignWidth="{x:Static SystemParameters.PrimaryScreenWidth}">
+    <ListView HorizontalAlignment="Center" VerticalAlignment="Center">
+        <ListViewItem Content="All ICUs" Selected="AllICUs_Selected" HorizontalAlignment="Center"></ListViewItem>
+        <ListViewItem Content="All Beds" Selected="AllBeds_Selected" HorizontalAlignment="Center"></ListViewItem>
+        <ListViewItem Content="All Patients" Selected="AllPatients_Selected" HorizontalAlignment="Center"></ListViewItem>
+        <ListViewItem Content="Bed in ICU" Selected="BedInICU_Selected" HorizontalAlignment="Center"></ListViewItem>
     </ListView>
 
 </UserControl>

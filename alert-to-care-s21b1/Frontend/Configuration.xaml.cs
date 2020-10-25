@@ -23,39 +23,44 @@ namespace Frontend
     public partial class Configuration : UserControl
     {
         LayoutModel layoutModel = new LayoutModel();
-
+        IcuApiCalls icuApiObj = new IcuApiCalls();
+        int numIcus=0;
+            
         public Configuration()
         {
             InitializeComponent();
             this.DataContext = layoutModel;
+            numIcus = icuApiObj.GetAllIcus().Count;
+            if(numIcus == 0)
+            {
+                this.cancelButton.IsEnabled = false ;
+            }
         }
         
         private  void NextButton_Click(object sender, RoutedEventArgs e)
         {
-            /* Window parentWindow = Application.Current.MainWindow;
-             if (parentWindow.GetType() == typeof(MainWindow))
-             {
-                 (parentWindow as MainWindow).Configuration.Visibility = Visibility.Collapsed;
-                 (parentWindow as MainWindow).MainPage.Visibility = Visibility.Visible;
-             }*/
-            this.AddIcu();
-            Application.Current.MainWindow.Content = new MainPage();
-
-            //new MainPage().update_Click(sender,e);
-        }
-
-        private void AddIcu()
-        {
-            var icuApiObj = new IcuApiCalls();
-            var numIcus = icuApiObj.GetAllIcus().Count;
+            
             var icu = new Backend.Models.IcuModel()
             {
-               IcuId = "IC"+(numIcus+1).ToString(),
-               NoOfBeds =0,
-               Layout = this.LayoutList.SelectedItem.ToString().Substring(0,1),
-               MaxBeds = Int32.Parse(this.maxBeds.Text)
+                IcuId = "IC" + (numIcus + 1).ToString(),
+                NoOfBeds = 0,
+                Layout = this.LayoutList.SelectedItem.ToString().Substring(0, 1),
+                MaxBeds = Int32.Parse(this.maxBeds.Text)
             };
-            bool msg =icuApiObj.AddIcu(icu);
+            string msg = icuApiObj.AddIcu(icu);
+            MessageBox.Show(msg);
+            Application.Current.MainWindow.Content = new MainPage();
         }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.Content = new MainPage();
+        }
+
+        /*private void AddIcu()
+        {
+            
+
+        }*/
     }
 }

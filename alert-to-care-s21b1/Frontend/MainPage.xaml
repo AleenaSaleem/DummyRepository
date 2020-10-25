@@ -5,39 +5,45 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Frontend"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="1000">
+             d:DesignHeight="{x:Static SystemParameters.PrimaryScreenHeight}" d:DesignWidth="{x:Static SystemParameters.PrimaryScreenWidth}">
     
     <DockPanel LastChildFill="True">
-        
-        <StackPanel DockPanel.Dock="Left">
-            <Button Content="Menu" Margin="20" VerticalAlignment="Top" FontSize="20" Click="Menu_Click"></Button>
-        <local:MenuControl Visibility="Collapsed" x:Name="MenuOptions" Margin="10"></local:MenuControl>
-        </StackPanel>
-
-        <StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="20">
-            <TextBlock Text="Change ICU" FontSize="14"></TextBlock>
-            <ComboBox x:Name="icuComboBox" ItemsSource="{Binding Path=IcuIdList}" SelectionChanged="Icu_Changed"></ComboBox>
-        </StackPanel>
-
-        <StackPanel DockPanel.Dock="Right">
-            <Button Content="View All" Margin="20" VerticalAlignment="Top" FontSize="20" Click="ViewAll_Click"></Button>
-            <local:ViewAllControl Visibility="Collapsed" x:Name="ViewAllOptions" Margin="10"></local:ViewAllControl>
-        </StackPanel>
-        
-        <StackPanel DockPanel.Dock="Top" Height="100"  Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="IcuId" Margin="5" FontSize="16"></TextBlock>
-                <TextBlock Text="MaxBeds" Margin="10 5 5 5" FontSize="16"></TextBlock>
-                <TextBlock Text="PresentBeds" Margin="5" FontSize="16"></TextBlock>
-                <TextBlock Text="Freebeds" Margin="5" FontSize="16"></TextBlock>
+        <Border x:Name="leftBorder" BorderBrush="Beige" BorderThickness="2" DockPanel.Dock="Left" Background="Beige" >
+            <StackPanel>
+                <Button Padding="2" Content="Menu" Margin="20" VerticalAlignment="Top" FontSize="20" Click="Menu_Click"></Button>
+                <local:MenuControl Visibility="Collapsed" x:Name="MenuOptions" Margin="10"></local:MenuControl>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="icuId" Text="{Binding Path=IcuId, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Margin="10 10 20 10" FontSize="16"></TextBox>
-                <TextBox x:Name="maxBeds" Text="{Binding Path=MaxBeds, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Margin="15 10 20 10" FontSize="16"></TextBox>
-                <TextBox x:Name="noOfBeds" Text="{Binding Path=NoOfBeds, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Margin="25 10 30 10"  FontSize="16"></TextBox>
-                <TextBox x:Name="freeBeds" Text="{Binding Path=FreeBeds, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Margin="35 10 20 10" FontSize="16"></TextBox>
+        </Border>
+        <Border x:Name="bottomBorder" BorderBrush="Beige" BorderThickness="2" DockPanel.Dock="Bottom" Background="Beige">
+            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="20">
+                <TextBlock Text="Change ICU" FontSize="14" Foreground="Black"></TextBlock>
+                <ComboBox x:Name="icuComboBox" ItemsSource="{Binding Path=IcuIdList}" SelectionChanged="Icu_Changed" Foreground="Black"></ComboBox>
             </StackPanel>
-        </StackPanel>
+        </Border>
+        <Border x:Name="rightBorder" BorderBrush="Beige" BorderThickness="2" DockPanel.Dock="Right" Background="Beige">
+            <StackPanel DockPanel.Dock="Right">
+                <Button Content="View All" Margin="20" VerticalAlignment="Top" FontSize="20" Click="ViewAll_Click"></Button>
+                <local:ViewAllControl Visibility="Collapsed" x:Name="ViewAllOptions" Margin="10"></local:ViewAllControl>
+            </StackPanel>
+        </Border>
+        <Border x:Name="topBorder" BorderBrush="beige" BorderThickness="2" DockPanel.Dock="Top" Background="Beige">
+            <StackPanel DockPanel.Dock="Top" Height="100"  Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="IcuId" Margin="5" FontSize="16" Foreground="Black" ClipToBounds="True"></TextBlock>
+                    <TextBlock Text="MaxBeds" Margin="10 5 5 5" FontSize="16" Foreground="Black"></TextBlock>
+                    <TextBlock Text="PresentBeds" Margin="5" FontSize="16" Foreground="Black"></TextBlock>
+                    <TextBlock Text="Freebeds" Margin="5" FontSize="16" Foreground="Black"></TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox x:Name="icuId" IsReadOnly="True" Text="{Binding Path=IcuId, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Margin="10 10 20 10" FontSize="16"></TextBox>
+                    <TextBox x:Name="maxBeds" IsReadOnly="True" Text="{Binding Path=MaxBeds, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Margin="15 10 20 10" FontSize="16"></TextBox>
+                    <TextBox x:Name="noOfBeds" IsReadOnly="True" Text="{Binding Path=NoOfBeds, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Margin="25 10 30 10"  FontSize="16"></TextBox>
+                    <TextBox x:Name="freeBeds" IsReadOnly="True" Text="{Binding Path=FreeBeds, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Margin="35 10 20 10" FontSize="16"></TextBox>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+                
+        
 
         
         <DockPanel x:Name="BedDock" VerticalAlignment="Center" HorizontalAlignment="Center" LastChildFill="False">

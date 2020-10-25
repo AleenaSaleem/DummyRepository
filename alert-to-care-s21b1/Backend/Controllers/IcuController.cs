@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
+using System.Text.Json.Serialization;
 using Backend.Repository;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,7 +11,7 @@ namespace Backend.Controllers
 {
     [Route("api/icus")]
     [ApiController]
-    public class IcuController : ControllerBase
+    public class IcuController : Controller
     {
         private readonly IIcuRepository _icuRepository;
 
@@ -38,11 +40,14 @@ namespace Backend.Controllers
             try
             {
                 bool isAdded = _icuRepository.AddIcu(icu);
-                return Ok(isAdded);
+                if (isAdded)
+                    return Json("ICU added successfully");
+                else
+                    return Json("ICU could not be added");
             }
             catch (Exception)
             {
-                return StatusCode(500, "unable to add ICU");
+                return Json("Internal server error");
             }
             
         }
@@ -60,7 +65,10 @@ namespace Backend.Controllers
             try
             {
                 bool isDeleted = _icuRepository.RemoveIcu(id);
-                return Ok(isDeleted);
+                if (isDeleted)
+                    return Json("ICU deleted successfully");
+                else
+                    return Json("ICU could not be deleted: Has occupied beds");
             }
             catch (Exception)
             {

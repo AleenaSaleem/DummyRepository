@@ -22,6 +22,7 @@ namespace Frontend
     public partial class AddBed : UserControl
     {
         ObservableCollection<string> _icuList = new ObservableCollection<string>();
+        string result = "";
         public AddBed()
         {
             InitializeComponent();
@@ -47,7 +48,12 @@ namespace Frontend
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             var icuId = this.icuList.SelectedItem.ToString();
-            new BedApiCalls().AddBed(icuId);
+            result = new BedApiCalls().AddBed(icuId);
+            MessageBox.Show(result);
+            Application.Current.MainWindow.Content = new MainPage();
+        }
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
             Application.Current.MainWindow.Content = new MainPage();
         }
     }
