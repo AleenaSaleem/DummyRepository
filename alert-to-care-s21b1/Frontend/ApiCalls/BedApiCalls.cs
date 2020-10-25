@@ -57,7 +57,7 @@ namespace Frontend.ApiCalls
             }
             return _beds;
         }*/
-        public List<BedModel> GetAllBedsFromAnIcu(string icuId)
+        public ObservableCollection<BedModel> GetAllBedsFromAnIcu(string icuId)
         {
 
             HttpWebRequest _httpReq = WebRequest.CreateHttp(_url+"/"+icuId);
@@ -68,10 +68,28 @@ namespace Frontend.ApiCalls
                 var stream = response.GetResponseStream();
                 StreamReader reader = new StreamReader(stream);
                 var result = reader.ReadToEnd();
-                var beds = JsonConvert.DeserializeObject<List<BedModel>>(result);
+                var beds = JsonConvert.DeserializeObject<ObservableCollection<BedModel>>(result);
                 return beds;
             }
             return null;
         }
+
+        public ObservableCollection<BedModel> GetAllBeds()
+        {
+
+            HttpWebRequest _httpReq = WebRequest.CreateHttp(_url);
+            _httpReq.Method = "GET";
+            HttpWebResponse response = _httpReq.GetResponse() as HttpWebResponse;
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                var stream = response.GetResponseStream();
+                StreamReader reader = new StreamReader(stream);
+                var result = reader.ReadToEnd();
+                var beds = JsonConvert.DeserializeObject<ObservableCollection<BedModel>>(result);
+                return beds;
+            }
+            return null;
+        }
+
     }
 }

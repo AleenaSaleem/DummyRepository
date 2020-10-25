@@ -3,6 +3,7 @@ using Frontend.ApiCalls;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -47,9 +48,14 @@ namespace Frontend
             this.maxBeds.Text = icu.MaxBeds.ToString();
             this.bedsPresent.Text = icu.NoOfBeds.ToString();
 
-            List<Backend.Models.BedModel> beds = new BedApiCalls().GetAllBedsFromAnIcu(icu.IcuId);
+            List<Backend.Models.BedModel> beds = new BedApiCalls().GetAllBedsFromAnIcu(icu.IcuId).ToList();
             this.freeBeds.Text = beds.FindAll(bed => bed.BedOccupancyStatus == "Free").Count.ToString();
 
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.Content = new MainPage();
         }
     }
 }

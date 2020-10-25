@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ALIRAZA\\Documents\\GitHub\\DummyRepository\\alert-to-care-s21b1\\Backend\\Backend.csproj": {}
+    "C:\\Users\\ALIRAZA\\Documents\\GitHub\\DummyRepositoryNew\\alert-to-care-s21b1\\Backend\\Backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ALIRAZA\\Documents\\GitHub\\DummyRepository\\alert-to-care-s21b1\\Backend\\Backend.csproj": {
+    "C:\\Users\\ALIRAZA\\Documents\\GitHub\\DummyRepositoryNew\\alert-to-care-s21b1\\Backend\\Backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ALIRAZA\\Documents\\GitHub\\DummyRepository\\alert-to-care-s21b1\\Backend\\Backend.csproj",
+        "projectUniqueName": "C:\\Users\\ALIRAZA\\Documents\\GitHub\\DummyRepositoryNew\\alert-to-care-s21b1\\Backend\\Backend.csproj",
         "projectName": "Backend",
-        "projectPath": "C:\\Users\\ALIRAZA\\Documents\\GitHub\\DummyRepository\\alert-to-care-s21b1\\Backend\\Backend.csproj",
+        "projectPath": "C:\\Users\\ALIRAZA\\Documents\\GitHub\\DummyRepositoryNew\\alert-to-care-s21b1\\Backend\\Backend.csproj",
         "packagesPath": "C:\\Users\\ALIRAZA\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ALIRAZA\\Documents\\GitHub\\DummyRepository\\alert-to-care-s21b1\\Backend\\obj\\",
+        "outputPath": "C:\\Users\\ALIRAZA\\Documents\\GitHub\\DummyRepositoryNew\\alert-to-care-s21b1\\Backend\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -3598,11 +3598,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ALIRAZA\\Documents\\GitHub\\DummyRepository\\alert-to-care-s21b1\\BackendApiTests\\BackendApiTests.csproj",
+      "projectUniqueName": "C:\\Users\\ALIRAZA\\Documents\\GitHub\\DummyRepositoryNew\\alert-to-care-s21b1\\BackendApiTests\\BackendApiTests.csproj",
       "projectName": "BackendApiTests",
-      "projectPath": "C:\\Users\\ALIRAZA\\Documents\\GitHub\\DummyRepository\\alert-to-care-s21b1\\BackendApiTests\\BackendApiTests.csproj",
+      "projectPath": "C:\\Users\\ALIRAZA\\Documents\\GitHub\\DummyRepositoryNew\\alert-to-care-s21b1\\BackendApiTests\\BackendApiTests.csproj",
       "packagesPath": "C:\\Users\\ALIRAZA\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ALIRAZA\\Documents\\GitHub\\DummyRepository\\alert-to-care-s21b1\\BackendApiTests\\obj\\",
+      "outputPath": "C:\\Users\\ALIRAZA\\Documents\\GitHub\\DummyRepositoryNew\\alert-to-care-s21b1\\BackendApiTests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -3621,8 +3621,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\ALIRAZA\\Documents\\GitHub\\DummyRepository\\alert-to-care-s21b1\\Backend\\Backend.csproj": {
-              "projectPath": "C:\\Users\\ALIRAZA\\Documents\\GitHub\\DummyRepository\\alert-to-care-s21b1\\Backend\\Backend.csproj"
+            "C:\\Users\\ALIRAZA\\Documents\\GitHub\\DummyRepositoryNew\\alert-to-care-s21b1\\Backend\\Backend.csproj": {
+              "projectPath": "C:\\Users\\ALIRAZA\\Documents\\GitHub\\DummyRepositoryNew\\alert-to-care-s21b1\\Backend\\Backend.csproj"
             }
           }
         }

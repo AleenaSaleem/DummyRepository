@@ -30,7 +30,7 @@ namespace Frontend
 
         private void AllBeds_Selected(object sender, RoutedEventArgs e)
         {
-           Application.Current.MainWindow.Content = new AllIcus();
+           Application.Current.MainWindow.Content = new AllBeds();
         }
 
         private void AllPatients_Selected(object sender, RoutedEventArgs e)
@@ -40,7 +40,7 @@ namespace Frontend
 
         private void BedInICU_Selected(object sender, RoutedEventArgs e)
         {
-            Application.Current.MainWindow.Content = new AllIcus();
+            Application.Current.MainWindow.Content = new BedsInIcu();
         }
     }
 }
