@@ -61,7 +61,7 @@ namespace Frontend.ViewModel {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Frontend;component/viewmodel/deleteicu.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Frontend;V1.0.0.0;component/viewmodel/deleteicu.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\ViewModel\DeleteIcu.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
