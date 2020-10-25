@@ -32,21 +32,17 @@ namespace Frontend
         
         private  void NextButton_Click(object sender, RoutedEventArgs e)
         {
-            Window parentWindow = Application.Current.MainWindow;
-            if (parentWindow.GetType() == typeof(MainWindow))
-            {
-                new MainPage()._icuDetails.UpdateIcuDetails();
-                (parentWindow as MainWindow).Configuration.Visibility = Visibility.Collapsed;
-                (parentWindow as MainWindow).MainPage.Visibility = Visibility.Visible;
-            }
-<<<<<<< HEAD
+            /* Window parentWindow = Application.Current.MainWindow;
+             if (parentWindow.GetType() == typeof(MainWindow))
+             {
+                 (parentWindow as MainWindow).Configuration.Visibility = Visibility.Collapsed;
+                 (parentWindow as MainWindow).MainPage.Visibility = Visibility.Visible;
+             }*/
+            Application.Current.MainWindow.Content = new MainPage();
             this.AddIcu();
-            new MainPage().SetUp();
-=======
-           this.AddIcu();
-           
-            //
->>>>>>> e734811ee251076c9ca825b3801ddaae30c6e6c7
+          
+            //new MainPage().update_Click(sender,e);
+
         }
 
         private void AddIcu()
@@ -60,7 +56,6 @@ namespace Frontend
                Layout = this.LayoutList.SelectedItem.ToString().Substring(0,1),
                MaxBeds = Int32.Parse(this.maxBeds.Text)
             };
-           
             bool msg =icuApiObj.AddIcu(icu);
         }
     }

@@ -7,7 +7,16 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="AddBed.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="AddIcu.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Configuration.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="DeleteIcu.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="MainPage.xaml.cs">
@@ -19,9 +28,24 @@
     <Compile Update="ViewAllControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="ViewModel\DeleteBed.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="ViewModel\DeleteIcu.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="AddBed.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AddIcu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Configuration.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="DeleteIcu.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainPage.xaml">
@@ -34,6 +58,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="ViewAllControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ViewModel\DeleteBed.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ViewModel\DeleteIcu.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

@@ -22,12 +22,12 @@ namespace Frontend
     public partial class MainPage : UserControl
     {
         readonly Dictionary<string, Func<List<BedModel>, List<int>>> BedLayoutFunctionCall;
-        public Icudetails _icuDetails = new Icudetails();
+        public Icudetails _icuDetails;
         
         public MainPage()
         {
             InitializeComponent();
-
+            _icuDetails = new Icudetails();
             this.DataContext = _icuDetails;
            
             BedLayoutFunctionCall = new Dictionary<string, Func<List<BedModel>, List<int>>>
@@ -36,21 +36,20 @@ namespace Frontend
                 { "U", UBedLayout },
                 { "H", HBedLayout }
             };
+            SetUp("IC1");
         }
 
-        public void SetUp()
+        public void SetUp(string icuId)
         {
-            var beds = new BedApiCalls().GetAllBedsFromAnIcu("IC1");
-
+            var beds = new BedApiCalls().GetAllBedsFromAnIcu(icuId);
             CreateAndPlaceBeds(beds);
-            RetrieveIcu();
+            RetrieveIcu(icuId);
         }
 
-        public void RetrieveIcu()
+        public void RetrieveIcu(string icuId)
         {
-            var icu = new IcuApiCalls().GetIcu("IC1");
+            var icu = new IcuApiCalls().GetIcu(icuId);
             _icuDetails.UpdateIcuDetails(icu);
-            MessageBox.Show(icu.IcuId);
         }
         private void CreateAndPlaceBeds(List<BedModel> BedList)
         {
@@ -61,7 +60,7 @@ namespace Frontend
             {
                 Button newBed = new Button
                 {
-                    Content = i.ToString(),
+                    Content = BedList[i].BedId,
                     Width = 50,
                     Height = 50
                 };
@@ -74,7 +73,7 @@ namespace Frontend
             {
                 Button newBed = new Button
                 {
-                    Content = i.ToString(),
+                    Content = BedList[i].BedId,
                     Width = 50,
                     Height = 50
                 };
@@ -86,7 +85,7 @@ namespace Frontend
             {
                 Button newBed = new Button
                 {
-                    Content = i.ToString(),
+                    Content = BedList[i].BedId,
                     Width = 50,
                     Height = 50
                 };
@@ -141,5 +140,11 @@ namespace Frontend
             return index;
         }
 
+        /*public void update_Click(object sender, RoutedEventArgs e)
+        {
+            var beds = new BedApiCalls().GetAllBedsFromAnIcu("IC1");
+            CreateAndPlaceBeds(beds);
+            RetrieveIcu();
+        }*/
     }
 }

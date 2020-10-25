@@ -26,10 +26,10 @@
                 <TextBlock Text="Freebeds" Margin="5" FontSize="16"></TextBlock>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="icuId" Text="{Binding Path=IcuId, Mode=TwoWay}" Margin="10 10 20 10" FontSize="16"></TextBox>
-                <TextBox x:Name="maxBeds" Text="{Binding Path=MaxBeds, Mode=TwoWay}" Margin="15 10 20 10" FontSize="16"></TextBox>
-                <TextBox x:Name="noOfBeds" Text="{Binding Path=NoOfBeds, Mode=TwoWay}" Margin="25 10 30 10"  FontSize="16"></TextBox>
-                <TextBox x:Name="freeBeds" Text="{Binding Path=FreeBeds, Mode=TwoWay}" Margin="35 10 20 10" FontSize="16"></TextBox>
+                <TextBox x:Name="icuId" Text="{Binding Path=IcuId, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Margin="10 10 20 10" FontSize="16"></TextBox>
+                <TextBox x:Name="maxBeds" Text="{Binding Path=MaxBeds, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Margin="15 10 20 10" FontSize="16"></TextBox>
+                <TextBox x:Name="noOfBeds" Text="{Binding Path=NoOfBeds, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Margin="25 10 30 10"  FontSize="16"></TextBox>
+                <TextBox x:Name="freeBeds" Text="{Binding Path=FreeBeds, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Margin="35 10 20 10" FontSize="16"></TextBox>
             </StackPanel>
         </StackPanel>
         <!--

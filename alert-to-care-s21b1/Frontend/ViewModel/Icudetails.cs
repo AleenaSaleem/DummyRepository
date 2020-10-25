@@ -27,7 +27,7 @@ namespace Frontend.ViewModel
                 if (this.icuId != value)
                 {
                     this.icuId = value;
-                    OnPropertyChanged(IcuId);
+                    OnPropertyChanged(nameof(IcuId));
                 }
             }
 
@@ -41,7 +41,7 @@ namespace Frontend.ViewModel
                 if (this.layout != value)
                 {
                     this.layout = value;
-                    OnPropertyChanged(Layout);
+                    OnPropertyChanged(nameof(Layout));
                 }
             }
 
@@ -95,11 +95,6 @@ namespace Frontend.ViewModel
 
         public void UpdateIcuDetails(IcuModel icu)
         {
-<<<<<<< HEAD
-=======
-            var icu = new IcuModel();
-           new IcuApiCalls().GetIcu("IC1");
->>>>>>> e734811ee251076c9ca825b3801ddaae30c6e6c7
             if (icu != null)
             {
                 this.IcuId = icu.IcuId;

@@ -8,10 +8,10 @@
              d:DesignHeight="450" d:DesignWidth="800">
     
         <ListView>
-            <ListViewItem Content="Add ICU"></ListViewItem>
-            <ListViewItem Content="Add Bed"></ListViewItem>
-            <ListViewItem Content="Delete ICU"></ListViewItem>
-            <ListViewItem Content="Delete Bed"></ListViewItem>
+            <ListViewItem Content="Add ICU" Selected="AddIcuItem_Selected"></ListViewItem>
+            <ListViewItem Content="Add Bed" Selected="AddBedItem_Selected"></ListViewItem>
+            <ListViewItem Content="Delete ICU" Selected="DeleteIcuItem_Selected"></ListViewItem>
+            <ListViewItem Content="Delete Bed" Selected="DeleteBedItem_Selected"></ListViewItem>
         </ListView>
     
 </UserControl>

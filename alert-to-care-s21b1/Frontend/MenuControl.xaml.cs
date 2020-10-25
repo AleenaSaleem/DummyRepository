@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Frontend.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -21,6 +22,26 @@ namespace Frontend
         public MenuControl()
         {
             InitializeComponent();
+        }
+
+        private void AddBedItem_Selected(object sender, RoutedEventArgs e)
+        {
+            
+            Application.Current.MainWindow.Content = new AddBed();
+            //this.Content = addIcu;
+        }
+        private void AddIcuItem_Selected(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.Content = new Configuration();
+        }
+        private void DeleteBedItem_Selected(object sender, RoutedEventArgs e)
+        {
+            AddIcu addIcu = new AddIcu();
+            this.Content = addIcu;
+        }
+        private void DeleteIcuItem_Selected(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.Content = new DeleteIcu();
         }
     }
 }

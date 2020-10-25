@@ -4,21 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\ALIRAZA\Documents\GitHub\DummyRepository\alert-to-care-s21b1\Frontend\obj\Debug\netcoreapp3.1\
+E:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\obj\Debug\netcoreapp3.1\
 Frontend
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
-C:\Users\ALIRAZA\Documents\GitHub\DummyRepository\alert-to-care-s21b1\Frontend\App.xaml
-5527062490
+E:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\App.xaml
+10387941686
 
-141222531631
-<<<<<<< HEAD
-31775810566
-=======
+19-1794936675
 317-865162413
->>>>>>> e734811ee251076c9ca825b3801ddaae30c6e6c7
-Configuration.xaml;MainPage.xaml;MainWindow.xaml;MenuControl.xaml;ViewAllControl.xaml;
+AddBed.xaml;AddIcu.xaml;Configuration.xaml;DeleteIcu.xaml;MainPage.xaml;MainWindow.xaml;MenuControl.xaml;ViewAllControl.xaml;ViewModel\DeleteBed.xaml;ViewModel\DeleteIcu.xaml;
 
 False
 

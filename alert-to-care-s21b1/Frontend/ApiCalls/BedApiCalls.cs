@@ -20,14 +20,12 @@ namespace Frontend.ApiCalls
         {
             //GetAllBeds();
         }
-        public bool AddBed(BedModel bedModel)
+        public bool AddBed(string icuId)
         {
-            HttpWebRequest _httpPostReq = WebRequest.CreateHttp(_url+"/"+bedModel.IcuId);
+            HttpWebRequest _httpPostReq = WebRequest.CreateHttp(_url+"/"+icuId);
             _httpPostReq.Method = "POST";
             _httpPostReq.ContentType = "application/json";
-            DataContractJsonSerializer userDataJsonSerializer =
-                new DataContractJsonSerializer(typeof(BedModel));
-            userDataJsonSerializer.WriteObject(_httpPostReq.GetRequestStream(), bedModel);
+            
             HttpWebResponse response = _httpPostReq.GetResponse() as HttpWebResponse;
             var result = response.ToString();
             if (result == "true")
