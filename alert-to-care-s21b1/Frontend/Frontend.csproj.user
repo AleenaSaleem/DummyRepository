@@ -13,7 +13,13 @@
     <Compile Update="AddIcu.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="AllBeds.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="AllIcus.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="BedsInIcu.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Configuration.xaml.cs">
@@ -48,7 +54,13 @@
     <Page Update="AddIcu.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="AllBeds.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="AllIcus.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="BedsInIcu.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Configuration.xaml">

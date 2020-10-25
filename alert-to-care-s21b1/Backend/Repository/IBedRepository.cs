@@ -7,6 +7,8 @@ namespace Backend.Repository
     {
         bool AddBed(string icuId, string locationOfBed = "not specified");
         IEnumerable<BedModel> GetAllBedsFromAnIcu(string icuId);
+
+        IEnumerable<BedModel> GetAllBeds();
         bool RemoveBed(string icuId, string bedId);
     }
 }

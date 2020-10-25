@@ -75,6 +75,12 @@ namespace Backend.Repository
             List<Models.BedModel> beds = _bedDataHandler.Readbeds(_csvFilePath);
             return beds.FindAll(bed =>bed.IcuId == icuId);
         }
-        
+
+        public IEnumerable<Models.BedModel> GetAllBeds()
+        {
+            List<Models.BedModel> beds = _bedDataHandler.Readbeds(_csvFilePath);
+            return beds;
+        }
+
     }
 }

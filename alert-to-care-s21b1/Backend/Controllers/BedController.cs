@@ -20,8 +20,13 @@ namespace Backend.Controllers
         {
             return (List<Models.BedModel>)_bedRepository.GetAllBedsFromAnIcu(id);
         }
-        //[HttpGet]
-        //public List<Models.BedModel> GetAllBeds()
+        
+        [HttpGet]
+        public List<Models.BedModel> GetAllBeds()
+        {
+            return (List<Models.BedModel>)_bedRepository.GetAllBeds();
+        }
+        
         /*[HttpGet("{id}")]
         public List<Models.BedModel> GetBeds(string id)
         {

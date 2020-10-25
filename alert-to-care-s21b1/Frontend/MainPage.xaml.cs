@@ -3,6 +3,7 @@ using Frontend.ApiCalls;
 using Frontend.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,7 +22,7 @@ namespace Frontend
     /// </summary>
     public partial class MainPage : UserControl
     {
-        readonly Dictionary<string, Func<List<BedModel>, List<int>>> BedLayoutFunctionCall;
+        readonly Dictionary<string, Func<int, List<int>>> BedLayoutFunctionCall;
         public Icudetails _icuDetails;
         
         public MainPage()
@@ -30,7 +31,7 @@ namespace Frontend
             _icuDetails = new Icudetails();
             this.DataContext = _icuDetails;
            
-            BedLayoutFunctionCall = new Dictionary<string, Func<List<BedModel>, List<int>>>
+            BedLayoutFunctionCall = new Dictionary<string, Func<int, List<int>>>
             {
                 { "L" , LBedLayout},
                 { "U", UBedLayout },
@@ -51,11 +52,11 @@ namespace Frontend
             var icu = new IcuApiCalls().GetIcu(icuId);
             _icuDetails.UpdateIcuDetails(icu);
         }
-        private void CreateAndPlaceBeds(List<BedModel> BedList)
+        private void CreateAndPlaceBeds(ObservableCollection<BedModel> BedList)
         {
-            BedLayoutFunctionCall["U"].Invoke(BedList);
+            var index = BedLayoutFunctionCall["U"].Invoke(BedList.Count);
 
-            var index = UBedLayout(BedList);
+            //var index = UBedLayout(BedList);
             for(int i=0; i < index[0]; i++)
             {
                 Button newBed = new Button
@@ -110,30 +111,27 @@ namespace Frontend
                 ViewAllOptions.Visibility = Visibility.Collapsed;
         }
 
-        private List<int> LBedLayout(List<BedModel> BedList)
+        private List<int> LBedLayout(int noOfBeds)
         {
             var index = new List<int>();
-            int noOfBeds = BedList.Count;
             index.Add(noOfBeds/2);
             index.Add(noOfBeds / 2 + noOfBeds % 2);
             index.Add(0);
             return index;
         }
-        private List<int> UBedLayout(List<BedModel> BedList)
+        private List<int> UBedLayout(int noOfBeds)
         {
             var index = new List<int>();
-            int noOfBeds = BedList.Count;
             //noOfBeds = 16;
             index.Add(noOfBeds / 3);
             index.Add(noOfBeds / 3 + noOfBeds % 3);
             index.Add(noOfBeds/3);
             return index;
         }
-        private List<int> HBedLayout(List<BedModel> BedList)
+        private List<int> HBedLayout(int noOfBeds)
         {
 
             var index = new List<int>();
-            int noOfBeds = BedList.Count;
             index.Add(noOfBeds / 2 + noOfBeds % 2);
             index.Add(0);
             index.Add(noOfBeds / 2);

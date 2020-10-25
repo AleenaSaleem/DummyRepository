@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -102,7 +103,7 @@ namespace Frontend.ViewModel
                 this.MaxBeds = icu.MaxBeds;
                 this.NoOfBeds = icu.NoOfBeds;
 
-                List<Backend.Models.BedModel> beds = new BedApiCalls().GetAllBedsFromAnIcu(icu.IcuId);
+                List<Backend.Models.BedModel> beds = new BedApiCalls().GetAllBedsFromAnIcu(icu.IcuId).ToList();
                 this.FreeBeds = beds.FindAll(bed => bed.BedOccupancyStatus == "Free").Count;
             }   
             
