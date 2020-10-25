@@ -13,7 +13,7 @@ namespace Backend.Repository
         public readonly string _csvFilePath;
         public BedRepository()
         {
-            this._csvFilePath = @"C:\a\alert-to-care-s21b1\alert-to-care-s21b1\Backend\Beds.csv";
+            this._csvFilePath = @"D:\a\alert-to-care-s21b1\alert-to-care-s21b1\Backend\Beds.csv";
         
         }
         public bool AddBed(string icuId, string locationOfBed = "not specified")

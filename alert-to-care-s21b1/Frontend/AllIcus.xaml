@@ -9,7 +9,7 @@
     <DockPanel>
         <ListView x:Name="IcuIDListView" DockPanel.Dock="Left" Margin="200 50 100 0" VerticalAlignment="Center" HorizontalAlignment="Center"
                   Width="80"
-                  SelectionChanged="IcuIDList_Selected"></ListView>
+                  SelectionChanged="IcuIDList_Selected" ></ListView>
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"></RowDefinition>

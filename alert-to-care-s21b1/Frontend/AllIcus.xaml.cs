@@ -51,5 +51,10 @@ namespace Frontend
             this.freeBeds.Text = beds.FindAll(bed => bed.BedOccupancyStatus == "Free").Count.ToString();
 
         }
+
+        private void IcuIDListView_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
+        {
+
+        }
     }
 }
