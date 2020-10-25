@@ -2,7 +2,9 @@
 
 FE:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\AddBed.xaml;;
 FE:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\AddIcu.xaml;;
+FE:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\AllBeds.xaml;;
 FE:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\AllIcus.xaml;;
+FE:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\BedsInIcu.xaml;;
 FE:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\Configuration.xaml;;
 FE:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\DeleteBed.xaml;;
 FE:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\DeleteIcu.xaml;;

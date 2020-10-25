@@ -98,3 +98,7 @@ E:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\obj\Debug\netcoreapp3.1\AllIcus.g
 E:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\obj\Debug\netcoreapp3.1\DeleteBed.g.cs
 E:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\obj\Debug\netcoreapp3.1\AllIcus.baml
 E:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\obj\Debug\netcoreapp3.1\DeleteBed.baml
+E:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\obj\Debug\netcoreapp3.1\AllBeds.g.cs
+E:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\obj\Debug\netcoreapp3.1\BedsInIcu.g.cs
+E:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\obj\Debug\netcoreapp3.1\AllBeds.baml
+E:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\obj\Debug\netcoreapp3.1\BedsInIcu.baml
