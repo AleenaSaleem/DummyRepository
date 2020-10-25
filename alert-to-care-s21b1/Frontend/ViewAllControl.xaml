@@ -7,10 +7,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <ListView>
-        <ListViewItem Content="All ICUs"></ListViewItem>
-        <ListViewItem Content="All Beds"></ListViewItem>
-        <ListViewItem Content="All Patients"></ListViewItem>
-        <ListViewItem Content="Bed in ICU"></ListViewItem>
+        <ListViewItem Content="All ICUs" Selected="AllICUs_Selected"></ListViewItem>
+        <ListViewItem Content="All Beds" Selected="AllBeds_Selected"></ListViewItem>
+        <ListViewItem Content="All Patients" Selected="AllPatients_Selected"></ListViewItem>
+        <ListViewItem Content="Bed in ICU" Selected="BedInICU_Selected"></ListViewItem>
     </ListView>
 
 </UserControl>

@@ -102,8 +102,8 @@ namespace Frontend.ViewModel
                 this.MaxBeds = icu.MaxBeds;
                 this.NoOfBeds = icu.NoOfBeds;
 
-                //List<Backend.Models.BedModel> beds = new BedApiCalls().GetAllBedsFromAnIcu(icu.IcuId);
-                this.FreeBeds = 0;//beds.FindAll(bed => bed.BedOccupancyStatus == "Free").Count;
+                List<Backend.Models.BedModel> beds = new BedApiCalls().GetAllBedsFromAnIcu(icu.IcuId);
+                this.FreeBeds = beds.FindAll(bed => bed.BedOccupancyStatus == "Free").Count;
             }   
             
         }

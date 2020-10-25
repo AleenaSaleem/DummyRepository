@@ -53,7 +53,7 @@ namespace Frontend {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Frontend;component/addicu.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Frontend;V1.0.0.0;component/addicu.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\AddIcu.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

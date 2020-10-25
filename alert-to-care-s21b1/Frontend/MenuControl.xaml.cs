@@ -36,8 +36,7 @@ namespace Frontend
         }
         private void DeleteBedItem_Selected(object sender, RoutedEventArgs e)
         {
-            AddIcu addIcu = new AddIcu();
-            this.Content = addIcu;
+            Application.Current.MainWindow.Content = new DeleteBed();
         }
         private void DeleteIcuItem_Selected(object sender, RoutedEventArgs e)
         {

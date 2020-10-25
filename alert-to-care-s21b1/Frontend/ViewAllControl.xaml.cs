@@ -22,5 +22,25 @@ namespace Frontend
         {
             InitializeComponent();
         }
+
+        private void AllICUs_Selected(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.Content = new AllIcus();
+        }
+
+        private void AllBeds_Selected(object sender, RoutedEventArgs e)
+        {
+           Application.Current.MainWindow.Content = new AllIcus();
+        }
+
+        private void AllPatients_Selected(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.Content = new AllIcus();
+        }
+
+        private void BedInICU_Selected(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.Content = new AllIcus();
+        }
     }
 }
