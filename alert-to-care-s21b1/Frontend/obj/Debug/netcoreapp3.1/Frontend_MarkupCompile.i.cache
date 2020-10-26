@@ -16,5 +16,5 @@ E:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\App.xaml
 317-865162413
 AddBed.xaml;AddIcu.xaml;AddPatient.xaml;AllBeds.xaml;AllIcus.xaml;BedsInIcu.xaml;Configuration.xaml;DeleteBed.xaml;DeleteIcu.xaml;MainPage.xaml;MainWindow.xaml;MenuControl.xaml;ViewAllControl.xaml;ViewModel\DeleteBed.xaml;ViewModel\DeleteIcu.xaml;
 
-True
+False
 

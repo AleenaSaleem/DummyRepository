@@ -7,6 +7,7 @@ using System.Runtime.Serialization.Json;
 using System.Net;
 using System.IO;
 using Newtonsoft.Json;
+using System.Linq;
 
 namespace Frontend.ApiCalls
 {
@@ -62,6 +63,7 @@ namespace Frontend.ApiCalls
                 StreamReader reader = new StreamReader(stream);
                 var result = reader.ReadToEnd();
                 var beds = JsonConvert.DeserializeObject<ObservableCollection<BedModel>>(result);
+                beds = new ObservableCollection<BedModel>(beds.OrderBy(i => i.BedId));
                 return beds;
             }
             return null;
@@ -79,6 +81,7 @@ namespace Frontend.ApiCalls
                 StreamReader reader = new StreamReader(stream);
                 var result = reader.ReadToEnd();
                 var beds = JsonConvert.DeserializeObject<ObservableCollection<BedModel>>(result);
+                beds = new ObservableCollection<BedModel>(beds.OrderBy(i => i.BedId));
                 return beds;
             }
             return null;

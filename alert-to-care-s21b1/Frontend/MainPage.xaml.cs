@@ -48,8 +48,8 @@ namespace Frontend
         public void SetUp(string icuId)
         {
             var icu = RetrieveIcu(icuId);
-            var beds = new BedApiCalls().GetAllBedsFromAnIcu(icuId).OrderBy(i => i.BedId);
-            CreateAndPlaceBeds((ObservableCollection<BedModel>)beds,icu);
+            var beds = new BedApiCalls().GetAllBedsFromAnIcu(icuId);
+            CreateAndPlaceBeds(beds,icu);
         }
 
         public IcuModel RetrieveIcu(string icuId)
