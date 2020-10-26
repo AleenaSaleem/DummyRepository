@@ -112,3 +112,9 @@ E:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\obj\Debug\netcoreapp3.1\DeletePat
 E:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\obj\Debug\netcoreapp3.1\DeletePatient.baml
 E:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\obj\Debug\netcoreapp3.1\AllPatients.g.cs
 E:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\obj\Debug\netcoreapp3.1\AllPatients.baml
+C:\Users\ALIRAZA\Documents\GitHub\DummyRepository\alert-to-care-s21b1\Frontend\obj\Debug\netcoreapp3.1\AddPatient.g.cs
+C:\Users\ALIRAZA\Documents\GitHub\DummyRepository\alert-to-care-s21b1\Frontend\obj\Debug\netcoreapp3.1\AllPatients.g.cs
+C:\Users\ALIRAZA\Documents\GitHub\DummyRepository\alert-to-care-s21b1\Frontend\obj\Debug\netcoreapp3.1\DeletePatient.g.cs
+C:\Users\ALIRAZA\Documents\GitHub\DummyRepository\alert-to-care-s21b1\Frontend\obj\Debug\netcoreapp3.1\AddPatient.baml
+C:\Users\ALIRAZA\Documents\GitHub\DummyRepository\alert-to-care-s21b1\Frontend\obj\Debug\netcoreapp3.1\AllPatients.baml
+C:\Users\ALIRAZA\Documents\GitHub\DummyRepository\alert-to-care-s21b1\Frontend\obj\Debug\netcoreapp3.1\DeletePatient.baml

@@ -25,8 +25,9 @@ namespace Frontend
     {
         readonly Dictionary<string, Func<int, List<int>>> BedLayoutFunctionCall;
         public Icudetails _icuDetails;
-        
-        
+        ObservableCollection<BedModel> beds = new ObservableCollection<BedModel>();
+        List<PatientModel> patients = new List<PatientModel>();
+
         public MainPage()
         {
             InitializeComponent();
@@ -48,8 +49,9 @@ namespace Frontend
         public void SetUp(string icuId)
         {
             var icu = RetrieveIcu(icuId);
-            var beds = new BedApiCalls().GetAllBedsFromAnIcu(icuId);
-            CreateAndPlaceBeds(beds,icu);
+            beds = new BedApiCalls().GetAllBedsFromAnIcu(icuId);
+            CreateAndPlaceBeds(icu);
+            GetAllPatientsInIcu(icuId);
         }
 
         public IcuModel RetrieveIcu(string icuId)
@@ -57,6 +59,11 @@ namespace Frontend
             var icu = new IcuApiCalls().GetIcu(icuId);
             _icuDetails.UpdateIcuDetails(icu);
             return icu;
+        }
+
+        public void GetAllPatientsInIcu(string icuId)
+        {
+            patients = new PatientApiCalls().GetAllPatients().ToList().FindAll(icu => icu.IcuId == icuId);
         }
 
         public void RetrieveAllIcusIds()
@@ -70,65 +77,123 @@ namespace Frontend
         }
 
 
-        private void CreateAndPlaceBeds(ObservableCollection<BedModel> BedList,IcuModel icu)
+        private void CreateAndPlaceBeds(IcuModel icu)
         {
             var index = BedLayoutFunctionCall[icu.Layout].Invoke(icu.MaxBeds);
             var noOfBeds = icu.NoOfBeds;
             V1StackPanel.Children.Clear();
             HStackPanel.Children.Clear();
             V2StackPanel.Children.Clear();
-
+            
             //var index = UBedLayout(BedList);
-            for(int i=0; i < index[0] && i < noOfBeds ; i++)
+            for (int i=0; i < index[0] && i < noOfBeds ; i++)
             {
-                Button newBed = new Button
-                {
-                    Content = BedList[i].BedId,
-                    Width = 50,
-                    Height = 50
-                };
-                newBed.MouseEnter += new MouseEventHandler(MouseOverBed);
-                V1StackPanel.Children.Add(newBed);
+                
+                V1StackPanel.Children.Add(CreateSingleBed(i));
             }
 
             index[1] = index[1] + index[0];
             for (int i = index[0]; i < index[1] && i < noOfBeds; i++)
             {
-                Button newBed = new Button
-                {
-                    Content = BedList[i].BedId,
-                    Width = 50,
-                    Height = 50
-                };
-                HStackPanel.Children.Add(newBed);
+                HStackPanel.Children.Add(CreateSingleBed(i));
             }
 
             index[2] = index[2] + index[1];
             for (int i = index[1] ; i < index[2] && i < noOfBeds; i++)
             {
-                Button newBed = new Button
-                {
-                    Content = BedList[i].BedId,
-                    Width = 50,
-                    Height = 50
-                };
-                V2StackPanel.Children.Add(newBed);
+                V2StackPanel.Children.Add(CreateSingleBed(i));
             }
         }
 
-       private void MouseOverBed(object sender, RoutedEventArgs e)
+        public Button CreateSingleBed(int i)
+        {
+            var color = Brushes.LightGray;
+            if (beds[i].BedOccupancyStatus == "Occupied")
+                color = Brushes.LightGreen;
+            
+            Button newBed = new Button
+            {
+                Content = beds[i].BedId,
+                Padding = new Thickness(10),
+                FontSize = 15,
+                Name = beds[i].BedId,
+                Background = color
+            };
+
+            newBed.MouseEnter += new MouseEventHandler(MouseOverBed);
+            newBed.MouseLeave += new MouseEventHandler(MouseLeaveBed);
+            return newBed;
+        }
+
+        private void MouseOverBed(object sender, RoutedEventArgs e)
        {
             var btn = sender as Button;
-            var bedId = btn.Content.ToString();
+            var bedId = btn.Name.ToString();
+            
+            StackPanel innerStackPanel = new StackPanel();
+
+            Thickness margin = new Thickness(3);
+            TextBlock IdTextBlock = new TextBlock()
+            {
+                Text = bedId,
+                Margin = margin
+            };
+            
+            string option = "";
+            var bed = beds.ToList().Find(b => b.BedId == bedId);
+            if (bed.BedOccupancyStatus == "Free")
+                option = "Add Patient";
+            else
+                option = "Discharge Patient";
+
             Button optionButton = new Button()
             {
-                Content = "add/remove patient",
-                Width =70,
-                Height=30
+                Content = option,
+                Name = bedId,
+                Margin = margin
             };
-            MessageBox.Show(bedId);
+
+            optionButton.Click += AddOrRemovePatient;
+
+            innerStackPanel.Children.Add(IdTextBlock);
+            if (bed.BedOccupancyStatus == "Occupied")
+            {
+                TextBlock NameTextBlock = new TextBlock()
+                {
+                    Text = "Name: " + patients.Find(patient => patient.BedId == bedId).Name,
+                    Margin = margin
+                };
+                innerStackPanel.Children.Add(NameTextBlock);
+
+            }
+            innerStackPanel.Children.Add(optionButton);
+            btn.Content = innerStackPanel;
        }
-       
+
+        private void MouseLeaveBed(object sender, RoutedEventArgs e)
+        {
+            var btn = sender as Button;
+            var bedId = btn.Name.ToString();
+            btn.Content = bedId;
+        }
+
+
+        private void AddOrRemovePatient(Object sender, RoutedEventArgs e )
+        {
+            var btn = sender as Button;
+            //MessageBox.Show(btn.Name); // BedId
+            if (btn.Content.ToString() == "Add Patient")
+            {
+                Application.Current.MainWindow.Content = new AddPatient();
+            }
+            else
+            {
+                var result = new PatientApiCalls().RemovePatient(patients.Find(patient => patient.BedId == btn.Name).PatientId);
+                MessageBox.Show(result);
+                Application.Current.MainWindow.Content = new MainPage();
+            }
+        }
+
         private void Menu_Click(object sender, RoutedEventArgs e)
         {
             if(MenuOptions.Visibility == Visibility.Collapsed)
