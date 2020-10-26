@@ -49,7 +49,7 @@ namespace Frontend
         }
         private void DeletePatientItem_Selected(object sender, RoutedEventArgs e)
         {
-
+            Application.Current.MainWindow.Content = new DeletePatient();
         }
     }
 }

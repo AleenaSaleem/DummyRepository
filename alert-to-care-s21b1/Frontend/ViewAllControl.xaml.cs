@@ -35,7 +35,7 @@ namespace Frontend
 
         private void AllPatients_Selected(object sender, RoutedEventArgs e)
         {
-            Application.Current.MainWindow.Content = new AllIcus();
+            Application.Current.MainWindow.Content = new AllPatients();
         }
 
         private void BedInICU_Selected(object sender, RoutedEventArgs e)

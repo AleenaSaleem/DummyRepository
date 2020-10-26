@@ -22,6 +22,9 @@
     <Compile Update="AllIcus.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="AllPatients.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="BedsInIcu.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -32,6 +35,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="DeleteIcu.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="DeletePatient.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="MainPage.xaml.cs">
@@ -66,6 +72,9 @@
     <Page Update="AllIcus.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="AllPatients.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="BedsInIcu.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -76,6 +85,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="DeleteIcu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="DeletePatient.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainPage.xaml">

@@ -184,5 +184,16 @@ namespace Backend.Utility
             return false;
         }
 
+        public void DeleteAllBedsInIcu(string icuId)
+        {
+            var beds = _bedDataHandler.Readbeds(_bedDataCsvPath);
+            foreach(var bed in beds)
+            {
+                if(bed.IcuId == icuId)
+                {
+                    _bedDataHandler.DeleteBed(bed.BedId, _bedDataCsvPath);
+                }
+            }
+        }
     }
 }

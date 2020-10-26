@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 E:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\App.xaml
-151559604042
+17-985528519
 
-25-1204675063
+272044537982
 317-865162413
-AddBed.xaml;AddIcu.xaml;AddPatient.xaml;AllBeds.xaml;AllIcus.xaml;BedsInIcu.xaml;Configuration.xaml;DeleteBed.xaml;DeleteIcu.xaml;MainPage.xaml;MainWindow.xaml;MenuControl.xaml;ViewAllControl.xaml;ViewModel\DeleteBed.xaml;ViewModel\DeleteIcu.xaml;
+AddBed.xaml;AddIcu.xaml;AddPatient.xaml;AllBeds.xaml;AllIcus.xaml;AllPatients.xaml;BedsInIcu.xaml;Configuration.xaml;DeleteBed.xaml;DeleteIcu.xaml;DeletePatient.xaml;MainPage.xaml;MainWindow.xaml;MenuControl.xaml;ViewAllControl.xaml;ViewModel\DeleteBed.xaml;ViewModel\DeleteIcu.xaml;
 
-False
+True
 

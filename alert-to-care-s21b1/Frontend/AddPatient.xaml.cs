@@ -64,6 +64,7 @@ namespace Frontend
             };
             var result = new PatientApiCalls().AddPatient(patient);
             MessageBox.Show(result);
+            Application.Current.MainWindow.Content = new MainPage();
         }
 
         private void icuIdList_SelectionChanged(object sender, SelectionChangedEventArgs e)

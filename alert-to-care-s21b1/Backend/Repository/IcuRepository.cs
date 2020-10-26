@@ -45,6 +45,7 @@ namespace Backend.Repository
                 if (_helpers.CanIcuBeRemoved(icuId, out message))    // Check for patients if no patirnts then remove
                 {
                     isDeleted = _icuDataHandler.DeleteIcu(icuId, _csvFilePath);
+                    _helpers.DeleteAllBedsInIcu(icuId);
 
                 }
             }

@@ -48,7 +48,19 @@ namespace Frontend
             var icuId = this.icuList.SelectedItem.ToString();
             var result = new IcuApiCalls().RemoveIcu(icuId);
             MessageBox.Show(result);
-            Application.Current.MainWindow.Content = new MainPage();
+            if(result == "ICU deleted successfully")
+            {
+                if(_icuList.Count == 1)
+                {
+                    Application.Current.MainWindow.Content = new Configuration();
+                }
+                else
+                {
+                    Application.Current.MainWindow.Content = new MainPage();
+                }
+            }
+            
+            
         }
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
