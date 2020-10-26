@@ -12,6 +12,8 @@
             <ListViewItem Content="Add Bed" Selected="AddBedItem_Selected" HorizontalAlignment="Center"></ListViewItem>
             <ListViewItem Content="Delete ICU" Selected="DeleteIcuItem_Selected" HorizontalAlignment="Center"></ListViewItem>
             <ListViewItem Content="Delete Bed" Selected="DeleteBedItem_Selected" HorizontalAlignment="Center"></ListViewItem>
+            <ListViewItem Content="Add Patient" Selected="AddPatientItem_Selected" HorizontalAlignment="Center"></ListViewItem>
+            <ListViewItem Content="Delete Patient" Selected="DeletePatientItem_Selected" HorizontalAlignment="Center"></ListViewItem>
         </ListView>
     
 </UserControl>

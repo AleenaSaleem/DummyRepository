@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 
 namespace Backend.Utility
 {
@@ -17,6 +18,8 @@ namespace Backend.Utility
             if (bed != null)
             {
                 bed.BedOccupancyStatus = "Occupied";
+                _bedDataHandler.DeleteBed(bed.BedId, _bedDataCsvPath);
+                _bedDataHandler.WriteBed(bed, _bedDataCsvPath);
                 return true;
             }
             return false;

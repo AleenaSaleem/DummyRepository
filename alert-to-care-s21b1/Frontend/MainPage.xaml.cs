@@ -4,6 +4,7 @@ using Frontend.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -47,8 +48,8 @@ namespace Frontend
         public void SetUp(string icuId)
         {
             var icu = RetrieveIcu(icuId);
-            var beds = new BedApiCalls().GetAllBedsFromAnIcu(icuId);
-            CreateAndPlaceBeds(beds,icu);
+            var beds = new BedApiCalls().GetAllBedsFromAnIcu(icuId).OrderBy(i => i.BedId);
+            CreateAndPlaceBeds((ObservableCollection<BedModel>)beds,icu);
         }
 
         public IcuModel RetrieveIcu(string icuId)
@@ -86,7 +87,7 @@ namespace Frontend
                     Width = 50,
                     Height = 50
                 };
-                newBed.Click += new RoutedEventHandler(BedButton_Click);
+                newBed.MouseEnter += new MouseEventHandler(MouseOverBed);
                 V1StackPanel.Children.Add(newBed);
             }
 
@@ -115,10 +116,16 @@ namespace Frontend
             }
         }
 
-       private void BedButton_Click(object sender, RoutedEventArgs e)
+       private void MouseOverBed(object sender, RoutedEventArgs e)
        {
             var btn = sender as Button;
             var bedId = btn.Content.ToString();
+            Button optionButton = new Button()
+            {
+                Content = "add/remove patient",
+                Width =70,
+                Height=30
+            };
             MessageBox.Show(bedId);
        }
        

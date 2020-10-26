@@ -42,5 +42,14 @@ namespace Frontend
         {
             Application.Current.MainWindow.Content = new DeleteIcu();
         }
+
+        private void AddPatientItem_Selected(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.Content = new AddPatient();
+        }
+        private void DeletePatientItem_Selected(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

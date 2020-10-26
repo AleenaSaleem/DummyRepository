@@ -38,6 +38,7 @@ namespace Backend.Controllers
         {
             try
             {
+              
                 var msg = _patientRepository.AddPatient(newPatient);
                 if (msg)
                     return Json("Patient added to the bed");
