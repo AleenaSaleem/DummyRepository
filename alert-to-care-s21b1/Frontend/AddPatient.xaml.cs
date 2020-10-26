@@ -26,12 +26,21 @@ namespace Frontend
     {
         PatientDetails _patient;
         
-        public AddPatient()
+        public AddPatient(string icId, string bId)
         {
+            
             InitializeComponent();
             _patient = new PatientDetails();
             this.DataContext = _patient;
             this._patient.IcuIdList = new AddBed().IcuList;
+            if (icId != null)
+            {
+                this.icuIdList.SelectedItem = icId;
+            }
+            if (bId != null)
+            {
+                this.bedIdList.SelectedItem = bId;
+            }
         }
         public void RetrieveBeds()
         {

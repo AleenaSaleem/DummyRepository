@@ -45,7 +45,7 @@ namespace Frontend
 
         private void AddPatientItem_Selected(object sender, RoutedEventArgs e)
         {
-            Application.Current.MainWindow.Content = new AddPatient();
+            Application.Current.MainWindow.Content = new AddPatient(null,null);
         }
         private void DeletePatientItem_Selected(object sender, RoutedEventArgs e)
         {

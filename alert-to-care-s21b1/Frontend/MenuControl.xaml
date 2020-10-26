@@ -6,14 +6,25 @@
              xmlns:local="clr-namespace:Frontend"
              mc:Ignorable="d" 
              d:DesignHeight="{x:Static SystemParameters.PrimaryScreenHeight}" d:DesignWidth="{x:Static SystemParameters.PrimaryScreenWidth}">
-    
-        <ListView HorizontalAlignment="Center" VerticalAlignment="Center">
-            <ListViewItem Content="Add ICU" Selected="AddIcuItem_Selected" HorizontalAlignment="Center"></ListViewItem>
-            <ListViewItem Content="Add Bed" Selected="AddBedItem_Selected" HorizontalAlignment="Center"></ListViewItem>
-            <ListViewItem Content="Delete ICU" Selected="DeleteIcuItem_Selected" HorizontalAlignment="Center"></ListViewItem>
-            <ListViewItem Content="Delete Bed" Selected="DeleteBedItem_Selected" HorizontalAlignment="Center"></ListViewItem>
-            <ListViewItem Content="Add Patient" Selected="AddPatientItem_Selected" HorizontalAlignment="Center"></ListViewItem>
-            <ListViewItem Content="Delete Patient" Selected="DeletePatientItem_Selected" HorizontalAlignment="Center"></ListViewItem>
-        </ListView>
-    
+
+    <ListView HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16">
+        <ListViewItem>
+            <Button Content="Add ICU" Width="100" Height="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="AddIcuItem_Selected"></Button>
+        </ListViewItem>
+        <ListViewItem>
+            <Button Content="Add Bed" Width="100" Height="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="AddBedItem_Selected"></Button>
+        </ListViewItem>
+        <ListViewItem>
+            <Button Content="Add Patient" Width="100" Height="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="AddPatientItem_Selected"></Button>
+        </ListViewItem>
+        <ListViewItem>
+            <Button Content="Delete ICU" Width="100" Height="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="DeleteIcuItem_Selected"></Button>
+        </ListViewItem>
+        <ListViewItem>
+            <Button Content="Delete Bed" Width="100" Height="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="DeleteBedItem_Selected"></Button>
+        </ListViewItem>
+        <ListViewItem>
+            <Button Content="Dicsharge Patient" Width="100" Height="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="DeletePatientItem_Selected" FontSize="12"></Button>
+        </ListViewItem>
+    </ListView>
 </UserControl>

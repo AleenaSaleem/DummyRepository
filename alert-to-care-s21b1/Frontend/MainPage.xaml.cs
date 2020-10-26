@@ -117,7 +117,8 @@ namespace Frontend
                 Padding = new Thickness(10),
                 FontSize = 15,
                 Name = beds[i].BedId,
-                Background = color
+                Background = color,
+                Margin=new Thickness(5)
             };
 
             newBed.MouseEnter += new MouseEventHandler(MouseOverBed);
@@ -184,7 +185,8 @@ namespace Frontend
             //MessageBox.Show(btn.Name); // BedId
             if (btn.Content.ToString() == "Add Patient")
             {
-                Application.Current.MainWindow.Content = new AddPatient();
+                
+                Application.Current.MainWindow.Content = new AddPatient(icuId.Text.ToString(),btn.Name.ToString());
             }
             else
             {
