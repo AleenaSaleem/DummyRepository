@@ -13,7 +13,7 @@ namespace Backend.Repository
         public readonly string _csvFilePath;
         public BedRepository()
         {
-            this._csvFilePath = @"D:\a\alert-to-care-s21b1\alert-to-care-s21b1\Backend\Beds.csv";
+            this._csvFilePath = @"C:\a\alert-to-care-s21b1\alert-to-care-s21b1\Backend\Beds.csv";
         
         }
         public bool AddBed(string icuId, string locationOfBed = "not specified")
@@ -35,7 +35,11 @@ namespace Backend.Repository
                         Location = locationOfBed
                     };
                     isAdded = _bedDataHandler.WriteBed(bed, _csvFilePath);
-                    _helpers.IncrementNoOfBedsOfIcu(icuId);
+                    if (isAdded)
+                    {
+                        _helpers.IncrementNoOfBedsOfIcu(icuId);
+                        _helpers.IncrementBedCounterInIcu(icuId);
+                    }
                 }
             }
             catch (Exception e)

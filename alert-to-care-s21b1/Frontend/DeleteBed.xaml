@@ -9,9 +9,10 @@
              d:DesignHeight="{x:Static SystemParameters.PrimaryScreenHeight}" d:DesignWidth="{x:Static SystemParameters.PrimaryScreenWidth}">
     <DockPanel>
         <Button DockPanel.Dock="Top" Content="Back" FontSize="20" HorizontalAlignment="Left" Margin="10" Click="BackButton_Click"></Button>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Select Icu" Margin="10" FontSize="20"></TextBlock>
-            <ComboBox x:Name="icuList" Width="250" ItemsSource="{Binding Path=IcuList}" SelectionChanged="icuList_SelectionChanged" Style="{StaticResource ResourceKey=errorFeedbackStyle}">
+        <TextBlock DockPanel.Dock="Top" HorizontalAlignment="Center" FontSize="40" Text="Remove Bed" Foreground="Red" FontWeight="Bold" Margin="30" ></TextBlock>
+        <StackPanel Margin="100 150 100 100 " HorizontalAlignment="Center">
+            <TextBlock Text="Select Icu" Margin="15" FontSize="20"></TextBlock>
+            <ComboBox x:Name="icuList" Width="250" Height="30" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ItemsSource="{Binding Path=IcuList}" SelectionChanged="icuList_SelectionChanged" Style="{StaticResource ResourceKey=errorFeedbackStyle}">
                 <ComboBox.Text>
                     <Binding Path="IcuId" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" NotifyOnValidationError="True" >
                         <Binding.ValidationRules>
@@ -20,8 +21,8 @@
                     </Binding>
                 </ComboBox.Text>
             </ComboBox>
-            <TextBlock Text="Select Bed" Margin="10" FontSize="20"></TextBlock>
-            <ComboBox x:Name="bedList" Width="250" ItemsSource="{Binding Path=BedList}" Style="{StaticResource ResourceKey=errorFeedbackStyle}">
+            <TextBlock Text="Select Bed" Margin="15" FontSize="20"></TextBlock>
+            <ComboBox x:Name="bedList" Width="250" Height="30" FontSize="20" ItemsSource="{Binding Path=BedList}" Style="{StaticResource ResourceKey=errorFeedbackStyle}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
                 <ComboBox.Text>
                     <Binding Path="BedId" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" NotifyOnValidationError="True" >
                         <Binding.ValidationRules>
@@ -30,7 +31,7 @@
                     </Binding>
                 </ComboBox.Text>
             </ComboBox>
-            <Button Content="Delete" Margin="20" Width="100" Click="DeleteButton_Click">
+            <Button Content="Remove" Margin="40" Width="100" Height="30" FontSize="20" Click="DeleteButton_Click">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="IsEnabled" Value="False"/>

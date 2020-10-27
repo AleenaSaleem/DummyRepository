@@ -9,9 +9,10 @@
              d:DesignHeight="{x:Static SystemParameters.PrimaryScreenHeight}" d:DesignWidth="{x:Static SystemParameters.PrimaryScreenWidth}">
     <DockPanel>
         <Button DockPanel.Dock="Top" Content="Back" FontSize="20" HorizontalAlignment="Left" Margin="10" Click="BackButton_Click"></Button>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Select Icu" Margin="10" FontSize="20"></TextBlock>
-            <ComboBox x:Name="icuList" Width="250" ItemsSource="{Binding Path=IcuList}" Style="{StaticResource ResourceKey=errorFeedbackStyle}">
+        <TextBlock Text="Add Bed" Foreground="Green" HorizontalAlignment="Center" DockPanel.Dock="Top" FontSize="40" FontWeight="Bold" Margin="80 100 100 150"></TextBlock>
+        <StackPanel DockPanel.Dock="Top" HorizontalAlignment="Center">
+            <TextBlock Text="Select Icu" Margin="20" FontSize="25"></TextBlock>
+            <ComboBox x:Name="icuList" Width="250" Height="40" FontSize="20" ItemsSource="{Binding Path=IcuList}" Style="{StaticResource ResourceKey=errorFeedbackStyle}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
                 <ComboBox.Text>
                     <Binding Path="IcuId" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" NotifyOnValidationError="True" >
                         <Binding.ValidationRules>
@@ -20,7 +21,7 @@
                     </Binding>
                 </ComboBox.Text>
             </ComboBox>
-            <Button Content="Add" Margin="20" Width="100" Click="AddButton_Click">
+            <Button Name="addBed" Content="Add" Margin="20" FontSize="25" Width="100" Click="AddButton_Click">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="IsEnabled" Value="False"/>

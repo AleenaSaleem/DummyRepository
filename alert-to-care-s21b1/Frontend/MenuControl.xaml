@@ -18,13 +18,13 @@
             <Button Content="Add Patient" Width="100" Height="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="AddPatientItem_Selected"></Button>
         </ListViewItem>
         <ListViewItem>
-            <Button Content="Delete ICU" Width="100" Height="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="DeleteIcuItem_Selected"></Button>
+            <Button Content="Remove ICU" Width="100" Height="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="DeleteIcuItem_Selected"></Button>
         </ListViewItem>
         <ListViewItem>
-            <Button Content="Delete Bed" Width="100" Height="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="DeleteBedItem_Selected"></Button>
+            <Button Content="Remove Bed" Width="100" Height="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="DeleteBedItem_Selected"></Button>
         </ListViewItem>
         <ListViewItem>
-            <Button Content="Dicsharge Patient" Width="100" Height="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="DeletePatientItem_Selected" FontSize="12"></Button>
+            <Button Content="Discharge Patient" Width="100" Height="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="DeletePatientItem_Selected" FontSize="12"></Button>
         </ListViewItem>
     </ListView>
 </UserControl>

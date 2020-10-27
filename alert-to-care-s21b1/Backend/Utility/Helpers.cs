@@ -8,9 +8,9 @@ namespace Backend.Utility
         private readonly IcuDataHandler _icuDataHandler = new IcuDataHandler();
         private readonly PatientDataHandler _patientDataHandler = new PatientDataHandler();
         private readonly BedDataHandler _bedDataHandler = new BedDataHandler();
-        private readonly string _icuDataCsvPath = @"D:\a\alert-to-care-s21b1\alert-to-care-s21b1\Backend\Icus.csv";
-        private readonly string _patientDataCsvPath = @"D:\a\alert-to-care-s21b1\alert-to-care-s21b1\Backend\Patients.csv";
-        private readonly string _bedDataCsvPath = @"D:\a\alert-to-care-s21b1\alert-to-care-s21b1\Backend\Beds.csv";
+        private readonly string _icuDataCsvPath = @"C:\a\alert-to-care-s21b1\alert-to-care-s21b1\Backend\Icus.csv";
+        private readonly string _patientDataCsvPath = @"C:\a\alert-to-care-s21b1\alert-to-care-s21b1\Backend\Patients.csv";
+        private readonly string _bedDataCsvPath = @"C:\a\alert-to-care-s21b1\alert-to-care-s21b1\Backend\Beds.csv";
 
         public bool ChangeBedStatusToOccupied(string bedId)
         {
@@ -150,7 +150,13 @@ namespace Backend.Utility
         public  string GenerateBedId(string id)
         {
             Models.IcuModel icu = _icuDataHandler.ReadIcus(_icuDataCsvPath).Find(icu => icu.IcuId == id);
-            id += icu.Layout + (icu.NoOfBeds + 1).ToString();
+            string temp = "";
+            if (icu.BedsCounter < 9)
+                temp = "0" + (icu.BedsCounter + 1);
+            else
+                temp = (icu.BedsCounter + 1).ToString();
+            id += icu.Layout + temp;
+            
             return id;
         }
 
@@ -194,6 +200,14 @@ namespace Backend.Utility
                     _bedDataHandler.DeleteBed(bed.BedId, _bedDataCsvPath);
                 }
             }
+        }
+
+        public void IncrementBedCounterInIcu(string icuId)
+        {
+            var icu = _icuDataHandler.ReadIcus(_icuDataCsvPath).Find(icu => icu.IcuId == icuId);
+            icu.BedsCounter += 1;
+            _icuDataHandler.DeleteIcu(icuId, _icuDataCsvPath);
+            _icuDataHandler.WriteIcu(icu, _icuDataCsvPath);
         }
     }
 }

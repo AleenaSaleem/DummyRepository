@@ -6,13 +6,14 @@
              xmlns:local="clr-namespace:Frontend"
              xmlns:validationrules="clr-namespace:Frontend.Validations"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="{x:Static SystemParameters.PrimaryScreenHeight}" d:DesignWidth="{x:Static SystemParameters.PrimaryScreenWidth}">
     <DockPanel>
         <Button x:Name="backButton" Content="Back" DockPanel.Dock="Top" HorizontalAlignment="Left" Width="70" Height="30" FontSize="20" Margin="10" Click="backButton_Click"></Button>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Select PatientId: " FontSize="20" Margin="10"></TextBlock>
-            <ComboBox x:Name="patientIdList" ItemsSource="{Binding Path=PatientIdList}"
-                      HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="250" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Style="{StaticResource ResourceKey=errorFeedbackStyle}">
+        <TextBlock DockPanel.Dock="Top" HorizontalAlignment="Center" FontSize="40" Text="Discharge Patient" FontWeight="Bold" Margin="30" ></TextBlock>
+        <StackPanel HorizontalAlignment="Center" Margin="100 150 100 100">
+            <TextBlock Text="Select PatientId: " FontSize="20" Margin="20"></TextBlock>
+            <ComboBox x:Name="patientIdList" ItemsSource="{Binding Path=PatientIdList}" FontSize="20"
+                      HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="250" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource ResourceKey=errorFeedbackStyle}">
                 <ComboBox.Text>
                     <Binding Path="PatientId" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" NotifyOnValidationError="True" >
                         <Binding.ValidationRules>
@@ -21,7 +22,7 @@
                     </Binding>
                 </ComboBox.Text>
             </ComboBox>
-            <Button x:Name="deleteButton" Content="Discharge" Click="deleteButton_Click" Margin="20">
+            <Button x:Name="deleteButton" Content="Discharge" Click="deleteButton_Click" Margin="40" Width="120" Height="30" FontSize="20">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="IsEnabled" Value="False"/>

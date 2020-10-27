@@ -7,42 +7,11 @@
              xmlns:local="clr-namespace:Frontend"
              mc:Ignorable="d" 
              d:DesignHeight="{x:Static SystemParameters.PrimaryScreenHeight}" d:DesignWidth="{x:Static SystemParameters.PrimaryScreenWidth}">
-    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" >
-        <TextBlock Text="Add ICU" Margin="20" HorizontalAlignment="Center" ></TextBlock>
-        <TextBlock Text="Enter ICU Id" Margin="10"></TextBlock>
-        <TextBox Margin="10" Width="100" x:Name="icuId" Style="{StaticResource ResourceKey=errorFeedbackStyle}">
-            <TextBox.Text>
-                <Binding  Path="IcuId" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" NotifyOnValidationError="True">
-                    <Binding.ValidationRules>
-                        <validationrules:AddIcuFieldValidations ValidatesOnTargetUpdated="True"></validationrules:AddIcuFieldValidations>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
-        
-        <TextBlock  Text="Max Beds in ICU" Margin="10" ></TextBlock>
-        <TextBox Margin="10" Width="100" x:Name="maxBeds" Style="{StaticResource ResourceKey=errorFeedbackStyle}">
-            <TextBox.Text>
-                <Binding  Path="MaxBeds" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" NotifyOnValidationError="True">
-                    <Binding.ValidationRules>
-                        <validationrules:MaxBedFieldValidation ValidatesOnTargetUpdated="True"></validationrules:MaxBedFieldValidation>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
-        
-        <TextBlock Text="Layout" Margin="10" ></TextBlock>
-        <ComboBox x:Name="LayoutList" Width="200" ItemsSource="{Binding Path=LayoutList}" Style="{StaticResource ResourceKey=errorFeedbackStyle}">
-            <ComboBox.Text>
-                <Binding Path="Layout" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" NotifyOnValidationError="True" >
-                    <Binding.ValidationRules>
-                        <validationrules:AddIcuFieldValidations ValidatesOnTargetUpdated="True"></validationrules:AddIcuFieldValidations>
-                    </Binding.ValidationRules>
-                </Binding>
-            </ComboBox.Text>
-        </ComboBox>
-        <StackPanel Orientation="Horizontal">
-            <Button Content="Add" Margin="30" Width="60" Click="NextButton_Click">
+    <DockPanel  LastChildFill="True">
+        <TextBlock DockPanel.Dock="Top" Foreground="Green" Text="Add ICU" Margin="100 150 100 70 " FontSize="30" HorizontalAlignment="Center" FontWeight="Bold"></TextBlock>
+
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="200 20 200 200">
+            <Button Content="Add" Margin="70 30 50 20" FontSize="20" Width="70" Click="NextButton_Click">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="IsEnabled" Value="False"/>
@@ -59,8 +28,56 @@
                     </Style>
                 </Button.Style>
             </Button>
-            <Button x:Name="cancelButton" Content="Cancel" Margin="30" Width="70" Click="CancelButton_Click"></Button>
+            <Button x:Name="cancelButton" Content="Cancel" Margin="100 30 50 20" Width="70" FontSize="20" Click="CancelButton_Click"></Button>
         </StackPanel>
 
-    </StackPanel>
+        <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"></RowDefinition>
+                <RowDefinition Height="80"></RowDefinition>
+                <RowDefinition Height="80"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="180"></ColumnDefinition>
+                <ColumnDefinition Width="400"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.Children>
+                <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Text="Enter ICU Id:" FontSize="20"></TextBlock>
+                <TextBox Grid.Row="0" Grid.Column="1" Height="40" Width="200" x:Name="icuId" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20"  Style="{StaticResource ResourceKey=errorFeedbackStyle}">
+                    <TextBox.Text>
+                        <Binding  Path="IcuId" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" NotifyOnValidationError="True">
+                            <Binding.ValidationRules>
+                                <validationrules:AddIcuFieldValidations ValidatesOnTargetUpdated="True"></validationrules:AddIcuFieldValidations>
+                                <validationrules:IcuIdValidation></validationrules:IcuIdValidation>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Text="Max Beds in ICU:" FontSize="20"></TextBlock>
+                <TextBox Grid.Row="1" Grid.Column="1" Height="40" Width="200" x:Name="maxBeds" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Style="{StaticResource ResourceKey=errorFeedbackStyle}">
+                    <TextBox.Text>
+                        <Binding  Path="MaxBeds" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" NotifyOnValidationError="True">
+                            <Binding.ValidationRules>
+                                <validationrules:MaxBedFieldValidation ValidatesOnTargetUpdated="True"></validationrules:MaxBedFieldValidation>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Text="Layout:"  FontSize="20" HorizontalAlignment="Left"></TextBlock>
+                <ComboBox Grid.Row="2" Grid.Column="1" x:Name="LayoutList" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="200" Height="40" FontSize="18" ItemsSource="{Binding Path=LayoutList}" Style="{StaticResource ResourceKey=errorFeedbackStyle}">
+                    <ComboBox.Text>
+                        <Binding Path="Layout" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" NotifyOnValidationError="True" >
+                            <Binding.ValidationRules>
+                                <validationrules:AddIcuFieldValidations ValidatesOnTargetUpdated="True"></validationrules:AddIcuFieldValidations>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </ComboBox.Text>
+                </ComboBox>
+
+            </Grid.Children>
+            
+        </Grid>
+        
+        
+    </DockPanel>
 </UserControl>

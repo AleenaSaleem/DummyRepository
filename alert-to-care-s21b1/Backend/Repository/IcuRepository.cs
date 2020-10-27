@@ -10,7 +10,7 @@ namespace Backend.Repository
         private readonly Utility.Helpers _helpers = new Utility.Helpers();
         public IcuRepository()
         {
-            _csvFilePath = @"D:\a\alert-to-care-s21b1\alert-to-care-s21b1\Backend\Icus.csv";
+            _csvFilePath = @"C:\a\alert-to-care-s21b1\alert-to-care-s21b1\Backend\Icus.csv";
         }
 
         // Add update vitals in maintanance. 
@@ -65,8 +65,6 @@ namespace Backend.Repository
         public Models.IcuModel GetIcu(string id)
         {
             var icu = _icuDataHandler.ReadIcus(_csvFilePath).Find(icu => icu.IcuId == id);
-            Console.WriteLine("ICUID" + icu.IcuId);
-            Console.WriteLine("Layout" + icu.Layout);
             return icu;
         }
 

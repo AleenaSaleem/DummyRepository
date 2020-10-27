@@ -64,7 +64,9 @@ namespace Frontend
                 BedId = _patient.BedId,
                 Name = _patient.Name,
                 Age = Int32.Parse(_patient.Age.ToString()),
-                Address = _patient.Address
+                Address = _patient.Address,
+                Gender = _patient.Gender,
+                ContactNo = _patient.Contact
             };
             var result = new PatientApiCalls().AddPatient(patient);
             MessageBox.Show(result);
@@ -75,6 +77,11 @@ namespace Frontend
         {
             //this.addButton.IsEnabled = true;
             RetrieveBeds();
+        }
+
+        private void genderList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

@@ -16,6 +16,7 @@ namespace Frontend.ViewModel
         int age;
         string address;
         string patientId;
+        string gender, contact;
         ObservableCollection<string> _icuIdList = new ObservableCollection<string>();
         ObservableCollection<string> _bedIdList = new ObservableCollection<string>();
         public ObservableCollection<string> IcuIdList
@@ -108,5 +109,30 @@ namespace Frontend.ViewModel
                 }
             }
         }
+        public string Gender
+        {
+            get { return this.gender; }
+            set
+            {
+                if (this.gender != value)
+                {
+                    this.gender = value;
+                    OnPropertyChanged(nameof(Gender));
+                }
+            }
+        }
+        public string Contact
+        {
+            get { return this.contact; }
+            set
+            {
+                if (this.contact != value)
+                {
+                    this.contact = value;
+                    OnPropertyChanged(nameof(Contact));
+                }
+            }
+        }
+
     }
 }

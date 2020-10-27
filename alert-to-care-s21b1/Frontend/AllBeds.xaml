@@ -9,12 +9,13 @@
     <DockPanel>
         <Button DockPanel.Dock="Top" Content="Back" FontSize="20" HorizontalAlignment="Left" Margin="10" Click="BackButton_Click"></Button>
         <Grid>
-            <TextBlock Text="Select Bed" HorizontalAlignment="Center" Margin="150 20 100 0" FontSize="20"></TextBlock>
-            <ListView x:Name="BedIDListView" DockPanel.Dock="Left" Margin="150 100 100 20" VerticalAlignment="Top" HorizontalAlignment="Center" Width="80" 
+            <TextBlock Text="Select Bed" HorizontalAlignment="Center" Margin="180 20 100 0" FontWeight="Bold" FontSize="20"></TextBlock>
+            <ListView x:Name="BedIDListView" DockPanel.Dock="Left" FontSize="20" Margin="180 100 100 20" VerticalAlignment="Top" HorizontalAlignment="Center" Width="120"
+                      HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                   SelectionChanged="BedIDList_Selected" ScrollViewer.CanContentScroll="false" ScrollViewer.VerticalScrollBarVisibility="Visible"></ListView>
         </Grid>
         <StackPanel>
-            <TextBlock Text="Bed Details" HorizontalAlignment="Center" Margin="50 20 0 50" FontSize="20"></TextBlock>
+            <TextBlock Text="Bed Details" HorizontalAlignment="Center" Margin="50 20 0 50" FontSize="20" FontWeight="Bold"></TextBlock>
             <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"></RowDefinition>
@@ -27,9 +28,9 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid.Children>
-                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Icu ID" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Bed ID" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Status" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Icu ID:" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Bed ID:" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Status:" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
                     <TextBlock Grid.Row="0" Grid.Column="1" x:Name="icuId" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
                     <TextBlock Grid.Row="1" Grid.Column="1" x:Name="bedId" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
                     <TextBlock Grid.Row="2" Grid.Column="1" x:Name="status" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>

@@ -64,6 +64,8 @@ namespace Frontend
             this.name.Text = patient.Name;
             this.age.Text = patient.Age.ToString();
             this.address.Text = patient.Address;
+            this.gender.Text = patient.Gender;
+            this.contact.Text = patient.ContactNo;
         }
     }
 }

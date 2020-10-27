@@ -30,7 +30,8 @@ namespace Backend.Utility
                 IcuId = icuDetails[0],
                 Layout = icuDetails[1],
                 NoOfBeds = Int32.Parse(icuDetails[2]),
-                MaxBeds = Int32.Parse(icuDetails[3])
+                MaxBeds = Int32.Parse(icuDetails[3]),
+                BedsCounter = Int32.Parse(icuDetails[4])
             };
             return icu;
         }
@@ -49,7 +50,8 @@ namespace Backend.Utility
                     icu.IcuId,
                     icu.Layout,
                     icu.NoOfBeds.ToString(),
-                    icu.MaxBeds.ToString()
+                    icu.MaxBeds.ToString(),
+                    icu.BedsCounter.ToString()
                     });
             }
             return csvFormatData;

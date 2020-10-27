@@ -34,7 +34,9 @@ namespace Backend.Utility
                 Age = Int32.Parse(patientDetails[2]),
                 IcuId = patientDetails[3],
                 BedId = patientDetails[4],
-                Address = patientDetails[5]
+                Address = patientDetails[5],
+                Gender = patientDetails[6],
+                ContactNo = patientDetails[7]
             };
             return patient;
         }
@@ -54,7 +56,9 @@ namespace Backend.Utility
                     patient.Age.ToString(),
                     patient.IcuId.ToString(),
                     patient.BedId.ToString(),
-                    patient.Address
+                    patient.Address,
+                    patient.Gender,
+                    patient.ContactNo
                     });
                 }            
             return csvFormatData;
