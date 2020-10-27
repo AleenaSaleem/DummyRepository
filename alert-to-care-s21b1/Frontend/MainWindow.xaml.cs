@@ -27,7 +27,7 @@ namespace Frontend
             var count = new IcuApiCalls().GetAllIcus().Count();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             if (count == 0)
-                this.Content = new Configuration();
+                this.Content = new IcuConfiguration();
             else
                 this.Content = new MainPage();
 

@@ -70,7 +70,7 @@ namespace Frontend
             {
                 if(_icuList.Count == 1)
                 {
-                    Application.Current.MainWindow.Content = new Configuration();
+                    Application.Current.MainWindow.Content = new IcuConfiguration();
                 }
                 else
                 {

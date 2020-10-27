@@ -9,48 +9,41 @@ using System.Text;
 using System.Windows;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
+using Frontend.Validations;
 namespace Frontend
 {
     /// <summary>
     /// Interaction logic for AddPatient.xaml
     /// </summary>
-    public partial class AddPatient : UserControl
+    public partial class AddNewPatient : UserControl
     {
         PatientDetails _patient;
-        
-        public AddPatient(string icId, string bId)
+
+        public AddNewPatient(string icId, string bId)
         {
-            
+
             InitializeComponent();
             _patient = new PatientDetails();
             this.DataContext = _patient;
             this._patient.IcuIdList = new AddBed().IcuList;
             if (icId != null)
             {
-                this.icuIdList.SelectedItem = icId;
+                _patient.IcuId = icId;
             }
             if (bId != null)
             {
-                this.bedIdList.SelectedItem = bId;
+                _patient.BedId = bId;
             }
-            
-            
+
+
         }
         public void RetrieveBeds()
         {
             this._patient.BedIdList.Clear();
-            var bedsInIcu = new BedApiCalls().GetAllBedsFromAnIcu(this.icuIdList.SelectedItem.ToString()).ToList();
-            foreach(var bed in bedsInIcu)
+            var bedsInIcu = new BedApiCalls().GetAllBedsFromAnIcu(_patient.IcuId).ToList();
+            foreach (var bed in bedsInIcu)
             {
-                if(bed.BedOccupancyStatus == "Free")
+                if (bed.BedOccupancyStatus == "Free")
                 {
                     this._patient.BedIdList.Add(bed.BedId);
                 }

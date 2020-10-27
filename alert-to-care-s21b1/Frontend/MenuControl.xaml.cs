@@ -32,7 +32,7 @@ namespace Frontend
         }
         private void AddIcuItem_Selected(object sender, RoutedEventArgs e)
         {
-            Application.Current.MainWindow.Content = new Configuration();
+            Application.Current.MainWindow.Content = new IcuConfiguration();
         }
         private void DeleteBedItem_Selected(object sender, RoutedEventArgs e)
         {
@@ -45,7 +45,7 @@ namespace Frontend
 
         private void AddPatientItem_Selected(object sender, RoutedEventArgs e)
         {
-            Application.Current.MainWindow.Content = new AddPatient(null,null);
+            Application.Current.MainWindow.Content = new AddNewPatient(null,null);
         }
         private void DeletePatientItem_Selected(object sender, RoutedEventArgs e)
         {

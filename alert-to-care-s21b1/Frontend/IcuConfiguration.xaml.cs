@@ -20,13 +20,13 @@ namespace Frontend
     /// <summary>
     /// Interaction logic for Configuration.xaml
     /// </summary>
-    public partial class Configuration : UserControl
+    public partial class IcuConfiguration : UserControl
     {
         LayoutModel layoutModel = new LayoutModel();
         IcuApiCalls icuApiObj = new IcuApiCalls();
         int numIcus=0;
             
-        public Configuration()
+        public IcuConfiguration()
         {
             InitializeComponent();
             this.DataContext = layoutModel;

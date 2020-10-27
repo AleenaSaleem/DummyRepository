@@ -186,7 +186,7 @@ namespace Frontend
             if (btn.Content.ToString() == "Add Patient")
             {
                 
-                Application.Current.MainWindow.Content = new AddPatient(icuId.Text.ToString(),btn.Name.ToString());
+                Application.Current.MainWindow.Content = new AddNewPatient(icuId.Text.ToString(),btn.Name.ToString());
             }
             else
             {

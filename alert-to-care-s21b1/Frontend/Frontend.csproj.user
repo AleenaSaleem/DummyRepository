@@ -7,87 +7,15 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="AddBed.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="AddIcu.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="AddPatient.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="AllBeds.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="AllIcus.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="AllPatients.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="BedsInIcu.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Configuration.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="DeleteBed.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="DeleteIcu.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="DeletePatient.xaml.cs">
+    <Compile Update="AddNewPatient.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="MainPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="MenuControl.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="ViewAllControl.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="ViewModel\DeleteBed.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="ViewModel\DeleteIcu.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="AddBed.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="AddIcu.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="AddPatient.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="AllBeds.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="AllIcus.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="AllPatients.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="BedsInIcu.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Configuration.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="DeleteBed.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="DeleteIcu.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="DeletePatient.xaml">
+    <Page Update="AddNewPatient.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainPage.xaml">
@@ -96,19 +24,7 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="MenuControl.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="Resources\ValidationErrorStyle.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="ViewAllControl.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="ViewModel\DeleteBed.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="ViewModel\DeleteIcu.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
