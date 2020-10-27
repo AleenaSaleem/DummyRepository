@@ -3,17 +3,62 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:validationrules ="clr-namespace:Frontend.Validations"
              xmlns:local="clr-namespace:Frontend"
              mc:Ignorable="d" 
              d:DesignHeight="{x:Static SystemParameters.PrimaryScreenHeight}" d:DesignWidth="{x:Static SystemParameters.PrimaryScreenWidth}">
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" >
         <TextBlock Text="Add ICU" Margin="20" HorizontalAlignment="Center" ></TextBlock>
+        <TextBlock Text="Enter ICU Id" Margin="10"></TextBlock>
+        <TextBox Margin="10" Width="100" x:Name="icuId" Style="{StaticResource ResourceKey=errorFeedbackStyle}">
+            <TextBox.Text>
+                <Binding  Path="IcuId" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" NotifyOnValidationError="True">
+                    <Binding.ValidationRules>
+                        <validationrules:AddIcuFieldValidations ValidatesOnTargetUpdated="True"></validationrules:AddIcuFieldValidations>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        
         <TextBlock  Text="Max Beds in ICU" Margin="10" ></TextBlock>
-        <TextBox Margin="10" Width="100" x:Name="maxBeds"></TextBox>
+        <TextBox Margin="10" Width="100" x:Name="maxBeds" Style="{StaticResource ResourceKey=errorFeedbackStyle}">
+            <TextBox.Text>
+                <Binding  Path="MaxBeds" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" NotifyOnValidationError="True">
+                    <Binding.ValidationRules>
+                        <validationrules:MaxBedFieldValidation ValidatesOnTargetUpdated="True"></validationrules:MaxBedFieldValidation>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        
         <TextBlock Text="Layout" Margin="10" ></TextBlock>
-        <ComboBox x:Name="LayoutList" Width="200" ItemsSource="{Binding Path=LayoutList}"></ComboBox>
+        <ComboBox x:Name="LayoutList" Width="200" ItemsSource="{Binding Path=LayoutList}" Style="{StaticResource ResourceKey=errorFeedbackStyle}">
+            <ComboBox.Text>
+                <Binding Path="Layout" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" NotifyOnValidationError="True" >
+                    <Binding.ValidationRules>
+                        <validationrules:AddIcuFieldValidations ValidatesOnTargetUpdated="True"></validationrules:AddIcuFieldValidations>
+                    </Binding.ValidationRules>
+                </Binding>
+            </ComboBox.Text>
+        </ComboBox>
         <StackPanel Orientation="Horizontal">
-            <Button Content="Add" Margin="30" Width="60" Click="NextButton_Click"></Button>
+            <Button Content="Add" Margin="30" Width="60" Click="NextButton_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="IsEnabled" Value="False"/>
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=icuId}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=maxBeds}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=LayoutList}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="IsEnabled" Value="True"/>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
             <Button x:Name="cancelButton" Content="Cancel" Margin="30" Width="70" Click="CancelButton_Click"></Button>
         </StackPanel>
 

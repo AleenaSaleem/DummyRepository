@@ -6,7 +6,8 @@
        
         xmlns:local="clr-namespace:Frontend"
         mc:Ignorable="d"
-        Title="Hospital ICU management" Height="{x:Static SystemParameters.PrimaryScreenHeight}" Width="{x:Static SystemParameters.PrimaryScreenWidth}">
+        Title="Hospital ICU management" Height="{Binding Source={x:Static SystemParameters.PrimaryScreenHeight}, Converter={local:RatioConverter}, ConverterParameter='0.95'}"
+        Width="{Binding Source={x:Static SystemParameters.PrimaryScreenWidth}, Converter={local:RatioConverter}, ConverterParameter='1' }">
     
     <DockPanel>
         

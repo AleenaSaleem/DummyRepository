@@ -1,5 +1,5 @@
 ﻿
-
+FE:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\App.xaml;;
 FE:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\AddBed.xaml;;
 FE:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\AddIcu.xaml;;
 FE:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\AddPatient.xaml;;
@@ -14,6 +14,7 @@ FE:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\DeletePatient.xaml;;
 FE:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\MainPage.xaml;;
 FE:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\MainWindow.xaml;;
 FE:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\MenuControl.xaml;;
+FE:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\Resources\ValidationErrorStyle.xaml;;
 FE:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\ViewAllControl.xaml;;
 FE:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\ViewModel\DeleteBed.xaml;;
 FE:\BootCamp\Dummy\alert-to-care-s21b1\Frontend\ViewModel\DeleteIcu.xaml;;

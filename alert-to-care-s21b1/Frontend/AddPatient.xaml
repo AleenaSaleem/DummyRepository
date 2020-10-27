@@ -4,11 +4,29 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Frontend"
+             xmlns:validationrules="clr-namespace:Frontend.Validations"
              mc:Ignorable="d" 
              d:DesignHeight="{x:Static SystemParameters.PrimaryScreenHeight}" d:DesignWidth="{x:Static SystemParameters.PrimaryScreenWidth}">
     <DockPanel>
         <Button x:Name="backButton" Content="Back" DockPanel.Dock="Top" Margin="20" HorizontalAlignment="Left" Click="backButton_Click" Width="70" FontSize="20"></Button>
-        <Button x:Name="addButton" DockPanel.Dock="Bottom" VerticalAlignment="Top" Content="Add" Margin="10 10 10 80" Click="addButton_Click" Width="90" FontSize="20"></Button>
+        <Button x:Name="addButton" DockPanel.Dock="Bottom" VerticalAlignment="Top" Content="Add" Margin="10 10 10 80" Click="addButton_Click" Width="90" FontSize="20">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="IsEnabled" Value="False"/>
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=name}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=age}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=address}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=bedIdList}" Value="False"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="True"/>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
 
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid.RowDefinitions>
@@ -29,11 +47,51 @@
                 <TextBlock Text="Name : " Margin="10" Grid.Row="2" Grid.Column="0" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                 <TextBlock Text="Age : " Margin="10" Grid.Row="3" Grid.Column="0" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                 <TextBlock Text="Address : " Margin="10" Grid.Row="4" Grid.Column="0" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                <ComboBox x:Name="icuIdList" Grid.Row="0" Grid.Column="1" ItemsSource="{Binding Path=IcuIdList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="icuIdList_SelectionChanged" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></ComboBox>
-                <ComboBox x:Name="bedIdList" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Path=BedIdList}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20"></ComboBox>
-                <TextBox x:Name="name" Text="{Binding Path=Name}" Grid.Row="2" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20"></TextBox>
-                <TextBox x:Name="age" Text="{Binding Path=Age}" Grid.Row="3" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20"></TextBox>
-                <TextBox x:Name="address" Text="{Binding Path=Address}" Grid.Row="4" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20"></TextBox>
+                <ComboBox x:Name="icuIdList" ItemsSource="{Binding Path=IcuIdList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="1"  SelectionChanged="icuIdList_SelectionChanged" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                    <ComboBox.Text>
+                        <Binding Path="IcuId" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" NotifyOnValidationError="True" >
+                            <Binding.ValidationRules>
+                                <validationrules:AddIcuFieldValidations ValidatesOnTargetUpdated="True"></validationrules:AddIcuFieldValidations>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </ComboBox.Text>
+                </ComboBox>
+                <ComboBox x:Name="bedIdList" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Path=BedIdList}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Style="{StaticResource ResourceKey=errorFeedbackStyle}">
+                    <ComboBox.Text>
+                        <Binding Path="BedId" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" NotifyOnValidationError="True" >
+                            <Binding.ValidationRules>
+                                <validationrules:AddIcuFieldValidations ValidatesOnTargetUpdated="True"></validationrules:AddIcuFieldValidations>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </ComboBox.Text>
+                </ComboBox>
+                <TextBox x:Name="name" Grid.Row="2" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Style="{StaticResource ResourceKey=errorFeedbackStyle}">
+                    <TextBox.Text>
+                        <Binding Path="Name" Mode="TwoWay" ValidatesOnExceptions="True"  NotifyOnValidationError="True"  UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules >
+                                <validationrules:AddIcuFieldValidations ValidatesOnTargetUpdated="True"></validationrules:AddIcuFieldValidations>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBox x:Name="age" Grid.Row="3" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Style="{StaticResource ResourceKey=errorFeedbackStyle}">
+                    <TextBox.Text>
+                        <Binding Path="Age" Mode="TwoWay" ValidatesOnExceptions="True" NotifyOnValidationError="True" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <validationrules:AgeValidation ValidatesOnTargetUpdated="True"></validationrules:AgeValidation>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBox x:Name="address" Grid.Row="4" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Style="{StaticResource ResourceKey=errorFeedbackStyle}">
+                    <TextBox.Text>
+                        <Binding Path="Address" Mode="TwoWay" ValidatesOnExceptions="True" NotifyOnValidationError="True" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <validationrules:AddIcuFieldValidations ValidatesOnTargetUpdated="True"></validationrules:AddIcuFieldValidations>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
             </Grid.Children>
         </Grid>
 

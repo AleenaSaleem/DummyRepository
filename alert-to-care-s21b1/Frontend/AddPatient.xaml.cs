@@ -41,6 +41,8 @@ namespace Frontend
             {
                 this.bedIdList.SelectedItem = bId;
             }
+            
+            
         }
         public void RetrieveBeds()
         {
@@ -64,12 +66,12 @@ namespace Frontend
         {
             PatientModel patient = new PatientModel()
             {
-                PatientId = this.bedIdList.SelectedItem.ToString()+this.name.Text.ToString(),
-                IcuId = this.icuIdList.SelectedItem.ToString(),
-                BedId = this.bedIdList.SelectedItem.ToString(),
-                Name = this.name.Text.ToString(),
-                Age = Int32.Parse(this.age.Text),
-                Address = this.address.Text.ToString()
+                PatientId = _patient.BedId + _patient.Name,
+                IcuId = _patient.IcuId,
+                BedId = _patient.BedId,
+                Name = _patient.Name,
+                Age = Int32.Parse(_patient.Age.ToString()),
+                Address = _patient.Address
             };
             var result = new PatientApiCalls().AddPatient(patient);
             MessageBox.Show(result);
@@ -78,6 +80,7 @@ namespace Frontend
 
         private void icuIdList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            //this.addButton.IsEnabled = true;
             RetrieveBeds();
         }
     }

@@ -4,14 +4,39 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Frontend"
+             xmlns:validationrules="clr-namespace:Frontend.Validations"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <DockPanel>
         <Button x:Name="backButton" Content="Back" DockPanel.Dock="Top" HorizontalAlignment="Left" Width="70" Height="30" FontSize="20" Margin="10" Click="backButton_Click"></Button>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Text="Select PatientId: " FontSize="20" Margin="10"></TextBlock>
-            <ComboBox x:Name="patientIdList" ItemsSource="{Binding Path=PatientIdList}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="250" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"></ComboBox>
-            <Button x:Name="deleteButton" Content="Discharge" Click="deleteButton_Click" Margin="20"></Button>
+            <ComboBox x:Name="patientIdList" ItemsSource="{Binding Path=PatientIdList}"
+                      HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="250" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Style="{StaticResource ResourceKey=errorFeedbackStyle}">
+                <ComboBox.Text>
+                    <Binding Path="PatientId" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" NotifyOnValidationError="True" >
+                        <Binding.ValidationRules>
+                            <validationrules:AddIcuFieldValidations ValidatesOnTargetUpdated="True"></validationrules:AddIcuFieldValidations>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </ComboBox.Text>
+            </ComboBox>
+            <Button x:Name="deleteButton" Content="Discharge" Click="deleteButton_Click" Margin="20">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="IsEnabled" Value="False"/>
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=patientIdList}" Value="False"/>
+                                    
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="IsEnabled" Value="True"/>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
         </StackPanel>
         
         

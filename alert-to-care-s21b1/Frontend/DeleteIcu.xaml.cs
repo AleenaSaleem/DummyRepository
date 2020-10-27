@@ -12,20 +12,38 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 using Frontend.ApiCalls;
+using System.ComponentModel;
 
 namespace Frontend
 {
     /// <summary>
     /// Interaction logic for DeleteIcu.xaml
     /// </summary>
-    public partial class DeleteIcu : UserControl
+    public partial class DeleteIcu : UserControl, INotifyPropertyChanged
     {
+        string icuId;
         ObservableCollection<string> _icuList = new ObservableCollection<string>();
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public DeleteIcu()
         {
             InitializeComponent();
             _icuList = RetrieveIcus();
             this.DataContext = this;
+
+        }
+        public string IcuId
+        {
+            get { return this.icuId; }
+            set
+            {
+                if (this.icuId != value)
+                {
+                    this.icuId = value;
+                    OnPropertyChanged(nameof(IcuId));
+                }
+            }
 
         }
         public ObservableCollection<string> RetrieveIcus()
@@ -45,7 +63,7 @@ namespace Frontend
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            var icuId = this.icuList.SelectedItem.ToString();
+            var icuId = IcuId;
             var result = new IcuApiCalls().RemoveIcu(icuId);
             MessageBox.Show(result);
             if(result == "ICU deleted successfully")
@@ -61,6 +79,13 @@ namespace Frontend
             }
             
             
+        }
+        public void OnPropertyChanged(string propertyName)
+        {
+            if (this.PropertyChanged != null)
+            {
+                this.PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {

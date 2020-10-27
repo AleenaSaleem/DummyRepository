@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,17 +19,45 @@ namespace Frontend
     /// <summary>
     /// Interaction logic for DeleteBed.xaml
     /// </summary>
-    public partial class DeleteBed : UserControl
+    public partial class DeleteBed : UserControl, INotifyPropertyChanged
     {
         ObservableCollection<string> _icuList = new ObservableCollection<string>();
         ObservableCollection<string> _bedList = new ObservableCollection<string>();
-    
+        string icuId;
+        string bedId;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public DeleteBed()
         {
             InitializeComponent();
             _icuList = RetrieveIcus();
             this.DataContext = this;
 
+        }
+        public string BedId
+        {
+            get { return this.bedId; }
+            set
+            {
+                if (this.bedId != value)
+                {
+                    this.bedId = value;
+                    OnPropertyChanged(nameof(BedId));
+                }
+            }
+        }
+        public string IcuId
+        {
+            get { return this.icuId; }
+            set
+            {
+                if (this.icuId != value)
+                {
+                    this.icuId = value;
+                    OnPropertyChanged(nameof(IcuId));
+                }
+            }
         }
         public ObservableCollection<string> RetrieveIcus()
         {
@@ -67,8 +96,8 @@ namespace Frontend
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            var icuId = this.icuList.SelectedItem.ToString();
-            var bedId = this.bedList.SelectedItem.ToString();
+            var icuId = IcuId;
+            var bedId = BedId;
             var result = new BedApiCalls().RemoveBed(icuId,bedId);
             MessageBox.Show(result);
             Application.Current.MainWindow.Content = new MainPage();
@@ -82,6 +111,13 @@ namespace Frontend
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.MainWindow.Content = new MainPage();
+        }
+        public void OnPropertyChanged(string propertyName)
+        {
+            if (this.PropertyChanged != null)
+            {
+                this.PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
     }
 }

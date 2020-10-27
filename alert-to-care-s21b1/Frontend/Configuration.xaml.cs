@@ -42,10 +42,10 @@ namespace Frontend
             
             var icu = new Backend.Models.IcuModel()
             {
-                IcuId = "IC" + (numIcus + 1).ToString(),
+                IcuId = layoutModel.IcuId,
                 NoOfBeds = 0,
-                Layout = this.LayoutList.SelectedItem.ToString().Substring(0, 1),
-                MaxBeds = Int32.Parse(this.maxBeds.Text)
+                Layout = layoutModel.Layout.Substring(0, 1),
+                MaxBeds = layoutModel.MaxBeds
             };
             string msg = icuApiObj.AddIcu(icu);
             MessageBox.Show(msg);

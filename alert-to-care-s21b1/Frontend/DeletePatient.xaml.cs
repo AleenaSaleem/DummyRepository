@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,15 +19,38 @@ namespace Frontend
     /// <summary>
     /// Interaction logic for DeletePatient.xaml
     /// </summary>
-    public partial class DeletePatient : UserControl
+    public partial class DeletePatient : UserControl, INotifyPropertyChanged
     {
         ObservableCollection<string> _patientIdList;
+        string patientId;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public DeletePatient()
         {
             InitializeComponent();
             this._patientIdList = new ObservableCollection<string>();
             this.DataContext = this;
             RetrievePatients();
+        }
+        public void OnPropertyChanged(string propertyName)
+        {
+            if (this.PropertyChanged != null)
+            {
+                this.PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+        public string PatientId
+        {
+            get { return this.patientId; }
+            set
+            {
+                if (this.patientId != value)
+                {
+                    this.patientId = value;
+                    OnPropertyChanged(nameof(PatientId));
+                }
+            }
         }
 
         public ObservableCollection<string> PatientIdList
@@ -46,7 +70,7 @@ namespace Frontend
 
         private void deleteButton_Click(object sender, RoutedEventArgs e)
         {
-            var result = new PatientApiCalls().RemovePatient(this.patientIdList.SelectedItem.ToString());
+            var result = new PatientApiCalls().RemovePatient(PatientId);
             MessageBox.Show(result);
             Application.Current.MainWindow.Content = new MainPage();
         }
