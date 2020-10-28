@@ -17,12 +17,13 @@ namespace BackendApiTests
         Backend.Models.PatientModel _patient = new Backend.Models.PatientModel()
         {
             IcuId = "IC2",
-            BedId="IC2L1",
+            BedId="IC2L01",
             Name="Tom",
             Age=21,
             PatientId="p12",
-            Address="TomsAddress"
-
+            Address="TomsAddress",
+            Gender="Male",
+            ContactNo="somethin"
         };
 
         [Fact]
@@ -30,7 +31,7 @@ namespace BackendApiTests
         {
             var response = await _mockServer.Client.PostAsync(_url, new StringContent(JsonConvert.SerializeObject(_patient), Encoding.UTF8, "application/json"));
             var jsonString = await response.Content.ReadAsStringAsync();
-            Assert.Equal("true", JsonConvert.DeserializeObject<string>(jsonString));
+            Assert.Equal("Patient added to the bed", JsonConvert.DeserializeObject<string>(jsonString));
             await _mockServer.Client.DeleteAsync(_url + "/" + _patient.PatientId);
         }
         [Fact]
@@ -39,7 +40,7 @@ namespace BackendApiTests
             await _mockServer.Client.PostAsync(_url, new StringContent(JsonConvert.SerializeObject(_patient), Encoding.UTF8, "application/json"));
             var response = await _mockServer.Client.PostAsync(_url, new StringContent(JsonConvert.SerializeObject(_patient), Encoding.UTF8, "application/json"));
             var jsonString = await response.Content.ReadAsStringAsync();
-            Assert.Equal("false", JsonConvert.DeserializeObject<string>(jsonString));
+            Assert.Equal("Patient couldnot be added", JsonConvert.DeserializeObject<string>(jsonString));
             await _mockServer.Client.DeleteAsync(_url + "/" + _patient.PatientId);
         }
         [Fact]
@@ -50,7 +51,6 @@ namespace BackendApiTests
             var jsonString = await response.Content.ReadAsStringAsync();
             var beds = JsonConvert.DeserializeObject<List<Backend.Models.PatientModel>>(jsonString);
             Assert.Contains("p12", jsonString);
-            Assert.Equal("IC2L1", beds[0].BedId);
             await _mockServer.Client.DeleteAsync(_url + "/" + _patient.PatientId);
         }
         [Fact]
@@ -77,14 +77,14 @@ namespace BackendApiTests
             await _mockServer.Client.PostAsync(_url, new StringContent(JsonConvert.SerializeObject(_patient), Encoding.UTF8, "application/json"));
             var response = await _mockServer.Client.DeleteAsync(_url + "/" + _patient.PatientId);
             var jsonString = await response.Content.ReadAsStringAsync();
-            Assert.Equal("true", JsonConvert.DeserializeObject<string>(jsonString));
+            Assert.Equal("Patient Discharged!", JsonConvert.DeserializeObject<string>(jsonString));
         }
         [Fact]
         public async Task TestExpectingFalseForPatientToBeRemovedWhenCalledWithInValidId()
         {
             var response = await _mockServer.Client.DeleteAsync(_url + "/" + _patient.PatientId);
             var jsonString = await response.Content.ReadAsStringAsync();
-            Assert.Equal("false", JsonConvert.DeserializeObject<string>(jsonString));
+            Assert.Equal("Patient could not be discharged", JsonConvert.DeserializeObject<string>(jsonString));
         }
     }
 }
