@@ -35,12 +35,11 @@ namespace Frontend
                 _patient.BedId = bId;
             }
 
-
         }
         public void RetrieveBeds()
         {
             this._patient.BedIdList.Clear();
-            var bedsInIcu = new BedApiCalls().GetAllBedsFromAnIcu(_patient.IcuId).ToList();
+            var bedsInIcu = new BedApiCalls().GetAllBedsFromAnIcu(icuIdList.SelectedItem.ToString()).ToList();
             foreach (var bed in bedsInIcu)
             {
                 if (bed.BedOccupancyStatus == "Free")

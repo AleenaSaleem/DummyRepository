@@ -21,7 +21,7 @@
                     </Binding>
                 </ComboBox.Text>
             </ComboBox>
-            <Button Content="Remove" Margin="40" Width="100" Height="30" FontSize="20" Click="DeleteButton_Click">
+            <Button Name="removeICU"  Content="Remove" Margin="40" Width="100" Height="30" FontSize="20" Click="DeleteButton_Click">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="IsEnabled" Value="False"/>

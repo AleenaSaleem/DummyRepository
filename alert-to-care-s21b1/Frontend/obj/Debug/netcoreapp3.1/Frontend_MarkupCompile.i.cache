@@ -16,5 +16,5 @@ C:\Users\ALIRAZA\Documents\GitHub\DummyRepository\alert-to-care-s21b1\Frontend\A
 31775810566
 AddBed.xaml;AddNewPatient.xaml;AllBeds.xaml;AllIcus.xaml;AllPatients.xaml;BedsInIcu.xaml;DeleteBed.xaml;DeleteIcu.xaml;DeletePatient.xaml;IcuConfiguration.xaml;MainPage.xaml;MainWindow.xaml;MenuControl.xaml;Resources\ValidationErrorStyle.xaml;ViewAllControl.xaml;
 
-True
+False
 

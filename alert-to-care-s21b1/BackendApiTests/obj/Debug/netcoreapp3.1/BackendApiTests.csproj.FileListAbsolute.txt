@@ -197,7 +197,6 @@ C:\Users\ALIRAZA\Documents\GitHub\DummyRepository\alert-to-care-s21b1\BackendApi
 C:\Users\ALIRAZA\Documents\GitHub\DummyRepository\alert-to-care-s21b1\BackendApiTests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
 C:\Users\ALIRAZA\Documents\GitHub\DummyRepository\alert-to-care-s21b1\BackendApiTests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
 C:\Users\ALIRAZA\Documents\GitHub\DummyRepository\alert-to-care-s21b1\BackendApiTests\bin\Debug\netcoreapp3.1\Backend.dll
-C:\Users\ALIRAZA\Documents\GitHub\DummyRepository\alert-to-care-s21b1\BackendApiTests\bin\Debug\netcoreapp3.1\Backend.pdb
 C:\Users\ALIRAZA\Documents\GitHub\DummyRepository\alert-to-care-s21b1\BackendApiTests\obj\Debug\netcoreapp3.1\BackendApiTests.csprojAssemblyReference.cache
 C:\Users\ALIRAZA\Documents\GitHub\DummyRepository\alert-to-care-s21b1\BackendApiTests\obj\Debug\netcoreapp3.1\BackendApiTests.AssemblyInfoInputs.cache
 C:\Users\ALIRAZA\Documents\GitHub\DummyRepository\alert-to-care-s21b1\BackendApiTests\obj\Debug\netcoreapp3.1\BackendApiTests.AssemblyInfo.cs
@@ -206,3 +205,4 @@ C:\Users\ALIRAZA\Documents\GitHub\DummyRepository\alert-to-care-s21b1\BackendApi
 C:\Users\ALIRAZA\Documents\GitHub\DummyRepository\alert-to-care-s21b1\BackendApiTests\obj\Debug\netcoreapp3.1\BackendApiTests.dll
 C:\Users\ALIRAZA\Documents\GitHub\DummyRepository\alert-to-care-s21b1\BackendApiTests\obj\Debug\netcoreapp3.1\BackendApiTests.pdb
 C:\Users\ALIRAZA\Documents\GitHub\DummyRepository\alert-to-care-s21b1\BackendApiTests\obj\Debug\netcoreapp3.1\BackendApiTests.genruntimeconfig.cache
+C:\Users\ALIRAZA\Documents\GitHub\DummyRepository\alert-to-care-s21b1\BackendApiTests\bin\Debug\netcoreapp3.1\Backend.pdb

@@ -10,7 +10,7 @@
     <DockPanel LastChildFill="True">
         <Border x:Name="leftBorder" BorderBrush="Beige" BorderThickness="2" DockPanel.Dock="Left" Background="Beige" >
             <StackPanel>
-                <Button Padding="2" Content="Menu" Margin="20" VerticalAlignment="Top" FontSize="20" Click="Menu_Click"></Button>
+                <Button Name="Menu" Padding="2" Content="Menu" Margin="20" VerticalAlignment="Top" FontSize="20" Click="Menu_Click"></Button>
                 <local:MenuControl Visibility="Collapsed" x:Name="MenuOptions" Margin="10"></local:MenuControl>
             </StackPanel>
         </Border>
@@ -22,7 +22,7 @@
         </Border>
         <Border x:Name="rightBorder" BorderBrush="Beige" BorderThickness="2" DockPanel.Dock="Right" Background="Beige">
             <StackPanel DockPanel.Dock="Right">
-                <Button Content="View All" Margin="20" VerticalAlignment="Top" FontSize="20" Click="ViewAll_Click"></Button>
+                <Button x:Name="ViewAll"  Content="View All" Margin="20" VerticalAlignment="Top" FontSize="20" Click="ViewAll_Click"></Button>
                 <local:ViewAllControl Visibility="Collapsed" x:Name="ViewAllOptions" Margin="10"></local:ViewAllControl>
             </StackPanel>
         </Border>
