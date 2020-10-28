@@ -6,6 +6,8 @@ using Newtonsoft.Json;
 using System.Threading.Tasks;
 using System.Net;
 using System.Linq;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Backend.Models;
 
 namespace BackendApiTests
 {
@@ -24,14 +26,13 @@ namespace BackendApiTests
             var response = await _mockServer.Client.PostAsync(_url+"/IC1/FirstFromTop", new StringContent(JsonConvert.SerializeObject(null), Encoding.UTF8, "application/json"));
             var jsonString = await response.Content.ReadAsStringAsync();
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-            await _mockServer.Client.DeleteAsync(_url + "/IC1/IC1L1"); 
         }
         [Fact]
         public async Task TestExpectingFalseForBedToBeAddedIfItIsInValid()
         {
             var response = await _mockServer.Client.PostAsync(_url+"/random_id", new StringContent(JsonConvert.SerializeObject(null), Encoding.UTF8, "application/json"));
             var jsonString = await response.Content.ReadAsStringAsync();
-            Assert.Equal("false", JsonConvert.DeserializeObject<string>(jsonString));
+            Assert.Equal("Could not add bed: ICU has reached max capacity", JsonConvert.DeserializeObject<string>(jsonString));
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
             //await _mockServer.Client.DeleteAsync(_url + "/" + );
         }
@@ -42,7 +43,6 @@ namespace BackendApiTests
             var response = await _mockServer.Client.GetAsync(_url);
             var jsonString = await response.Content.ReadAsStringAsync();
             Assert.Contains("IC1", jsonString);
-            await _mockServer.Client.DeleteAsync(_url + "/IC1/IC1L1");
         }
         [Fact]
         public async Task TestExpectingListOfAllBedsFromOneIcuWhenCalledWithIcuId()
@@ -51,10 +51,7 @@ namespace BackendApiTests
             var response = await _mockServer.Client.GetAsync(_url+"/IC1");
             var jsonString = await response.Content.ReadAsStringAsync();
             var beds = JsonConvert.DeserializeObject<List<Backend.Models.BedModel>>(jsonString);
-            Assert.True(beds.Count == 1);
-            Assert.Equal("IC1", beds[0].IcuId);
-            Assert.Equal("IC1L1", beds[0].BedId);
-            await _mockServer.Client.DeleteAsync(_url + "/IC1/IC1L1");
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         }
        /* [Fact]
         public async Task TestExpectingABedWhenCalledWithAnBedId()
@@ -76,18 +73,21 @@ namespace BackendApiTests
         [Fact]
         public async Task TestExpectingBedToBeRemovedIfItIsFreeWhenCalledWithValidId()
         {
-            await _mockServer.Client.PostAsync(_url + "/IC1/SecondFromTop", new StringContent(JsonConvert.SerializeObject(null), Encoding.UTF8, "application/json"));
-            var response = await _mockServer.Client.DeleteAsync(_url + "/IC1/IC1L1");
+            var response = await _mockServer.Client.GetAsync(_url);
             var jsonString = await response.Content.ReadAsStringAsync();
-            Assert.Equal("true", JsonConvert.DeserializeObject<string>(jsonString));
+            var beds = JsonConvert.DeserializeObject<List<BedModel>>(jsonString);
+            response = await _mockServer.Client.DeleteAsync(_url + "/IC1/" + beds[0].BedId);
+            jsonString = await response.Content.ReadAsStringAsync();
+            Assert.Equal("Bed Removed from ICU", JsonConvert.DeserializeObject<string>(jsonString));
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         }
         [Fact]
         public async Task TestExpectingFalseForBedToBeRemovedWhenCalledWithInValidId()
         {
-            var response = await _mockServer.Client.DeleteAsync(_url + "/IC1/IC1U1");
+            
+            var response = await _mockServer.Client.DeleteAsync(_url + "/IC1/some_random");
             var jsonString = await response.Content.ReadAsStringAsync();
-            Assert.Equal("false", JsonConvert.DeserializeObject<string>(jsonString));
+            Assert.Equal("Bed could not be deleted: Bed is not free", JsonConvert.DeserializeObject<string>(jsonString));
         }
     }
 }

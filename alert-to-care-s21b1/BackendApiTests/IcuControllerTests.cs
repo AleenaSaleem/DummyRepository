@@ -20,7 +20,8 @@ namespace BackendApiTests
             IcuId = "IC3",
             Layout = "U",
             NoOfBeds = 0,
-            MaxBeds = 10
+            MaxBeds = 10,
+            BedsCounter =0
         };
 
         [Fact]
@@ -28,7 +29,7 @@ namespace BackendApiTests
         {
             var response = await _mockServer.Client.PostAsync(_url, new StringContent(JsonConvert.SerializeObject(_icu), Encoding.UTF8, "application/json"));
             var jsonString = await response.Content.ReadAsStringAsync();
-            Assert.Equal("true", JsonConvert.DeserializeObject<string>(jsonString));
+            Assert.Equal("ICU added successfully", JsonConvert.DeserializeObject<string>(jsonString));
             await _mockServer.Client.DeleteAsync(_url + "/" + _icu.IcuId);
         }
         [Fact]
@@ -37,29 +38,33 @@ namespace BackendApiTests
             await _mockServer.Client.PostAsync(_url, new StringContent(JsonConvert.SerializeObject(_icu), Encoding.UTF8, "application/json"));
             var response = await _mockServer.Client.PostAsync(_url, new StringContent(JsonConvert.SerializeObject(_icu), Encoding.UTF8, "application/json"));
             var jsonString = await response.Content.ReadAsStringAsync();
-            Assert.Equal("false", JsonConvert.DeserializeObject<string>(jsonString));
+            Assert.Equal("ICU could not be added", JsonConvert.DeserializeObject<string>(jsonString));
             await _mockServer.Client.DeleteAsync(_url + "/" + _icu.IcuId);
         }
         [Fact]
         public async Task TestExpectingListOfAllIcusWhenCalled()
         {
+            await _mockServer.Client.PostAsync(_url, new StringContent(JsonConvert.SerializeObject(_icu), Encoding.UTF8, "application/json"));
             var response = await _mockServer.Client.GetAsync(_url);
             var jsonString = await response.Content.ReadAsStringAsync();
             var icus = JsonConvert.DeserializeObject<List<Backend.Models.IcuModel>>(jsonString);
-            Assert.True(icus.Count == 2);
-            Assert.Contains("IC1", jsonString);
-            Assert.Contains("IC2", jsonString);
+            
+            Assert.Contains("IC3", jsonString);
+            await _mockServer.Client.DeleteAsync(_url + "/" + _icu.IcuId);
             //Assert.Equal("IC2", icus[0].IcuId);
             //Assert.Equal("IC1", icus[1].IcuId);
         }
         [Fact]
         public async Task TestExpectingAnIcuWhenCalledWithAnIcuId()
         {
-            var response = await _mockServer.Client.GetAsync(_url+"/IC1");
+            await _mockServer.Client.PostAsync(_url, new StringContent(JsonConvert.SerializeObject(_icu), Encoding.UTF8, "application/json"));
+            var response = await _mockServer.Client.GetAsync(_url+"/IC3");
             var jsonString = await response.Content.ReadAsStringAsync();
             var icu = JsonConvert.DeserializeObject<Backend.Models.IcuModel>(jsonString);
-            Assert.Equal("IC1", icu.IcuId);
-            Assert.Equal("L", icu.Layout);
+            Assert.Equal("IC3", icu.IcuId);
+            Assert.Equal("U", icu.Layout);
+            await _mockServer.Client.DeleteAsync(_url + "/" + _icu.IcuId);
+
         }
         [Fact]
         public async Task TestExpectingFalseWhenIcuDoesNotExistWhenCalledWithAnInvalidIcuId()
@@ -75,14 +80,14 @@ namespace BackendApiTests
             await _mockServer.Client.PostAsync(_url, new StringContent(JsonConvert.SerializeObject(_icu), Encoding.UTF8, "application/json"));
             var response = await _mockServer.Client.DeleteAsync(_url + "/" + _icu.IcuId);
             var jsonString = await response.Content.ReadAsStringAsync();
-            Assert.Equal("true", JsonConvert.DeserializeObject<string>(jsonString));
+            Assert.Equal("ICU deleted successfully", JsonConvert.DeserializeObject<string>(jsonString));
         }
         [Fact]
         public async Task TestExpectingFalseForIcuToBeRemovedWhenCalledWithInValidId()
         {
             var response = await _mockServer.Client.DeleteAsync(_url + "/" + _icu.IcuId);
             var jsonString = await response.Content.ReadAsStringAsync();
-            Assert.Equal("false", JsonConvert.DeserializeObject<string>(jsonString));
+            Assert.Equal("ICU could not be deleted: Has occupied beds", JsonConvert.DeserializeObject<string>(jsonString));
         }
 
     }
