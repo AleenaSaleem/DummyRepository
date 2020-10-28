@@ -8,8 +8,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="{x:Static SystemParameters.PrimaryScreenHeight}" d:DesignWidth="{x:Static SystemParameters.PrimaryScreenWidth}">
     <DockPanel>
-        <Button x:Name="backButton" Content="Back" DockPanel.Dock="Top" Margin="20" HorizontalAlignment="Left" Click="backButton_Click" Width="70" FontSize="20"></Button>
-        <TextBlock DockPanel.Dock="Top" Margin="30" HorizontalAlignment="Center" Text="Add Patient" FontSize="40" FontWeight="Black"></TextBlock>
+        <Button x:Name="backButton" Content="Back" DockPanel.Dock="Top" Margin="10" HorizontalAlignment="Left" Click="backButton_Click" Width="70" FontSize="20"></Button>
+        <TextBlock DockPanel.Dock="Top" Margin="10" HorizontalAlignment="Center" Text="Add Patient" FontSize="40" FontWeight="Black"></TextBlock>
         <Button x:Name="addButton" DockPanel.Dock="Bottom" VerticalAlignment="Top" Content="Add"  Margin="10 10 10 100" Click="addButton_Click" Width="90" Height="40" FontSize="20">
             <Button.Style>
                 <Style TargetType="Button">

@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="{x:Static SystemParameters.PrimaryScreenHeight}" d:DesignWidth="{x:Static SystemParameters.PrimaryScreenWidth}">
     <DockPanel  LastChildFill="True">
-        <TextBlock DockPanel.Dock="Top" Foreground="Green" Text="Add ICU" Margin="100 150 100 70 " FontSize="30" HorizontalAlignment="Center" FontWeight="Bold"></TextBlock>
+        <TextBlock DockPanel.Dock="Top" Foreground="Green" Text="Add ICU" Margin="100 100 100 50 " FontSize="30" HorizontalAlignment="Center" FontWeight="Bold"></TextBlock>
 
         <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="200 20 200 200">
             <Button Content="Add" Margin="70 30 50 20" FontSize="20" Width="70" Click="NextButton_Click">
